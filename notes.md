@@ -149,3 +149,13 @@ Kịch bản kiểm chứng tạm (ngoài repo):
 - Thêm `MOVING_POSITION` (dòng 35-42): mô tả vị trí hào 1–6 theo quy ước chung (khởi đầu, phát triển, tất yếu, trung bình, vị trí cao, kết thúc) — hiển thị bên cạnh "Hào động X" trong `hex-caption`. Không bịa nội dung ý nghĩa hào cụ thể của từng quẻ vì `data-hexagrams.js` không có field đó.
 - Xác minh qua CDP Edge headless (url `#kinh-dich`, ngày 29/09/1995, giờ Tý): focus chuyển sang `#cast-result`, live/toast hiển thị đúng, 12 option giờ, không lỗi console, không tràn ngang.
 
+## Hoàn thành 2026-10-28 — Đưa nội dung intro chưa dùng vào UI (app.js)
+- `challengeIntro` (data-cycles.js:21): hiển thị dưới tiêu đề panel "Thách thức lặp lại".
+- `karmicDebtIntro` (data-cycles.js:34): hiển thị dưới tiêu đề panel "Nợ nghiệp".
+- `planes.intro` (data-cycles.js:72): thay văn bản cứng "Cách bạn tiếp nhận thế giới" ở panel "Bình diện & ẩn đam mê".
+- `hiddenPassion.intro` (data-cycles.js:82): hiển thị trong mini-card Ẩn đam mê.
+- `personalMonth.intro` (data-cycles.js:94): hiển thị trong mini-card Tháng cá nhân.
+- `mastery` (data-cycles.js:108): thêm panel "Số chủ đạo 11/22/33" khi Đường đời là số chủ đạo, hiển thị văn bản tương ứng (11/22/33).
+- Xác minh qua `node --check`, `verify.js` (6 hồ sơ), CDP Edge headless 4 kịch bản URL — không lỗi console.
+
+

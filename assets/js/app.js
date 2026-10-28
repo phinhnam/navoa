@@ -702,6 +702,7 @@
             '<h3 class="panel-title">Thách thức lặp lại</h3>' +
             '<p class="panel-sub">Bài tập của từng chặng</p>' +
           '</div>' +
+          '<p class="panel-sub cycles-intro">' + (C.challengeIntro || '') + '</p>' +
           '<div class="acc-list">' + challengeHTML + '</div>' +
         '</div>' +
         '<div class="panel">' +
@@ -709,6 +710,7 @@
             '<h3 class="panel-title">Nợ nghiệp</h3>' +
             '<p class="panel-sub">Kỹ năng chưa được dạy</p>' +
           '</div>' +
+          '<p class="panel-sub cycles-intro">' + (C.karmicDebtIntro || '') + '</p>' +
           '<div class="acc-list">' + debtHTML + '</div>' +
         '</div>' +
       '</div>' +
@@ -724,16 +726,27 @@
         '<div class="panel">' +
           '<div class="panel-head">' +
             '<h3 class="panel-title">Bình diện &amp; ẩn đam mê</h3>' +
-            '<p class="panel-sub">Cách bạn tiếp nhận thế giới</p>' +
+            '<p class="panel-sub cycles-intro">' + (C.planes && C.planes.intro || '') + '</p>' +
           '</div>' +
           '<div class="planes">' + planeHTML + '</div>' +
           '<div class="mini-grid">' +
             '<div class="mini-card"><span>Ẩn đam mê</span><strong>' + (cycles.hiddenPassion || '—') + '</strong>' +
+              '<p class="mini-intro">' + (C.hiddenPassion && C.hiddenPassion.intro || '') + '</p>' +
               '<p>' + (passionMeta || 'Cần thêm chữ cái trong tên.') + '</p></div>' +
             '<div class="mini-card"><span>Tháng cá nhân</span><strong>' + cycles.personalMonth + '</strong>' +
+              '<p class="mini-intro">' + (C.personalMonth && C.personalMonth.intro || '') + '</p>' +
               '<p>' + (monthMeta || '') + '</p></div>' +
           '</div>' +
         '</div>' +
+      '</div>' +
+      (profile.lifePath === 11 || profile.lifePath === 22 || profile.lifePath === 33
+        ? '<div class="panel mastery-panel">' +
+          '<div class="panel-head">' +
+            '<h3 class="panel-title">Số chủ đạo ' + profile.lifePath + '</h3>' +
+            '<p class="panel-sub cycles-intro">' + (C.mastery && C.mastery[String(profile.lifePath)] || '') + '</p>' +
+          '</div>' +
+          '</div>'
+        : '') +
       '</div>';
   }
 
