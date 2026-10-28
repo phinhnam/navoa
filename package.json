@@ -4,7 +4,7 @@
   "description": "Thiên Số — Thần số học Pythagore, Kinh Dịch (Mai Hoa) và Tarot. Site tĩnh, JS thuần.",
   "private": true,
   "scripts": {
-    "test": "node tests/verify.js && node tests/numcheck.js && node tests/lunarcheck.js && node tests/tarotcheck.js"
+    "test": "node tests/verify.js && node tests/numcheck.js && node tests/lunarcheck.js && node tests/tarotcheck.js && node tests/palmcheck.js"
   },
   "engines": {
     "node": ">=18"

@@ -275,6 +275,16 @@ Kịch bản kiểm chứng tạm (ngoài repo):
 15. **Sửa lỗi hiển thị mục "Ý nghĩa con số - 12 khuôn mặt của năng lượng" (`app.js`, `effects.js`):**
     - **Nguyên nhân:** Khi tách `effects.js`, hàm `observeReveals()` chạy trước khi `renderGallery()` trong `app.js` tạo ra 12 thẻ số `.gallery-card.reveal`. Vì vậy các thẻ số mang class `.reveal` nhưng không được `IntersectionObserver` quan sát, dẫn đến CSS `.js .reveal { opacity: 0; }` khiến toàn bộ 12 thẻ số bị ẩn.
     - **Khắc phục:** Gọi `window.THIENSO_FX.observeReveals(gallery)` ngay sau khi tạo các thẻ số trong `renderGallery()`, tại khối `init` của `app.js`, và bổ sung hook `load` trong `effects.js`. 12 thẻ số hiển thị mượt mà với hiệu ứng cuộn mượt trở lại.
+16. **Chương đặc biệt: Tướng pháp chỉ tay — Palmistry (`data-palmistry.js`, `palmistry-ui.js`, `index.html`, `styles.css`):**
+    - **Bảo mật 100% Client-Side:** Nạp ảnh, căn chỉnh và tăng tương phản trực tiếp trên HTML5 Canvas; ảnh không rời khỏi thiết bị.
+    - **Bộ lọc tương phản viền chỉ tay:** Thanh trượt contrast và đảo sáng giúp các vệt chỉ tay mờ hiện rõ nét để đối chiếu. Hỗ trợ nút xem bàn tay mẫu vẽ bằng canvas.
+    - **Hệ thống dữ liệu tướng pháp:**
+      - 4 hình thái bàn tay (Đất, Nước, Khí, Hỏa).
+      - 5 đại đường chỉ tay (Sinh Đạo, Trí Đạo, Tâm Đạo, Định Mệnh, Thái Dương) với các biến thể hình thái và ý nghĩa phong phú.
+      - Các dấu ấn quý tướng: Chữ M Thần Tài, Chữ X Thần Bí, Vòng Solomon, Vân Mắt Phật.
+      - Triết lý sâu sắc *"Tướng tùy tâm sinh, tướng tùy tâm diệt"*.
+    - **Nút sao chép luận giải chỉ tay:** Sao chép định dạng văn bản đẹp mắt để lưu trữ hoặc chia sẻ.
+    - **Kiểm thử tự động:** `tests/palmcheck.js` tích hợp vào `npm test`, kiểm chứng 100% trường dữ liệu.
 
 ## Việc chưa làm / có thể mở rộng tiếp theo
 

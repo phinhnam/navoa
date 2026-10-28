@@ -1,7 +1,7 @@
 /* Thiên Số — Service Worker (Hỗ trợ PWA & Offline) */
 'use strict';
 
-var CACHE_NAME = 'thienso-v2';
+var CACHE_NAME = 'thienso-v3';
 var STATIC_ASSETS = [
   './',
   './index.html',
@@ -15,10 +15,12 @@ var STATIC_ASSETS = [
   './assets/js/iching.js',
   './assets/js/data-hexagrams.js',
   './assets/js/data-tarot.js',
+  './assets/js/data-palmistry.js',
   './assets/js/effects.js',
   './assets/js/app.js',
   './assets/js/iching-ui.js',
-  './assets/js/tarot-ui.js'
+  './assets/js/tarot-ui.js',
+  './assets/js/palmistry-ui.js'
 ];
 
 self.addEventListener('install', function (event) {

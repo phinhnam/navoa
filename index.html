@@ -57,6 +57,7 @@
       <a href="#kinh-dich">Kinh Dịch</a>
       <a href="#thu-vien-que">Thư viện quẻ</a>
       <a href="#tarot">Bài Tarot</a>
+      <a href="#chi-tay">Chỉ tay</a>
     </nav>
     <a class="btn btn-ghost header-cta" href="#khoi-tao">Luận giải</a>
   </div>
@@ -450,6 +451,163 @@
       </div>
     </div>
   </section>
+
+  <section class="section palm-section" id="chi-tay" aria-labelledby="palm-title">
+    <div class="shell">
+      <div class="section-head reveal" id="palm-section-head">
+        <p class="section-label"><span>VI</span>Chương đặc biệt</p>
+        <h2 id="palm-title">Tướng pháp chỉ tay &amp; Bản đồ lòng bàn tay</h2>
+        <p class="section-lead">Tải lên hoặc chụp ảnh lòng bàn tay của bạn. Công nghệ Canvas xử lý tăng tương phản giúp nổi bật các đường chỉ tay, đối chiếu cùng tri thức tướng học cổ truyền để khám phá bản mệnh, trí tuệ và tình duyên.</p>
+      </div>
+
+      <div class="palm-layout">
+        <!-- Cột trái: Khung tải ảnh & Canvas xử lý ảnh -->
+        <div class="palm-visual-col reveal">
+          <div class="palm-dropzone" id="palm-dropzone">
+            <svg class="palm-upload-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="palm-drop-title"><b>Kéo thả ảnh bàn tay</b> vào đây hoặc chạm để chọn ảnh</p>
+            <p class="palm-drop-sub">Chụp ngửa lòng bàn tay trong ánh sáng rõ, các ngón tay duỗi tự nhiên.</p>
+            <div class="palm-upload-actions">
+              <input type="file" id="palm-file-input" accept="image/*" hidden>
+              <button class="btn btn-gold btn-sm" type="button" onclick="document.getElementById('palm-file-input').click()">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m8-8H4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Chọn ảnh bàn tay
+              </button>
+              <button class="btn btn-line btn-sm" type="button" id="palm-sample-btn">Xem hình mẫu</button>
+            </div>
+          </div>
+
+          <div class="palm-canvas-wrap" id="palm-canvas-wrap" hidden>
+            <div class="palm-canvas-box">
+              <canvas id="palm-canvas" aria-label="Hình ảnh bàn tay trên canvas"></canvas>
+            </div>
+
+            <div class="palm-controls">
+              <div class="palm-control-group">
+                <label for="palm-contrast">Tương phản: <span id="palm-contrast-val">100%</span></label>
+                <input type="range" id="palm-contrast" min="50" max="250" value="100" class="palm-range">
+              </div>
+              <div class="palm-control-btns">
+                <button class="btn btn-line btn-sm" type="button" id="palm-invert-btn">Đảo sáng</button>
+                <button class="btn btn-line btn-sm" type="button" id="palm-reset-img">Đổi ảnh khác</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="privacy" style="margin-top:1rem;">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10" width="15" height="10.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 10V7.5a4 4 0 018 0V10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Ảnh bàn tay được xử lý 100% trên Canvas trình duyệt của bạn. Tuyệt đối không gửi ảnh lên máy chủ.
+          </p>
+        </div>
+
+        <!-- Cột phải: Form đối chiếu đặc điểm & Nút luận giải -->
+        <div class="palm-form-col reveal">
+          <form class="palm-form" id="palm-form" novalidate>
+            <div class="palm-form-grid">
+              <div class="field">
+                <label>Giới tính</label>
+                <div class="radio-chips">
+                  <label class="radio-chip"><input type="radio" name="palm-gender" value="male" checked><span>Nam</span></label>
+                  <label class="radio-chip"><input type="radio" name="palm-gender" value="female"><span>Nữ</span></label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Bàn tay đang xem</label>
+                <div class="radio-chips">
+                  <label class="radio-chip"><input type="radio" name="palm-hand" value="right" checked><span>Tay phải (Hiện tại &amp; Rèn luyện)</span></label>
+                  <label class="radio-chip"><input type="radio" name="palm-hand" value="left"><span>Tay trái (Bẩm sinh &amp; Tiềm năng)</span></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="palm-shape">1. Hình thái tổng thể lòng bàn tay</label>
+              <select id="palm-shape" class="cast-select">
+                <option value="earth">Bàn tay Đất (Thổ) — Lòng bàn tay vuông, ngón tay ngắn và dày (Thực tế, bền bỉ)</option>
+                <option value="air">Bàn tay Khí (Phong) — Lòng bàn tay vuông, ngón tay thon dài (Trí tuệ, hoạt bát)</option>
+                <option value="water">Bàn tay Nước (Thủy) — Lòng bàn tay chữ nhật, ngón dài mềm mại (Trực giác, cảm xúc)</option>
+                <option value="fire">Bàn tay Hỏa — Lòng bàn tay chữ nhật, ngón ngắn linh hoạt (Nhiệt huyết, dám làm)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="palm-line-life">2. Đường Sinh Đạo (Vòng quanh ngón tay cái)</label>
+              <select id="palm-line-life" class="cast-select">
+                <option value="deep_curved">Dài, sâu, uốn cong ôm rộng quanh ngón cái (Sinh lực dồi dào, kháng bệnh tốt)</option>
+                <option value="straight_close">Hơi thẳng, ôm hẹp sát gần ngón cái (Cẩn trọng, thể lực vừa phải, hướng nội)</option>
+                <option value="broken_chained">Có đoạn đứt nối, hình mắt xích (Nhiều bước ngoặt lớn về sức khỏe hoặc lối sống)</option>
+                <option value="forked_end">Phân nhánh đuôi cá ở đoạn cuối cổ tay (Duyên xuất ngoại, đi xa lập nghiệp, hậu vận tốt)</option>
+                <option value="sister_line">Có đường chỉ phụ chạy song song bên trong (Đường Quý Nhân che chở, gặp dữ hóa lành)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="palm-line-head">3. Đường Trí Đạo (Ngang qua lòng bàn tay)</label>
+              <select id="palm-line-head" class="cast-select">
+                <option value="long_straight">Dài, thẳng ngang lòng bàn tay (Tư duy logic, lý trí, thực tế, đầu óc sắc sảo)</option>
+                <option value="curved_down">Uốn cong mềm mại hướng xuống gò Thái Âm (Óc sáng tạo, tưởng tượng phong phú, nghệ thuật)</option>
+                <option value="forked_writer">Phân nhánh đuôi cá ở cuối (Đa tài, tài ăn nói, chuyển hóa ý tưởng thành giá trị)</option>
+                <option value="short_direct">Ngắn, dứt khoát dưới ngón giữa/áp út (Hành động trực diện, quyết đoán, không lòng vòng)</option>
+                <option value="wavy_broken">Lượn sóng hoặc có gián đoạn (Tư duy đa chiều, thích tìm tòi, dễ phân tâm)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="palm-line-heart">4. Đường Tâm Đạo (Dưới chân các ngón tay)</label>
+              <select id="palm-line-heart" class="cast-select">
+                <option value="curves_jupiter">Uốn cong hướng lên gò Mộc Tinh dưới ngón trỏ (Thủy chung, tình yêu lý tưởng, nhân hậu)</option>
+                <option value="between_fingers">Kết thúc giữa ngón trỏ và ngón giữa (Cân bằng tuyệt vời giữa con tim và lý trí)</option>
+                <option value="straight_short">Thẳng và kết thúc dưới ngón giữa (Kín đáo, thực tế, lý trí lấn át cảm xúc)</option>
+                <option value="chained_branches">Nhiều nhánh rủ xuống hoặc mắt xích (Trái tim đa cảm, giàu lòng trắc ẩn, dễ tổn thương)</option>
+                <option value="forked_trident">Phân làm 3 nhánh như đinh ba (Ngã ba may mắn: thông minh, nhân hậu, đào hoa tích cực)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="palm-line-fate">5. Đường Định Mệnh &amp; Sự Nghiệp (Chạy dọc lên ngón giữa)</label>
+              <select id="palm-line-fate" class="cast-select">
+                <option value="clear_from_base">Rõ nét, chạy thẳng từ đáy cổ tay lên ngón giữa (Tự lập từ sớm, chí hướng kiên định)</option>
+                <option value="starts_life_line">Bắt đầu dính liền từ đường Sinh Đạo (Tự thân vận động, thành công bằng nỗ lực kiên cường)</option>
+                <option value="starts_moon">Bắt đầu từ gò Thái Âm cạnh ngoài (Được công chúng yêu mến, quý nhân phù trợ)</option>
+                <option value="broken_overlapping">Đứt đoạn rồi nối tiếp, đổi hướng (Chuyển ngành/nghề ngoạn mục sau tuổi 30)</option>
+                <option value="absent_faint">Không có hoặc rất mờ nhạt (Tâm hồn tự do, linh hoạt, không thích khuôn mẫu gò bó)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="palm-line-sun">6. Đường Thái Dương / Tài Danh (Dưới ngón áp út)</label>
+              <select id="palm-line-sun" class="cast-select">
+                <option value="clear_long">Rõ nét chạy dài dưới ngón áp út (Hào quang danh tiếng, tài lộc dồi dào, uy tín)</option>
+                <option value="short_upper">Ngắn, chỉ xuất hiện ở nửa trên (Thành công chín muồi ở tuổi trung niên)</option>
+                <option value="none">Không có hoặc chưa rõ (Làm việc âm thầm, hướng nội, trọng kết quả thực chất)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Dấu ấn quý tướng đặc biệt (nếu có)</label>
+              <div class="palm-special-checks">
+                <label class="cb-chip"><input type="checkbox" class="palm-special-cb" value="letter_m"><span>Chữ M Thần Tài</span></label>
+                <label class="cb-chip"><input type="checkbox" class="palm-special-cb" value="mystic_cross"><span>Chữ X Thần Bí</span></label>
+                <label class="cb-chip"><input type="checkbox" class="palm-special-cb" value="buddha_eye"><span>Vân Mắt Phật</span></label>
+                <label class="cb-chip"><input type="checkbox" class="palm-special-cb" value="solomon_ring"><span>Vòng Solomon</span></label>
+              </div>
+            </div>
+
+            <div class="form-foot" style="margin-top:1.4rem;">
+              <button class="btn btn-gold" type="submit" id="palm-submit">
+                <span>Luận giải chỉ tay</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Kết quả luận giải Tướng pháp chỉ tay -->
+      <div class="palm-result" id="palm-result" aria-live="polite"></div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -473,6 +631,7 @@
         <a href="#kinh-dich">Kinh Dịch</a>
         <a href="#thu-vien-que">Thư viện 64 quẻ</a>
         <a href="#tarot">Bài Tarot</a>
+        <a href="#chi-tay">Tướng pháp chỉ tay</a>
         <a href="#top">Về đầu trang</a>
       </nav>
       <div class="footer-note">
@@ -511,10 +670,12 @@
 <script src="assets/js/iching.js"></script>
 <script src="assets/js/data-hexagrams.js"></script>
 <script src="assets/js/data-tarot.js"></script>
+<script src="assets/js/data-palmistry.js"></script>
 <script src="assets/js/effects.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/iching-ui.js"></script>
 <script src="assets/js/tarot-ui.js"></script>
+<script src="assets/js/palmistry-ui.js"></script>
 <script>
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   window.addEventListener('load', function () {
