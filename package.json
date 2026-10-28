@@ -1,0 +1,12 @@
+{
+  "name": "thien-so",
+  "version": "1.0.0",
+  "description": "Thiên Số — Thần số học Pythagore và Kinh Dịch (Mai Hoa). Site tĩnh, JS thuần.",
+  "private": true,
+  "scripts": {
+    "test": "node tests/verify.js && node tests/numcheck.js && node tests/lunarcheck.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
