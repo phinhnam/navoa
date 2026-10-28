@@ -138,7 +138,8 @@
     var body = '<div class="cast-note">' +
       '<h4>Đại tượng</h4><p>' + esc(meta.image || '') + '</p>' +
       '</div>' +
-      '<p class="cast-essence">' + esc(meta.essence || '') + '</p>' +
+      '      <p class="cast-essence">' + esc(meta.essence || '') + '</p>' +
+      (meta.lineTexts && cast.moving ? '<div class="line-meaning"><h4>Ý nghĩa hào ' + cast.moving + '</h4><p>' + esc(meta.lineTexts[cast.moving - 1]) + '</p></div>' : '') +
       (question ? '<p class="cast-question">Điều đang hỏi: <em>' + esc(question) + '</em></p>' : '') +
       (advice ? '<div class="cast-advice"><h4>Nên làm</h4><ul>' + advice + '</ul></div>' : '') +
       advanceHTML(cast) +
