@@ -208,6 +208,26 @@
     });
   }
 
+  function saveLastIching(dob, chi, question) {
+    try {
+      localStorage.setItem('thienso:iching:last', JSON.stringify({
+        d: dob.d, m: dob.m, y: dob.y,
+        chi: chi,
+        question: question
+      }));
+    } catch (e) {}
+  }
+
+  function loadLastIching() {
+    try {
+      var raw = localStorage.getItem('thienso:iching:last');
+      if (!raw) return null;
+      var data = JSON.parse(raw);
+      if (data && validDate(data.d, data.m, data.y)) return data;
+    } catch (e) {}
+    return null;
+  }
+
   function castNow(scroll) {
     var dob = readForm();
     if (!dob) {
@@ -223,6 +243,7 @@
 
     clearError();
     render(cast, info, question);
+    saveLastIching(dob, chi, question);
 
     if (recent) {
       recent.textContent = 'Quẻ ' + cast.primary + ' · ' + (H[cast.primary] || {}).name +
@@ -267,6 +288,16 @@
     });
   }
 
-  fillToday();
-  castNow(false);
+  var savedIching = loadLastIching();
+  if (savedIching) {
+    if (dayInput) dayInput.value = pad(savedIching.d);
+    if (monthInput) monthInput.value = pad(savedIching.m);
+    if (yearInput) yearInput.value = String(savedIching.y);
+    if (hourSelect) hourSelect.value = String(savedIching.chi);
+    if (questionInput && savedIching.question) questionInput.value = savedIching.question;
+    castNow(false);
+  } else {
+    fillToday();
+    castNow(false);
+  }
 })();

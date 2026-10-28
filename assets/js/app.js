@@ -907,6 +907,9 @@
         '<button class="btn btn-line btn-sm" type="button" data-action="share">' +
           '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="6" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="18" cy="19" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>' +
           'Chia sẻ lá số</button>' +
+        '<button class="btn btn-line btn-sm" type="button" data-action="copy-summary">' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>' +
+          'Sao chép tóm tắt</button>' +
         '<button class="btn btn-line btn-sm" type="button" data-action="print">' +
           '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V4h10v5M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><rect x="7" y="14" width="10" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>' +
           'In / Lưu PDF</button>' +
@@ -1354,9 +1357,43 @@
     }
   }
 
+  function copySummary() {
+    if (!currentProfile) return;
+    var p = currentProfile;
+    var numEntry = NUM.numbers[p.lifePath] || {};
+    var text = [
+      '✦ THIÊN SỐ — LÁ SỐ THẦN SỐ HỌC ✦',
+      'Họ và tên: ' + p.name,
+      'Ngày sinh: ' + dobString(p.dob),
+      '--------------------------------',
+      '• Đường đời (Chủ đạo): ' + p.lifePath + (numEntry.title ? ' — ' + numEntry.title : ''),
+      '• Sứ mệnh: ' + (p.destiny || 'Chưa đủ dữ liệu'),
+      '• Linh hồn: ' + (p.soul || '—') + ' | Nhân cách: ' + (p.personality || '—'),
+      '• Ngày sinh: ' + p.birthday + ' | Thái độ: ' + p.attitude,
+      '• Trưởng thành: ' + (p.maturity || '—') + ' | Cân bằng: ' + (p.balance || '—'),
+      '• Năm cá nhân (' + currentYear + '): ' + p.personalYear,
+      '--------------------------------',
+      'Xem chi tiết tại: ' + resultUrl()
+    ].join('\n');
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        toast('Đã sao chép tóm tắt lá số.');
+      }).catch(function () {
+        fallbackCopy(text);
+        toast('Đã sao chép tóm tắt lá số.');
+      });
+    } else {
+      fallbackCopy(text);
+      toast('Đã sao chép tóm tắt lá số.');
+    }
+  }
+
   function handleAction(action) {
     if (action === 'share') {
       shareResult();
+    } else if (action === 'copy-summary') {
+      copySummary();
     } else if (action === 'print') {
       window.print();
     } else if (action === 'again') {

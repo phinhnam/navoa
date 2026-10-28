@@ -203,6 +203,31 @@ Kịch bản kiểm chứng tạm (ngoài repo):
   Đại/Tiểu Bí mật + Dương/Âm hiển thị, không lỗi console, `scrollWidth === clientWidth`; chụp ảnh
   desktop/mobile.
 
-## Việc chưa làm / cần hỏi
+## Hoàn thành 2026-10-28 — Cải tiến toàn diện theo đề xuất
 
-- Chưa xác nhận yêu cầu cụ thể của người dùng — các session dừng ở bước khảo sát/kiểm chứng.
+1. **Sửa lỗi Mutation dữ liệu trong `tarot-ui.js`:**
+   - Dùng `Object.assign({}, raw)` khi bốc bài thay vì gán trực tiếp lên object trong mảng `TAROT.cards`.
+   - Ngăn chặn triệt để tình trạng thẻ bài bị ô nhiễm cờ `reversed` toàn cục.
+2. **Nâng cấp trải bài Tarot 3 lá (`tarot-ui.js` + `styles.css`):**
+   - Thêm nhãn vị trí cụ thể cho trải bài 3 lá:
+     - Lá 1: Quá khứ · Gốc rễ & bài học khởi phát.
+     - Lá 2: Hiện tại · Thực tại & thử thách cốt lõi.
+     - Lá 3: Tương lai · Xu hướng & hướng đi khuyên dùng.
+   - Thêm badge `.tarot-card-pos` với màu vàng gold và đường nét chấm thanh lịch.
+3. **Bộ test tự động cho Tarot (`tests/tarotcheck.js` + `package.json`):**
+   - Tạo mới `tests/tarotcheck.js`: xác thực 78 lá (22 Đại Bí mật, 56 Tiểu Bí mật đều nhau 14 lá/bộ), không trùng ID, các trường bắt buộc không rỗng.
+   - Tích hợp vào `npm test`: cả 4 test suite (`verify.js`, `numcheck.js`, `lunarcheck.js`, `tarotcheck.js`) chạy mượt mà không lỗi.
+4. **Tối ưu hiệu năng tải phông chữ (Fonts Loading Waterfall):**
+   - Chuyển link Google Fonts vào `<head>` của `index.html` song song cùng preconnect.
+   - Xóa bỏ `@import url(...)` đầu file `styles.css` để loại bỏ bước chặn render (render-blocking waterfall).
+5. **Nâng cấp tính năng Sao chép tóm tắt lá số (`app.js`):**
+   - Bổ sung nút "Sao chép tóm tắt" dạng text có định dạng đẹp mắt vào thanh công cụ kết quả thần số học.
+   - Hỗ trợ gửi nhanh qua Zalo, Messenger, Notes mà không bắt buộc người nhận phải vào website.
+6. **Lưu & phục hồi lịch sử cho Kinh Dịch và Tarot (`iching-ui.js`, `tarot-ui.js`):**
+   - Lưu trữ phiên gieo quẻ Kinh Dịch (`thienso:iching:last`) và trải bài Tarot gần nhất (`thienso:tarot:last`) vào `localStorage`.
+   - Tự động nạp lại khi người dùng tải lại trang hoặc mở lại tab.
+
+## Việc chưa làm / có thể mở rộng tiếp theo
+
+- Tách module đồ họa `app.js` (Canvas stars, cursor glow, tilt) thành `effects.js` độc lập.
+- Thiết lập Service Worker & Web App Manifest để chạy offline hoàn toàn (PWA).
