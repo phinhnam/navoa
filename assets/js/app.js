@@ -460,6 +460,155 @@
       '</div>';
   }
 
+  function renderCosmicBridge(profile) {
+    if (!profile || !profile.dob) return '';
+
+    var TAROT_MAP = {
+      1: { num: 1, title: 'Pháp sư' },
+      2: { num: 2, title: 'Nữ tu sĩ' },
+      3: { num: 3, title: 'Hoàng hậu' },
+      4: { num: 4, title: 'Hoàng đế' },
+      5: { num: 5, title: 'Giáo hoàng' },
+      6: { num: 6, title: 'Những người yêu' },
+      7: { num: 7, title: 'Chiến xa' },
+      8: { num: 8, title: 'Sức mạnh' },
+      9: { num: 9, title: 'Ẩn sĩ' },
+      11: { num: 11, title: 'Công lý', note: 'Đồng điệu bậc thầy cùng Nữ tu sĩ (#2)' },
+      22: { num: 0, title: 'Gã khờ', note: 'Đồng điệu bậc thầy cùng Hoàng đế (#4)' },
+      33: { num: 6, title: 'Những người yêu', note: 'Đồng điệu bậc thầy cùng Tiết độ (#14)' }
+    };
+
+    var tarotCard = null;
+    var tMapping = TAROT_MAP[profile.lifePath] || TAROT_MAP[reduceNoMaster(profile.lifePath)] || TAROT_MAP[1];
+    if (window.TAROT && window.TAROT.cards) {
+      tarotCard = window.TAROT.cards.find(function (c) {
+        return c.arcana === 'major' && c.num === tMapping.num;
+      });
+    }
+
+    var birthCast = null;
+    var hexMeta = null;
+    var hexSt = null;
+    var bInfo = null;
+
+    if (window.LUNAR && window.ICHING && window.ICHING.castMaiHoa) {
+      bInfo = window.LUNAR.birthInfo(profile.dob.d, profile.dob.m, profile.dob.y, 0);
+      birthCast = window.ICHING.castMaiHoa(bInfo);
+      if (birthCast && birthCast.primary) {
+        hexMeta = (window.ICHING.hexagrams && window.ICHING.hexagrams[birthCast.primary]) || null;
+        hexSt = (window.ICHING.structure && window.ICHING.structure[birthCast.primary]) || null;
+      }
+    }
+
+    var linesMini = '';
+    if (hexSt && hexSt.lines) {
+      var out = '';
+      for (var i = hexSt.lines.length - 1; i >= 0; i--) {
+        var isYang = hexSt.lines[i] === 1;
+        out += '<span class="hex-line ' + (isYang ? 'is-yang' : 'is-yin') + ' is-sm">' +
+          (isYang ? '<i></i>' : '<i></i><i></i>') +
+          '</span>';
+      }
+      linesMini = '<div class="hex-lines is-mini" aria-hidden="true">' + out + '</div>';
+    }
+
+    var tarotHTML = tarotCard
+      ? '<div class="cosmic-col">' +
+          '<div class="cosmic-col-head">' +
+            '<span class="cosmic-icon">🂠</span>' +
+            '<div>' +
+              '<span class="cosmic-label">Tarot Bản Mệnh</span>' +
+              '<h4 class="cosmic-card-title">' + esc(tarotCard.vn) + ' <small>#' + tarotCard.num + '</small></h4>' +
+            '</div>' +
+          '</div>' +
+          '<div class="chips" style="margin: 0.5rem 0 0.7rem;">' +
+            (tarotCard.keywords || []).map(function (k) { return '<span class="chip-sm">' + esc(k) + '</span>'; }).join('') +
+          '</div>' +
+          '<p class="cosmic-desc">' + esc(tarotCard.meaning) + '</p>' +
+          (tMapping.note ? '<p class="cosmic-note">' + esc(tMapping.note) + '</p>' : '') +
+        '</div>'
+      : '';
+
+    var ichingHTML = hexMeta && birthCast
+      ? '<div class="cosmic-col">' +
+          '<div class="cosmic-col-head">' +
+            '<span class="cosmic-icon">☯</span>' +
+            '<div>' +
+              '<span class="cosmic-label">Quẻ Dịch Bản Mệnh</span>' +
+              '<h4 class="cosmic-card-title">Quẻ ' + birthCast.primary + ' · ' + esc(hexMeta.name) + ' <small>' + esc(hexMeta.han) + '</small></h4>' +
+            '</div>' +
+          '</div>' +
+          '<div class="cosmic-hex-row">' +
+            linesMini +
+            '<div class="cosmic-hex-detail">' +
+              '<p class="cosmic-hex-tri">Thượng ' + (hexSt ? esc(hexSt.upperName) : '') + ' / Hạ ' + (hexSt ? esc(hexSt.lowerName) : '') + '</p>' +
+              '<span class="cast-relation tone-' + birthCast.relation.tone + '">' + esc(birthCast.relation.label) + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<p class="cosmic-desc">' + esc(hexMeta.essence ? hexMeta.essence.slice(0, 150) + '...' : hexMeta.judgement) + '</p>' +
+          '<div style="margin-top:0.7rem;">' +
+            '<button class="btn btn-line btn-sm" type="button" data-action="view-birth-hex" data-hex="' + birthCast.primary + '">' +
+              'Đọc toàn bộ quẻ này ' + ARROW +
+            '</button>' +
+          '</div>' +
+        '</div>'
+      : '';
+
+    var numTitle = (NUM.numbers[profile.lifePath] || {}).title || '';
+    var numKeywords = (NUM.numbers[profile.lifePath] || {}).keywords || [];
+    var numEssence = (NUM.numbers[profile.lifePath] || {}).essence || '';
+
+    var numerologyHTML =
+      '<div class="cosmic-col">' +
+        '<div class="cosmic-col-head">' +
+          '<span class="cosmic-icon">✧</span>' +
+          '<div>' +
+            '<span class="cosmic-label">Thần Số Pythagore</span>' +
+            '<h4 class="cosmic-card-title">Đường Đời ' + profile.lifePath + ' · ' + esc(numTitle) + '</h4>' +
+          '</div>' +
+        '</div>' +
+        '<div class="chips" style="margin: 0.5rem 0 0.7rem;">' +
+          numKeywords.map(function (k) { return '<span class="chip-sm">' + esc(k) + '</span>'; }).join('') +
+        '</div>' +
+        '<p class="cosmic-desc">' + esc(numEssence.slice(0, 160) + '...') + '</p>' +
+        '<p class="cosmic-note">Năm cá nhân ' + currentYear + ': Năm số ' + profile.personalYear + ' (' + esc(NUM.personalYear[profile.personalYear].title) + ')</p>' +
+      '</div>';
+
+    var synthesisNote = '';
+    if (tarotCard && hexMeta) {
+      synthesisNote =
+        '<div class="cosmic-synthesis">' +
+          '<div class="cosmic-synthesis-head">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>' +
+            '<strong>Cộng hưởng tam giác vũ trụ</strong>' +
+          '</div>' +
+          '<p class="cosmic-synthesis-text">' +
+            'Hành trình của bạn được thắp sáng bởi số chủ đạo <b>' + profile.lifePath + '</b>, ' +
+            'đồng hành cùng sức mạnh nội tâm của lá <b>' + esc(tarotCard.vn) + '</b> và thuận theo dòng chảy biến dịch của <b>Quẻ ' + esc(hexMeta.name) + '</b>. ' +
+            'Sự kết hợp giữa tư duy luận giải phương Tây và triết lý Kinh Dịch phương Đông nhắc nhở bạn: ' +
+            'hãy kiên định với sứ mệnh nội tại, nhưng luôn uyển chuyển thích ứng với thời cuộc để hanh thông trọn vẹn.' +
+          '</p>' +
+        '</div>';
+    }
+
+    return (
+      '<div class="panel cosmic-panel">' +
+        '<div class="panel-head">' +
+          '<div>' +
+            '<h3 class="panel-title">Cầu nối vũ trụ</h3>' +
+            '<p class="panel-sub">Đồng bộ Năng lượng Thần số · Tarot · Kinh Dịch</p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="cosmic-grid">' +
+          numerologyHTML +
+          tarotHTML +
+          ichingHTML +
+        '</div>' +
+        synthesisNote +
+      '</div>'
+    );
+  }
+
   function renderResults(profile) {
     currentProfile = profile;
     var root = $('#results-root');
@@ -612,6 +761,7 @@
       '</div>' +
 
       renderInsights(profile, cycles) +
+      renderCosmicBridge(profile) +
 
       '<div class="result-actions">' +
         '<button class="btn btn-line btn-sm" type="button" data-action="share">' +
@@ -1071,6 +1221,23 @@
     if (!currentProfile) return;
     var p = currentProfile;
     var numEntry = NUM.numbers[p.lifePath] || {};
+
+    var extraLines = [];
+    if (window.TAROT && window.TAROT.cards) {
+      var TAROT_MAP = { 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, 11:11, 22:0, 33:6 };
+      var tNum = TAROT_MAP[p.lifePath] !== undefined ? TAROT_MAP[p.lifePath] : (p.lifePath % 9 || 9);
+      var tCard = window.TAROT.cards.find(function (c) { return c.arcana === 'major' && c.num === tNum; });
+      if (tCard) extraLines.push('• Tarot Bản Mệnh: ' + tCard.vn + ' (Major Arcana #' + tCard.num + ')');
+    }
+    if (window.LUNAR && window.ICHING && window.ICHING.castMaiHoa) {
+      var bInfo = window.LUNAR.birthInfo(p.dob.d, p.dob.m, p.dob.y, 0);
+      var bCast = window.ICHING.castMaiHoa(bInfo);
+      if (bCast && bCast.primary && window.ICHING.hexagrams) {
+        var hM = window.ICHING.hexagrams[bCast.primary];
+        if (hM) extraLines.push('• Quẻ Dịch Bản Mệnh: Quẻ ' + bCast.primary + ' — ' + hM.name + ' (' + hM.han + ')');
+      }
+    }
+
     var text = [
       '✦ THIÊN SỐ — LÁ SỐ THẦN SỐ HỌC ✦',
       'Họ và tên: ' + p.name,
@@ -1082,9 +1249,11 @@
       '• Ngày sinh: ' + p.birthday + ' | Thái độ: ' + p.attitude,
       '• Trưởng thành: ' + (p.maturity || '—') + ' | Cân bằng: ' + (p.balance || '—'),
       '• Năm cá nhân (' + currentYear + '): ' + p.personalYear,
+      extraLines.length ? '--------------------------------' : '',
+      extraLines.join('\n'),
       '--------------------------------',
       'Xem chi tiết tại: ' + resultUrl()
-    ].join('\n');
+    ].filter(Boolean).join('\n');
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
@@ -1099,13 +1268,18 @@
     }
   }
 
-  function handleAction(action) {
+  function handleAction(action, triggerEl) {
     if (action === 'share') {
       shareResult();
     } else if (action === 'copy-summary') {
       copySummary();
     } else if (action === 'print') {
       window.print();
+    } else if (action === 'view-birth-hex') {
+      var hexNo = triggerEl ? Number(triggerEl.getAttribute('data-hex')) : 0;
+      if (hexNo && window.ICHING && window.ICHING.openHexDialog) {
+        window.ICHING.openHexDialog(hexNo, triggerEl);
+      }
     } else if (action === 'again') {
       var target = $('#khoi-tao');
       if (target) {
@@ -1151,7 +1325,7 @@
     if (!el) return;
 
     if (el.hasAttribute('data-action')) {
-      handleAction(el.getAttribute('data-action'));
+      handleAction(el.getAttribute('data-action'), el);
       return;
     }
     if (el.hasAttribute('data-key') && el.hasAttribute('data-value')) {

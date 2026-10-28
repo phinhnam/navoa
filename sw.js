@@ -1,7 +1,7 @@
 /* Thiên Số — Service Worker (Hỗ trợ PWA & Offline) */
 'use strict';
 
-var CACHE_NAME = 'thienso-v1';
+var CACHE_NAME = 'thienso-v2';
 var STATIC_ASSETS = [
   './',
   './index.html',

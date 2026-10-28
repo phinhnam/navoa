@@ -97,5 +97,26 @@ for (let n = 1; n <= 64; n++) {
 check(haoTypoCount === 0, `Còn ${haoTypoCount} chữ Hão trong lineTexts`);
 console.log('haoTypoCount:', haoTypoCount);
 
+console.log('--- Kiểm tra cấu trúc toàn bộ 64 quẻ (Thư viện quẻ) ---');
+for (let n = 1; n <= 64; n++) {
+  const meta = I.hexagrams[n];
+  const st = I.structure[n];
+  check(!!meta, `Quẻ ${n} thiếu meta data-hexagrams`);
+  check(!!st, `Quẻ ${n} thiếu structure`);
+  if (meta) {
+    check(typeof meta.name === 'string' && meta.name.length > 0, `Quẻ ${n} thiếu name`);
+    check(typeof meta.han === 'string' && meta.han.length > 0, `Quẻ ${n} thiếu han`);
+    check(Array.isArray(meta.keywords) && meta.keywords.length >= 2, `Quẻ ${n} thiếu keywords`);
+    check(typeof meta.judgement === 'string' && meta.judgement.length > 0, `Quẻ ${n} thiếu judgement`);
+    check(typeof meta.image === 'string' && meta.image.length > 0, `Quẻ ${n} thiếu image`);
+    check(typeof meta.essence === 'string' && meta.essence.length > 0, `Quẻ ${n} thiếu essence`);
+    check(Array.isArray(meta.lineTexts) && meta.lineTexts.length === 6, `Quẻ ${n} lineTexts không đủ 6 hào`);
+  }
+  if (st) {
+    check(Array.isArray(st.lines) && st.lines.length === 6, `Quẻ ${n} lines không đủ 6`);
+    check(!!st.upperName && !!st.lowerName, `Quẻ ${n} thiếu upperName hoặc lowerName`);
+  }
+}
+
 console.log(fails ? `\n${fails} FAILED` : '\nALL CHECKS PASSED');
 process.exit(fails ? 1 : 0);

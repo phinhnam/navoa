@@ -593,6 +593,261 @@
 
   updateCoinPreview();
 
+  /* ---------- Thư viện 64 Quẻ Dịch & Modal ---------- */
+  var hexDialog = document.getElementById('hex-dialog');
+  var hexDialogBody = document.getElementById('hex-dialog-body');
+  var hexDialogClose = document.getElementById('hex-dialog-close');
+  var lastHexTrigger = null;
+
+  function closeHexDialog() {
+    if (!hexDialog) return;
+    if (hexDialog.close) {
+      hexDialog.close();
+    } else {
+      hexDialog.removeAttribute('open');
+    }
+    if (lastHexTrigger && typeof lastHexTrigger.focus === 'function') {
+      lastHexTrigger.focus();
+    }
+    lastHexTrigger = null;
+  }
+
+  if (hexDialogClose) {
+    hexDialogClose.addEventListener('click', closeHexDialog);
+  }
+
+  if (hexDialog) {
+    hexDialog.addEventListener('click', function (e) {
+      if (e.target === hexDialog) closeHexDialog();
+    });
+    hexDialog.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeHexDialog();
+      }
+    });
+  }
+
+  function openHexDialog(hexNo, triggerEl) {
+    if (!hexDialog || !hexDialogBody) return;
+    var data = H[hexNo];
+    var st = I.structure[hexNo];
+    if (!data || !st) return;
+
+    lastHexTrigger = triggerEl || document.activeElement;
+
+    var upTri = I.trigrams[st.upper];
+    var loTri = I.trigrams[st.lower];
+
+    var bigLines = '';
+    for (var i = st.lines.length - 1; i >= 0; i--) {
+      var isYang = st.lines[i] === 1;
+      var lineNum = i + 1;
+      var posName = lineNum === 1 ? 'Sơ hào (Dưới cùng)' : (lineNum === 6 ? 'Thượng hào (Trên cùng)' : 'Hào ' + lineNum);
+      bigLines += '<div class="hex-dialog-line-row">' +
+        '<span class="line-pos-label">' + posName + '</span>' +
+        '<span class="hex-line ' + (isYang ? 'is-yang' : 'is-yin') + '">' +
+          (isYang ? '<i></i>' : '<i></i><i></i>') +
+        '</span>' +
+        '<span class="line-nature-label">' + (isYang ? 'Dương (—)' : 'Âm (-- )') + '</span>' +
+      '</div>';
+    }
+
+    var linesList = '';
+    if (data.lineTexts && data.lineTexts.length) {
+      linesList = '<div class="hex-dialog-section">' +
+        '<h4>Ý nghĩa từng Hào (từ Hào 1 đến Hào 6)</h4>' +
+        '<div class="hex-dialog-lines-list">' +
+        data.lineTexts.map(function (txt, idx) {
+          var num = idx + 1;
+          var title = num === 1 ? 'Hào 1 (Sơ)' : (num === 6 ? 'Hào 6 (Thượng)' : 'Hào ' + num);
+          return '<div class="hex-dialog-line-item">' +
+            '<span class="line-item-badge">' + title + '</span>' +
+            '<p class="line-item-text">' + esc(txt.replace(/^Hào \d+:\s*/, '')) + '</p>' +
+          '</div>';
+        }).join('') +
+        '</div>' +
+      '</div>';
+    }
+
+    var adviceHTML = '';
+    if (data.advice && data.advice.length) {
+      adviceHTML = '<div class="hex-dialog-section">' +
+        '<h4>Lời khuyên quân tử</h4>' +
+        '<ul class="hex-dialog-advice">' +
+        data.advice.map(function (a) { return '<li>' + esc(a) + '</li>'; }).join('') +
+        '</ul>' +
+      '</div>';
+    }
+
+    hexDialogBody.innerHTML =
+      '<div class="hex-dialog-head">' +
+        '<div class="hex-dialog-badges">' +
+          '<span class="badge-num">Quẻ số ' + hexNo + ' / 64</span>' +
+          '<span class="cast-tone tone-' + data.tone + '">' + (TONES[data.tone] || '') + '</span>' +
+        '</div>' +
+        '<h2 class="hex-dialog-name" id="hex-dialog-title">' +
+          esc(data.name) + ' <span class="hex-dialog-han">' + esc(data.han) + '</span>' +
+        '</h2>' +
+        '<p class="hex-dialog-structure">' +
+          'Quái Thượng: <b>' + esc(st.upperName) + '</b> (' + esc(upTri.image) + ' · ' + esc(upTri.element) + ') &nbsp;·&nbsp; ' +
+          'Quái Hạ: <b>' + esc(st.lowerName) + '</b> (' + esc(loTri.image) + ' · ' + esc(loTri.element) + ')' +
+        '</p>' +
+        '<div class="chips" style="margin-top:0.4rem;">' +
+          (data.keywords || []).map(function (k) { return '<span class="chip">' + esc(k) + '</span>'; }).join('') +
+        '</div>' +
+      '</div>' +
+
+      '<div class="hex-dialog-visual">' +
+        '<div class="hex-dialog-lines-graphic">' + bigLines + '</div>' +
+      '</div>' +
+
+      '<div class="hex-dialog-section">' +
+        '<h4>Thoán từ (Lời phán)</h4>' +
+        '<blockquote class="hex-dialog-quote">' + esc(data.judgement) + '</blockquote>' +
+      '</div>' +
+
+      '<div class="hex-dialog-section">' +
+        '<h4>Đại tượng (Hình tượng vũ trụ)</h4>' +
+        '<blockquote class="hex-dialog-quote">' + esc(data.image) + '</blockquote>' +
+      '</div>' +
+
+      '<div class="hex-dialog-section">' +
+        '<h4>Bản chất năng lượng</h4>' +
+        '<p class="hex-dialog-desc">' + esc(data.essence) + '</p>' +
+      '</div>' +
+
+      (data.life ?
+        '<div class="hex-dialog-section">' +
+          '<h4>Ứng dụng đời sống</h4>' +
+          '<p class="hex-dialog-desc">' + esc(data.life) + '</p>' +
+        '</div>' : '') +
+
+      adviceHTML +
+      linesList;
+
+    if (hexDialog.showModal) {
+      hexDialog.showModal();
+    } else {
+      hexDialog.setAttribute('open', '');
+    }
+
+    if (hexDialogClose) hexDialogClose.focus();
+  }
+
+  // Expose so other modules (like app.js Cosmic Bridge) can trigger it
+  window.ICHING.openHexDialog = openHexDialog;
+
+  /* Thư viện 64 Quẻ */
+  var libGrid = document.getElementById('hex-lib-grid');
+  var searchInput = document.getElementById('hex-search-input');
+  var filtersContainer = document.getElementById('hex-lib-filters');
+  var emptyMsg = document.getElementById('hex-lib-empty');
+
+  function removeVietnameseDiacritics(str) {
+    return String(str || '').toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd');
+  }
+
+  var currentTrigramFilter = 'all';
+  var currentSearchQuery = '';
+
+  function renderHexLibrary() {
+    if (!libGrid) return;
+
+    var normQuery = removeVietnameseDiacritics(currentSearchQuery).trim();
+    var count = 0;
+    var html = '';
+
+    for (var n = 1; n <= 64; n++) {
+      var data = H[n];
+      var st = I.structure[n];
+      if (!data || !st) continue;
+
+      // Filter by trigram
+      if (currentTrigramFilter !== 'all') {
+        if (st.upperName !== currentTrigramFilter && st.lowerName !== currentTrigramFilter) {
+          continue;
+        }
+      }
+
+      // Filter by search query
+      if (normQuery) {
+        var matchNumber = String(n) === normQuery;
+        var normName = removeVietnameseDiacritics(data.name);
+        var normHan = (data.han || '').toLowerCase();
+        var normUpper = removeVietnameseDiacritics(st.upperName);
+        var normLower = removeVietnameseDiacritics(st.lowerName);
+        var normKeywords = removeVietnameseDiacritics((data.keywords || []).join(' '));
+
+        var isMatch = matchNumber ||
+          normName.indexOf(normQuery) !== -1 ||
+          normHan.indexOf(normQuery) !== -1 ||
+          normUpper.indexOf(normQuery) !== -1 ||
+          normLower.indexOf(normQuery) !== -1 ||
+          normKeywords.indexOf(normQuery) !== -1;
+
+        if (!isMatch) continue;
+      }
+
+      count++;
+      html += '<button class="hex-lib-card" type="button" data-hex="' + n + '" aria-haspopup="dialog">' +
+        '<div class="hex-lib-card-top">' +
+          '<span class="hex-lib-num">#' + n + '</span>' +
+          '<span class="hex-lib-han">' + esc(data.han) + '</span>' +
+        '</div>' +
+        '<div class="hex-lines is-mini" aria-hidden="true">' + linesHTML(st.lines, 0, 'sm') + '</div>' +
+        '<div class="hex-lib-info">' +
+          '<h4 class="hex-lib-name">' + esc(data.name) + '</h4>' +
+          '<p class="hex-lib-tri">' + esc(st.upperName) + ' / ' + esc(st.lowerName) + '</p>' +
+          '<span class="cast-tone tone-' + data.tone + '">' + (TONES[data.tone] || '') + '</span>' +
+        '</div>' +
+        '<div class="hex-lib-keywords">' +
+          (data.keywords || []).map(function (k) { return '<span class="chip-sm">' + esc(k) + '</span>'; }).join('') +
+        '</div>' +
+      '</button>';
+    }
+
+    libGrid.innerHTML = html;
+    if (emptyMsg) {
+      emptyMsg.hidden = count > 0;
+    }
+  }
+
+  if (libGrid) {
+    libGrid.addEventListener('click', function (e) {
+      var card = e.target.closest('.hex-lib-card');
+      if (card && card.dataset.hex) {
+        openHexDialog(Number(card.dataset.hex), card);
+      }
+    });
+
+    if (filtersContainer) {
+      filtersContainer.addEventListener('click', function (e) {
+        var chip = e.target.closest('.filter-chip');
+        if (!chip) return;
+        var f = chip.getAttribute('data-filter') || 'all';
+        currentTrigramFilter = f;
+        filtersContainer.querySelectorAll('.filter-chip').forEach(function (btn) {
+          btn.classList.toggle('is-active', btn === chip);
+          btn.setAttribute('aria-selected', btn === chip ? 'true' : 'false');
+        });
+        renderHexLibrary();
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        currentSearchQuery = searchInput.value;
+        renderHexLibrary();
+      });
+    }
+
+    renderHexLibrary();
+  }
+
   var savedIching = loadLastIching();
   if (savedIching) {
     if (dayInput) dayInput.value = pad(savedIching.d);

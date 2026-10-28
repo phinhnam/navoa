@@ -55,6 +55,7 @@
       <a href="#y-nghia">Ý nghĩa số</a>
       <a href="#phuong-phap">Phương pháp</a>
       <a href="#kinh-dich">Kinh Dịch</a>
+      <a href="#thu-vien-que">Thư viện quẻ</a>
       <a href="#tarot">Bài Tarot</a>
     </nav>
     <a class="btn btn-ghost header-cta" href="#khoi-tao">Luận giải</a>
@@ -374,6 +375,35 @@
           <p class="cast-recent" id="cast-recent"></p>
         </div>
       </div>
+
+      <div class="hex-library-wrap reveal" id="thu-vien-que">
+        <div class="hex-lib-head">
+          <div>
+            <p class="section-label"><span>4.1</span>Kinh Dịch toàn thư</p>
+            <h3 class="hex-lib-title">Thư viện 64 Quẻ Văn Vương</h3>
+            <p class="section-lead">Tra cứu toàn diện 64 quẻ Chu Dịch: Thoán từ, Đại tượng, Bản chất năng lượng và Lời dạy chi tiết của từng Hào.</p>
+          </div>
+          <div class="hex-lib-search">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16.5 16.5L21 21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <input type="text" id="hex-search-input" placeholder="Tìm theo tên hoặc số quẻ (vd: Càn, Đoài, 1, 14)..." autocomplete="off" aria-label="Tìm kiếm quẻ trong 64 quẻ">
+          </div>
+        </div>
+
+        <div class="hex-lib-filters" id="hex-lib-filters" role="tablist" aria-label="Lọc theo Bát quái">
+          <button class="filter-chip is-active" type="button" data-filter="all" role="tab" aria-selected="true">Tất cả (64)</button>
+          <button class="filter-chip" type="button" data-filter="Càn" role="tab" aria-selected="false">☰ Càn</button>
+          <button class="filter-chip" type="button" data-filter="Đoài" role="tab" aria-selected="false">☱ Đoài</button>
+          <button class="filter-chip" type="button" data-filter="Ly" role="tab" aria-selected="false">☲ Ly</button>
+          <button class="filter-chip" type="button" data-filter="Chấn" role="tab" aria-selected="false">☳ Chấn</button>
+          <button class="filter-chip" type="button" data-filter="Tốn" role="tab" aria-selected="false">☴ Tốn</button>
+          <button class="filter-chip" type="button" data-filter="Khảm" role="tab" aria-selected="false">☵ Khảm</button>
+          <button class="filter-chip" type="button" data-filter="Cấn" role="tab" aria-selected="false">☶ Cấn</button>
+          <button class="filter-chip" type="button" data-filter="Khôn" role="tab" aria-selected="false">☷ Khôn</button>
+        </div>
+
+        <div class="hex-lib-grid" id="hex-lib-grid" aria-label="Danh sách 64 quẻ"></div>
+        <p class="hex-lib-empty" id="hex-lib-empty" hidden>Không tìm thấy quẻ phù hợp với từ khóa.</p>
+      </div>
     </div>
   </section>
 
@@ -441,6 +471,7 @@
         <a href="#y-nghia">Ý nghĩa con số</a>
         <a href="#phuong-phap">Phương pháp</a>
         <a href="#kinh-dich">Kinh Dịch</a>
+        <a href="#thu-vien-que">Thư viện 64 quẻ</a>
         <a href="#tarot">Bài Tarot</a>
         <a href="#top">Về đầu trang</a>
       </nav>
@@ -461,6 +492,13 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
   </button>
   <div class="dialog-inner" id="dialog-body"></div>
+</dialog>
+
+<dialog class="num-dialog hex-dialog" id="hex-dialog" aria-labelledby="hex-dialog-title">
+  <button class="dialog-close" type="button" id="hex-dialog-close" aria-label="Đóng">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </button>
+  <div class="dialog-inner" id="hex-dialog-body"></div>
 </dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>

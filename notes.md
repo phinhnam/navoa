@@ -255,10 +255,23 @@ Kịch bản kiểm chứng tạm (ngoài repo):
       - Phân tích Ngũ hành theo 4 mùa âm lịch (Vượng, Tướng, Hưu, Tù, Tử).
       - Dự báo thời điểm việc thành / ứng nghiệm và phương vị cát lợi cho cả quẻ Thể và quẻ Dụng.
     - Bộ test tự động: Bổ sung kiểm thử `castCoins`, `timingForecast` và kiểm tra 0 lỗi typo vào `tests/lunarcheck.js`.
-
-## Việc chưa làm / có thể mở rộng tiếp theo
-
-- Bổ sung tùy chọn xuất lá số dạng ảnh (Canvas/HTML-to-Image) nếu người dùng có nhu cầu lưu file ảnh trực tiếp.
+13. **Thư viện 64 Quẻ Văn Vương toàn diện (`index.html`, `iching-ui.js`, `styles.css`):**
+    - Thiết kế giao diện lưới 64 quẻ (`#thu-vien-que`) với thanh tìm kiếm thời gian thực (tên quẻ, số quẻ, quái thượng/hạ, từ khóa) không phân biệt dấu tiếng Việt.
+    - Bộ lọc nhanh theo Bát quái quái thượng (Tất cả, Càn, Đoài, Ly, Chấn, Tốn, Khảm, Cấn, Khôn).
+    - Hộp thoại chi tiết quẻ (`#hex-dialog`):
+      - Đồ họa trực quan 6 hào lớn (Sơ hào đến Thượng hào, chỉ rõ Âm/Dương).
+      - Thoán từ (Lời phán) & Đại tượng (Hình tượng vũ trụ).
+      - Luận giải Bản chất năng lượng & Ứng dụng đời sống.
+      - Lời khuyên quân tử & Luận giải chi tiết từng hào trong 6 hào từ.
+      - Quản lý tiêu điểm (Focus trap), hỗ trợ phím Escape, đóng mở mượt mà.
+14. **Cầu nối tam giác vũ trụ — Đồng bộ Thần Số · Tarot · Kinh Dịch (`app.js`, `styles.css`):**
+    - Tích hợp khối "Cầu nối vũ trụ" (`.cosmic-panel`) ngay trong bảng kết quả lá số cá nhân:
+      - **Thần số (Pythagore):** Chỉ số Đường đời, bản chất năng lượng và Năm cá nhân.
+      - **Tarot Bản Mệnh:** Tự động quy đổi Đường đời sang lá bài Major Arcana tương ứng (kèm số bậc thầy 11, 22, 33), hiển thị từ khóa và thông điệp soi đường.
+      - **Quẻ Dịch Bản Mệnh:** Dùng ngày tháng năm sinh lập quẻ Mai Hoa bản mệnh, hiển thị quẻ chủ, cấu tạo quái, tương quan Thể - Dụng và nút "Đọc toàn bộ quẻ này" mở trực tiếp `#hex-dialog`.
+      - **Cộng hưởng tam giác vũ trụ:** Đoạn luận giải tổng hợp liên kết trực giác phương Tây với triết lý dịch biến phương Đông.
+      - Cập nhật tính năng "Sao chép tóm tắt" để chứa thông tin Tarot Bản Mệnh và Quẻ Dịch Bản Mệnh.
+    - Nâng cấp phiên bản Service Worker lên `thienso-v2` để cập nhật tức thì.
 
 ## Việc chưa làm / có thể mở rộng tiếp theo
 
