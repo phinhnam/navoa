@@ -111,13 +111,18 @@ Kịch bản kiểm chứng tạm (ngoài repo):
 
 ### Quan sát chưa sửa (cần quyết định)
 
-- **Mũi tên Lo Shu giờ chỉ tính ngày sinh** (`profile.dobCounts`), phụ đề panel ghi rõ
-  "chỉ tính ngày sinh". `missing`/`repeated` vẫn trộn họ tên như đã chốt; nếu muốn đồng bộ
-  thì đổi sang `dobCounts` (chỉ 2 chỗ trong `computeProfile`).
 - `NUM.cycles` có các intro/chương chưa dùng: `challengeIntro`, `karmicDebtIntro`,
   `planes.intro`, `hiddenPassion.intro`, `personalMonth.intro`, `mastery`.
 - `số chủ đạo 11/22` giữ nguyên khi tính tuổi đỉnh (25/14 tuổi) — đúng theo nhiều nguồn VN,
   nhưng khác trường phái phương Tây (dùng 2/4 → 34/32). Đã giữ nguyên theo hiện trạng.
+
+## Hoàn thành 2026-10-28 — Đồng bộ missing/repeated sang dobCounts (app.js)
+- `computeProfile` (app.js:414-421): `missing` (con số cần bồi đắp) và `repeated` (số lặp) giờ tính
+  từ `dobCounts` (chỉ chữ số ngày/tháng/năm sinh) thay vì `counts` (trộn họ tên).
+- `counts` vẫn giữ nguyên (trộn) để render bản đồ số/loshu theo nguyên tắc đã chốt: loshu trộn,
+  mũi tên + missing/repeated chỉ tính ngày sinh.
+- Xác minh qua CDP Edge headless (4 kịch bản URL): missing/repeated khớp chữ số ngày sinh,
+  không lỗi console. `ten=123` vẫn bị chặn.
 
 ## Hoàn thành 2026-10-28 — Mở rộng (tất cả 3 mục)
 

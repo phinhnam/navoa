@@ -413,10 +413,10 @@
 
     var missing = [];
     var repeated = [];
-    Object.keys(counts).forEach(function (key) {
+    Object.keys(dobCounts).forEach(function (key) {
       var num = Number(key);
-      if (counts[num] === 0) missing.push(num);
-      else if (counts[num] >= 2) repeated.push({ n: num, count: counts[num] });
+      if (dobCounts[num] === 0) missing.push(num);
+      else if (dobCounts[num] >= 2) repeated.push({ n: num, count: dobCounts[num] });
     });
     repeated.sort(function (a, b) { return b.count - a.count || a.n - b.n; });
 
