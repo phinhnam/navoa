@@ -226,6 +226,13 @@ Kịch bản kiểm chứng tạm (ngoài repo):
 6. **Lưu & phục hồi lịch sử cho Kinh Dịch và Tarot (`iching-ui.js`, `tarot-ui.js`):**
    - Lưu trữ phiên gieo quẻ Kinh Dịch (`thienso:iching:last`) và trải bài Tarot gần nhất (`thienso:tarot:last`) vào `localStorage`.
    - Tự động nạp lại khi người dùng tải lại trang hoặc mở lại tab.
+7. **Bổ sung khối "Giải thích bài Tarot" chuyên sâu (`tarot-ui.js` + `styles.css`):**
+   - Phân tích tương quan năng lượng: Tỷ lệ Âm/Dương (Ngược/Xuôi), số lượng Đại Bí mật (bước ngoặt lớn) vs Tiểu Bí mật, và nguyên tố chiếm ưu thế (Hỏa/Thủy/Khí/Thổ).
+   - Luận giải chi tiết:
+     - 3 lá: Dòng chảy Quá khứ (Cội nguồn) → Hiện tại (Trọng tâm) → Tương lai (Chiều hướng & Kết quả tiềm năng).
+     - 1 lá: Phân tích thông điệp trực diện & trọng tâm phản ánh của lá bài.
+   - Khối "Lời khuyên then chốt": Danh sách 2–3 lời khuyên hành động thiết thực dựa trên cấu trúc năng lượng trải bài.
+   - Khối "Cẩm nang & Quy ước Tarot" (dạng collapsible `<details class="acc">` tương tự Mai Hoa Dịch Số) giúp người dùng nắm bắt quy ước 78 lá bài và tiếp cận Tarot khoa học, tỉnh thức.
 
 ## Việc chưa làm / có thể mở rộng tiếp theo
 
