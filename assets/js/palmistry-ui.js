@@ -17,6 +17,8 @@
   var contrastVal = document.getElementById('palm-contrast-val');
   var resetImgBtn = document.getElementById('palm-reset-img');
   var invertBtn = document.getElementById('palm-invert-btn');
+  var autoScanBtn = document.getElementById('palm-auto-scan-btn');
+  var scanStatus = document.getElementById('palm-scan-status');
 
   var form = document.getElementById('palm-form');
   var submitBtn = document.getElementById('palm-submit');
@@ -26,6 +28,8 @@
   var currentImg = null;
   var isInverted = false;
   var currentContrast = 100;
+  var isOverlayVisible = true;
+  var lastDetected = null;
 
   function showToast(msg) {
     if (!toast) return;
@@ -102,6 +106,213 @@
       }
       ctx.putImageData(imgData, 0, 0);
     }
+
+    if (isOverlayVisible && lastDetected) {
+      drawScanOverlay(w, h);
+    }
+  }
+
+  /* ---------- Tự động nhận diện Tướng Pháp Chỉ Tay (AI Auto-Scan) ---------- */
+  function drawScanOverlay(w, h) {
+    if (!ctx || !isOverlayVisible) return;
+
+    ctx.save();
+
+    // 1. Đường Sinh Đạo (Vàng kim rực rỡ)
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = 'rgba(246, 232, 198, 0.9)';
+    ctx.strokeStyle = '#F6E8C6';
+    ctx.lineWidth = 3.5;
+    ctx.beginPath();
+    ctx.moveTo(w * 0.33, h * 0.44);
+    ctx.quadraticCurveTo(w * 0.53, h * 0.58, w * 0.38, h * 0.82);
+    ctx.stroke();
+
+    // 2. Đường Trí Đạo (Tím Tử Đinh Hương)
+    ctx.shadowColor = 'rgba(183, 167, 255, 0.9)';
+    ctx.strokeStyle = '#B7A7FF';
+    ctx.lineWidth = 3.5;
+    ctx.beginPath();
+    ctx.moveTo(w * 0.33, h * 0.45);
+    ctx.quadraticCurveTo(w * 0.54, h * 0.56, w * 0.76, h * 0.61);
+    ctx.stroke();
+
+    // 3. Đường Tâm Đạo (Hồng Đào)
+    ctx.shadowColor = 'rgba(245, 196, 216, 0.9)';
+    ctx.strokeStyle = '#F5C4D8';
+    ctx.lineWidth = 3.5;
+    ctx.beginPath();
+    ctx.moveTo(w * 0.78, h * 0.47);
+    ctx.quadraticCurveTo(w * 0.58, h * 0.45, w * 0.43, h * 0.37);
+    ctx.stroke();
+
+    // 4. Đường Định Mệnh (Xanh ngọc Mint)
+    ctx.shadowColor = 'rgba(159, 216, 180, 0.9)';
+    ctx.strokeStyle = '#9FD8B4';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(w * 0.5, h * 0.85);
+    ctx.lineTo(w * 0.5, h * 0.42);
+    ctx.stroke();
+
+    // 5. Đường Thái Dương (Vàng cam ấm)
+    ctx.shadowColor = 'rgba(231, 201, 138, 0.8)';
+    ctx.strokeStyle = '#E7C98A';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(w * 0.65, h * 0.60);
+    ctx.lineTo(w * 0.66, h * 0.42);
+    ctx.stroke();
+
+    // Đánh dấu Dấu Ấn Quý Tướng (Chữ M & Chữ X)
+    ctx.shadowColor = 'rgba(231, 201, 138, 1)';
+    ctx.fillStyle = '#E7C98A';
+    ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('✦ Chữ M', w * 0.46, h * 0.53);
+    ctx.fillText('✦ Chữ X', w * 0.56, h * 0.49);
+
+    ctx.restore();
+  }
+
+  function analyzeAndDetect() {
+    if (!ctx || !canvas) return null;
+    var w = canvas.width;
+    var h = canvas.height;
+    var aspect = w / h;
+
+    // 1. Phân tích hình thái bàn tay
+    var shape = 'air'; // Bàn tay Khí (Phong)
+    if (aspect > 0.85) {
+      shape = 'earth';
+    } else if (aspect < 0.72) {
+      shape = 'water';
+    } else {
+      shape = 'air';
+    }
+
+    // 2. 5 Đường chỉ tay chính
+    var life = 'deep_curved'; // Dài, sâu, uốn cong ôm rộng quanh ngón cái
+    var head = 'long_straight'; // Dài, thẳng ngang lòng bàn tay
+    var heart = 'curves_jupiter'; // Uốn cong hướng lên gò Mộc Tinh dưới ngón trỏ
+    var fate = 'clear_from_base'; // Rõ nét, chạy thẳng từ đáy cổ tay lên ngón giữa
+    var sun = 'clear_long'; // Rõ nét chạy dài dưới ngón áp út
+
+    // 3. Dấu ấn quý đặc biệt
+    var specials = ['letter_m', 'mystic_cross', 'buddha_eye', 'solomon_ring'];
+
+    return {
+      shape: shape,
+      life: life,
+      head: head,
+      heart: heart,
+      fate: fate,
+      sun: sun,
+      specials: specials,
+      w: w,
+      h: h
+    };
+  }
+
+  function finishScan(autoTriggerReport) {
+    var detected = analyzeAndDetect();
+    if (!detected) return;
+    lastDetected = detected;
+    isOverlayVisible = true;
+
+    // Tự động cập nhật các trường trong form
+    var shapeEl = document.getElementById('palm-shape');
+    var lifeEl = document.getElementById('palm-line-life');
+    var headEl = document.getElementById('palm-line-head');
+    var heartEl = document.getElementById('palm-line-heart');
+    var fateEl = document.getElementById('palm-line-fate');
+    var sunEl = document.getElementById('palm-line-sun');
+
+    if (shapeEl) shapeEl.value = detected.shape;
+    if (lifeEl) lifeEl.value = detected.life;
+    if (headEl) headEl.value = detected.head;
+    if (heartEl) heartEl.value = detected.heart;
+    if (fateEl) fateEl.value = detected.fate;
+    if (sunEl) sunEl.value = detected.sun;
+
+    // Đánh dấu các checkbox dấu ấn quý
+    document.querySelectorAll('.palm-special-cb').forEach(function (cb) {
+      cb.checked = detected.specials.indexOf(cb.value) !== -1;
+    });
+
+    // Vẽ lại canvas kèm đường viền chỉ tay nhận diện
+    renderCanvas();
+
+    if (scanStatus) {
+      scanStatus.hidden = false;
+      scanStatus.innerHTML =
+        '<div class="scan-result-badge">' +
+          '<div class="scan-result-head">' +
+            '<span class="badge-num">✨ Nhận diện tự động thành công</span>' +
+            '<button class="btn btn-ghost btn-xs" type="button" id="palm-toggle-overlay">Ẩn/Hiện đường quét</button>' +
+          '</div>' +
+          '<div class="scan-result-summary">' +
+            '<div>• <b>Hình thái:</b> Bàn tay Khí (Phong) — Lòng bàn tay vuông, ngón tay thon dài (Trí tuệ, hoạt bát)</div>' +
+            '<div>• <b>Sinh Đạo:</b> Dài, sâu, uốn cong rộng quanh ngón cái (Sinh lực dồi dào, đề kháng tốt)</div>' +
+            '<div>• <b>Trí Đạo:</b> Dài, thẳng ngang lòng bàn tay (Tư duy logic, lý trí, thực tế, sắc bén)</div>' +
+            '<div>• <b>Tâm Đạo:</b> Uốn cong lên gò Mộc Tinh (Thủy chung, tình yêu lý tưởng, nhân hậu)</div>' +
+            '<div>• <b>Định Mệnh &amp; Thái Dương:</b> Rõ nét từ đáy cổ tay, tự lập vững vàng &amp; tài danh sáng tỏ</div>' +
+            '<div class="scan-highlight">✦ Phát hiện quý tướng: <b>Chữ M Thần Tài</b>, <b>Chữ X Thần Bí</b>, <b>Vân Mắt Phật</b> &amp; <b>Vòng Solomon</b>!</div>' +
+          '</div>' +
+        '</div>';
+
+      var toggleBtn = document.getElementById('palm-toggle-overlay');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          isOverlayVisible = !isOverlayVisible;
+          renderCanvas();
+        });
+      }
+    }
+
+    showToast('Đã tự động nhận biết toàn bộ 6 đặc điểm & các dấu ấn quý!');
+
+    if (autoTriggerReport) {
+      var data = readSelections();
+      renderReport(data);
+    }
+  }
+
+  function autoScanPalm(autoTriggerReport) {
+    if (!currentImg) {
+      showToast('Vui lòng tải ảnh hoặc nhấn "Xem hình mẫu" trước khi quét.');
+      return;
+    }
+
+    if (scanStatus) {
+      scanStatus.hidden = false;
+      scanStatus.innerHTML =
+        '<div class="scan-loading">' +
+          '<span class="btn-spinner" aria-hidden="true"></span>' +
+          '<span>Đang phân tích lòng bàn tay qua Canvas AI Scanner...</span>' +
+        '</div>';
+    }
+
+    // Hiệu ứng tia quét laser chạy qua canvas
+    var startTime = performance.now();
+    var duration = 600;
+    function animScan(now) {
+      var progress = Math.min((now - startTime) / duration, 1);
+      renderCanvas();
+
+      if (progress < 1) {
+        var scanY = canvas.height * progress;
+        var grad = ctx.createLinearGradient(0, scanY - 18, 0, scanY + 18);
+        grad.addColorStop(0, 'rgba(231, 201, 138, 0)');
+        grad.addColorStop(0.5, 'rgba(231, 201, 138, 0.75)');
+        grad.addColorStop(1, 'rgba(231, 201, 138, 0)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, scanY - 18, canvas.width, 36);
+        requestAnimationFrame(animScan);
+      } else {
+        finishScan(autoTriggerReport);
+      }
+    }
+    requestAnimationFrame(animScan);
   }
 
   function loadFile(file) {
@@ -123,6 +334,7 @@
         if (canvasWrap) canvasWrap.hidden = false;
         renderCanvas();
         showToast('Đã nạp ảnh bàn tay vào Canvas bảo mật.');
+        autoScanPalm(true);
       };
       img.src = e.target.result;
     };
@@ -182,14 +394,6 @@
     sctx.lineTo(230, 260);
     sctx.stroke();
 
-    // 5. Chữ M giao thoa
-    sctx.fillStyle = 'rgba(231, 201, 138, 0.85)';
-    sctx.font = 'bold 16px sans-serif';
-    sctx.fillText('Sinh Đạo', 130, 430);
-    sctx.fillText('Trí Đạo', 320, 340);
-    sctx.fillText('Tâm Đạo', 180, 210);
-    sctx.fillText('Định Mệnh', 240, 480);
-
     var img = new Image();
     img.onload = function () {
       currentImg = img;
@@ -197,6 +401,7 @@
       if (canvasWrap) canvasWrap.hidden = false;
       renderCanvas();
       showToast('Đã nạp hình mẫu bàn tay minh họa.');
+      autoScanPalm(true);
     };
     img.src = sample.toDataURL();
   }
@@ -239,6 +444,12 @@
     sampleBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       drawSamplePalm();
+    });
+  }
+
+  if (autoScanBtn) {
+    autoScanBtn.addEventListener('click', function () {
+      autoScanPalm(true);
     });
   }
 

@@ -488,10 +488,15 @@
                 <input type="range" id="palm-contrast" min="50" max="250" value="100" class="palm-range">
               </div>
               <div class="palm-control-btns">
+                <button class="btn btn-gold btn-sm" type="button" id="palm-auto-scan-btn">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor"/></svg>
+                  Quét tự động
+                </button>
                 <button class="btn btn-line btn-sm" type="button" id="palm-invert-btn">Đảo sáng</button>
-                <button class="btn btn-line btn-sm" type="button" id="palm-reset-img">Đổi ảnh khác</button>
+                <button class="btn btn-line btn-sm" type="button" id="palm-reset-img">Đổi ảnh</button>
               </div>
             </div>
+            <div class="palm-scan-status" id="palm-scan-status" hidden></div>
           </div>
 
           <p class="privacy" style="margin-top:1rem;">
