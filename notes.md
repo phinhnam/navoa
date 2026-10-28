@@ -119,12 +119,12 @@ Kịch bản kiểm chứng tạm (ngoài repo):
 - `số chủ đạo 11/22` giữ nguyên khi tính tuổi đỉnh (25/14 tuổi) — đúng theo nhiều nguồn VN,
   nhưng khác trường phái phương Tây (dùng 2/4 → 34/32). Đã giữ nguyên theo hiện trạng.
 
-## Việc chưa làm / cần hỏi
+## Hoàn thành 2026-10-28 — Mở rộng (tất cả 3 mục)
 
-- Chưa xác nhận yêu cầu cụ thể của người dùng — các session dừng ở bước khảo sát/kiểm chứng.
-- Chưa có repo git → chưa có lịch sử thay đổi; cân nhắc `git init` nếu cần rollback.
-- Chưa kiểm tra responsive trên mobile thật (đã xem simulate 390px qua CDP).
-- Chưa có favicon/OG image dạng file (OG đang dùng meta text only).
+1. **Git init** — repo tại `.git/`, commit đầu `ae143eb` (12 file, 6652 dòng) bao gồm toàn bộ thay đổi trước đó.
+2. **Favicon + OG image** — favicon đã có (inline SVG data URI). Tạo `assets/images/og-image.svg` (1200×630, tối, brand mark + tiêu đề). Thêm meta `og:url`, `og:site_name`, `og:image`, `og:image:width/height`, `twitter:card/title/description/image`, `apple-touch-icon`.
+3. **Responsive mobile** — Xác minh qua CDP Edge headless tại 375/390/412/768/1280px: không lỗi console, không tràn ngang (`bodyScrollW === bodyClientW`), `calc-form` dùng `grid-template-columns: 1fr` (xếp dọc) ở ≤640px (styles.css:2487), `loshu-wrap` khép trong khung 375px, panel co dãn theo chiều rộng, header điều chỉnh chiều cao. (Không có thiết bị mobile thật để kiểm tra vật lý.)
+
 
 ## Hoàn thành — Accessibility dialog (app.js)
 - `openDialog`: lưu phần tử đang focus, set `aria-modal="true"` trên dialog, `aria-expanded="true"` trên nút kích hoạt, focus vào nút "Đóng", thông báo qua vùng `#live` (`aria-live=polite`), gắn keydown listener chặn Tab thoát ngoài dialog (focus trap).
