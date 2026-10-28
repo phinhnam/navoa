@@ -172,6 +172,37 @@ Kịch bản kiểm chứng tạm (ngoài repo):
 - Xác minh qua CDP Edge headless (4 kịch bản URL): missing/repeated khớp chữ số ngày sinh,
   không lỗi console. `ten=123` vẫn bị chặn.
 
+## Hoàn thành 2026-10-28 — Hướng dẫn "Khi nào nên gieo quẻ" (index.html + styles.css)
+
+- `index.html` (sau `section-lead` của `#kinh-dich`): thêm khối `.cast-when` gồm tiêu đề
+  "Khi nào nên gieo quẻ", hai cột "Nên gieo khi" (4 mục) và "Hoãn lại khi" (4 mục), cùng câu chốt
+  "Quẻ không quyết định thay bạn…". Nội dung nhấn: hỏi một câu thật, cụ thể, mỗi lần một việc,
+  không gieo lại cùng câu để "xin quẻ khác", không thay thế quyết định y tế/pháp lý/tài chính.
+- `styles.css` (khối Kinh Dịch): thêm `.cast-when`, `.cast-when-head/-cols/-col/-label/-note`.
+  Desktop 2 cột, `@media (max-width: 640px)` chuyển 1 cột. Dùng tông xanh cho "Nên gieo",
+  đỏ nhạt cho "Hoãn lại", khớp bảng màu sẵn có.
+- Kiểm chứng: `npm test` ALL CHECKS PASSED; CDP Edge headless 1280px → 2 cột, 375px → 1 cột,
+  8 mục, không lỗi console, `scrollWidth === clientWidth` (không tràn ngang); chụp ảnh desktop/mobile.
+
+## Hoàn thành 2026-10-28 — Tính năng Bài Tarot (data-tarot.js, tarot-ui.js)
+
+- `assets/js/data-tarot.js`: 78 lá (22 Đại Bí mật + 56 Tiểu Bí mật). Mỗi lá có `id, num, vn, arcana,
+  suit, rank, element, meaning` (xuôi), `rev` (ngược), `keywords[]`. 22 lá Đại Bí mật viết nghĩa riêng
+  (Gã khờ, Pháp sư, Nữ tu sĩ, … Thế giới); 56 lá Tiểu Bí mật theo 4 bộ Trượng/Chén/Kiếm/Đá quý × 14 cấp
+  (Án, 2–10, Trang, Hiệp sĩ, Nữ hoàng, Vua) với nghĩa dựng từ cấp + bộ. File sinh bằng script tạm,
+  đã kiểm tra 78 lá, 22/56, tên không trùng, `keywords` luôn là mảng.
+- `assets/js/tarot-ui.js`: chọn 1 lá hoặc 3 lá (quá khứ/hiện tại/tương lai), mỗi lá ngẫu nhiên
+  xuôi/ngược (50%); render thẻ với nhãn Đại/Tiểu Bí mật, bộ nguyên tố, Dương/Âm, nghĩa và từ khóa.
+  Submit và "Xáo trộn lại" đều vẽ lại; focus vào `#tarot-result`, thông báo qua `#live`/`#toast`
+  (lần vẽ đầu khi tải trang không phát thông báo để tránh trùng toast với Kinh Dịch).
+- `index.html`: thêm link "Bài Tarot" vào nav đầu trang + footer; thêm section `#tarot` (số V) với
+  form + panel kết quả; nạp `data-tarot.js` và `tarot-ui.js`.
+- `styles.css`: thêm khối `/* Bài Tarot */` (`.tarot-layout/-form/-result/-cards/-card/...`),
+  desktop 2 cột, `@media (max-width: 980px)` về 1 cột; thêm `#tarot` vào danh sách ẩn khi in.
+- Kiểm chứng: `npm test` ALL CHECKS PASSED; CDP Edge headless 1280px & 375px: 1 lá → 3 lá đúng,
+  Đại/Tiểu Bí mật + Dương/Âm hiển thị, không lỗi console, `scrollWidth === clientWidth`; chụp ảnh
+  desktop/mobile.
+
 ## Việc chưa làm / cần hỏi
 
 - Chưa xác nhận yêu cầu cụ thể của người dùng — các session dừng ở bước khảo sát/kiểm chứng.

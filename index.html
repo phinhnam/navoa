@@ -53,6 +53,7 @@
       <a href="#y-nghia">Ý nghĩa số</a>
       <a href="#phuong-phap">Phương pháp</a>
       <a href="#kinh-dich">Kinh Dịch</a>
+      <a href="#tarot">Bài Tarot</a>
     </nav>
     <a class="btn btn-ghost header-cta" href="#khoi-tao">Luận giải</a>
   </div>
@@ -243,6 +244,34 @@
         <p class="section-lead">Mai Hoa dịch số lấy ngày âm lịch và giờ làm tín hiệu để lập quẻ. Không phải lời phán tuyệt đối — mà là một cách nhìn tình thế: đâu là thế của mình, đâu là thế của việc, và nên đi tiếp hay dừng lại.</p>
       </div>
 
+      <div class="cast-when reveal" aria-labelledby="cast-when-title">
+        <div class="cast-when-head">
+          <h3 id="cast-when-title">Khi nào nên gieo quẻ</h3>
+          <p>Quẻ chỉ có nghĩa khi câu hỏi là thật và bạn thật sự đang ở trong một tình thế cần nhìn rõ. Hỏi đúng lúc quan trọng hơn hỏi nhiều.</p>
+        </div>
+        <div class="cast-when-cols">
+          <div class="cast-when-col">
+            <p class="cast-when-label is-yes">Nên gieo khi</p>
+            <ul>
+              <li>Bạn đứng trước một lựa chọn thật, đã cân nhắc đủ và cần thêm một góc nhìn.</li>
+              <li>Mỗi lần chỉ một câu hỏi, rõ và cụ thể — không gộp nhiều việc vào một quẻ.</li>
+              <li>Bạn sẵn sàng nghe câu trả lời khác với điều mình mong.</li>
+              <li>Tâm đã lắng đủ để nhìn tình thế mà không bị cảm xúc dẫn dắt.</li>
+            </ul>
+          </div>
+          <div class="cast-when-col">
+            <p class="cast-when-label is-no">Hoãn lại khi</p>
+            <ul>
+              <li>Câu hỏi còn mơ hồ, hoặc chỉ hỏi để thử cho biết.</li>
+              <li>Vừa gieo xong đã muốn gieo lại cùng một việc để “xin quẻ khác”.</li>
+              <li>Đó là quyết định y tế, pháp lý hay tài chính lớn — hãy hỏi người có chuyên môn.</li>
+              <li>Bạn đang quá xáo động và chỉ muốn nghe điều mình muốn nghe.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="cast-when-note">Quẻ không quyết định thay bạn. Nó chỉ giúp bạn nhìn rõ thế của mình và thế của việc trước khi tự quyết.</p>
+      </div>
+
       <div class="cast-layout">
         <form class="cast-form reveal" id="cast-form" novalidate>
           <div class="field">
@@ -303,6 +332,50 @@
       </div>
     </div>
   </section>
+
+  <section class="section tarot" id="tarot" aria-labelledby="tarot-title">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="section-label"><span>V</span>Bài Tarot</p>
+        <h2 id="tarot-title">Vẽ bài cho câu hỏi của bạn</h2>
+        <p class="section-lead">Bài Tarot là gương phản ánh tình thế hiện tại: 78 lá chia thành 22 Đại Bí mật (cuộc sống lớn) và 56 Tiểu Bí mật (chi tiết ngày tháng). Hãy hỏi một điều, chọn số lá, rồi đọc ý nghĩa.</p>
+      </div>
+
+      <div class="tarot-layout">
+        <form class="tarot-form reveal" id="tarot-form" novalidate>
+          <div class="field">
+            <label for="tarot-count">Số lá muốn vẽ</label>
+            <select id="tarot-count" class="cast-select">
+              <option value="1">1 lá — câu trả lời ngắn gọn</option>
+              <option value="3">3 lá — quá khứ / hiện tại / tương lai</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="tarot-question">Câu hỏi của bạn <span class="label-optional">không bắt buộc</span></label>
+            <input id="tarot-question" type="text" maxlength="120" autocomplete="off"
+                   placeholder="Ví dụ: công việc sắp tới như thế nào?">
+          </div>
+
+          <p class="error" id="tarot-error" role="alert" hidden></p>
+
+          <div class="form-foot">
+            <button class="btn btn-gold" type="submit" id="tarot-submit">
+              <span>Vẽ bài</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="btn btn-line btn-sm" type="button" id="tarot-shuffle">Xáo trộn lại</button>
+          </div>
+          <p class="privacy">Vẽ bài chạy ngẫu nhiên trong trình duyệt. Không lưu dữ liệu, không theo dõi.</p>
+        </form>
+
+        <div class="tarot-aside">
+          <div class="tarot-result" id="tarot-result" aria-live="polite"></div>
+          <p class="tarot-recent" id="tarot-recent"></p>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -324,6 +397,7 @@
         <a href="#y-nghia">Ý nghĩa con số</a>
         <a href="#phuong-phap">Phương pháp</a>
         <a href="#kinh-dich">Kinh Dịch</a>
+        <a href="#tarot">Bài Tarot</a>
         <a href="#top">Về đầu trang</a>
       </nav>
       <div class="footer-note">
@@ -354,7 +428,9 @@
 <script src="assets/js/lunar.js"></script>
 <script src="assets/js/iching.js"></script>
 <script src="assets/js/data-hexagrams.js"></script>
+<script src="assets/js/data-tarot.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/iching-ui.js"></script>
+<script src="assets/js/tarot-ui.js"></script>
 </body>
 </html>
