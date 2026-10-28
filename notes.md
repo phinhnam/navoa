@@ -42,8 +42,7 @@ package.json                  test script
 
 - `normalizeName` (app.js:337): bỏ dấu tiếng Việt, Đ→D, chỉ giữ A–Z.
 - `reduceNum` (app.js:350): rút gọn, giữ master number 11/22/33; `reduceNoMaster` (app.js:454) thì không giữ.
-- `computeProfile` (app.js:360): 8 chỉ số — Đường đời, Sứ mệnh, Linh hồn, Nhân cách,
-  Ngày sinh, Thái độ, Trưởng thành, Cân bằng (cần xác nhận lại danh sách chính xác khi sửa).
+- `computeProfile` (app.js:360): 8 chỉ số cốt lõi (chuẩn Pythagore) — Đường đời (lifePath), Sứ mệnh (destiny), Linh hồn (soul), Nhân cách (personality), Ngày sinh (birthday), Thái độ (attitude), Trưởng thành (maturity), Cân bằng (balance).
 - `computeCycles` (app.js:471): 4 đỉnh cao, 4 thách thức, năm cá nhân, chu kỳ 9 năm.
 - `renderResults` (app.js:730) + `renderInsights` (app.js:590) đổ vào `#results-root`;
   `coreCard` (app.js:567), `dialogHTML`/`openDialog` (app.js:929/993) cho popup ý nghĩa số.
@@ -176,4 +175,3 @@ Kịch bản kiểm chứng tạm (ngoài repo):
 ## Việc chưa làm / cần hỏi
 
 - Chưa xác nhận yêu cầu cụ thể của người dùng — các session dừng ở bước khảo sát/kiểm chứng.
-- Xác nhận danh sách 8 chỉ số cốt lõi (notes.md:41-42 ghi "cần xác nhận lại danh sách chính xác khi sửa").
