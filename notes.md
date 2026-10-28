@@ -142,3 +142,10 @@ Kịch bản kiểm chứng tạm (ngoài repo):
 ## Thay đổi 2026-10-28 (tiếp theo) — Thêm thông tin mũi tên trống
 - `data-cycles.js` arrows.lines: mỗi mục thêm `empty: { name, text }` cho phiên bản trống: 123→Thiếu định hướng, 456→Uất giận, 789→Thụ động, 147→Hỗn độn, 258→Nhạy cảm, 369→Trí nhớ ngắn hạn, 159→Trì hoãn, 357→Hoài nghi.
 - app.js:668-672: render mũi tên trống hiển thị `Tên empty: nội dung` thay vì văn bản chung chung.
+
+## Hoàn thành 2026-10-28 — Kinh Dịch UI (iching-ui.js)
+- `render()`: sau khi đổ HTML, set `tabindex="-1"` và `focus()` vào `#cast-result` để người dùng dùng bàn phím điều hướng ngay vào kết quả (accessibility).
+- Thông báo qua `#live` (`aria-live=polite`) và `#toast` sau mỗi lần gieo quẻ (`"Đã gieo quẻ X · Tên quẻ · hào động Y"`).
+- Thêm `MOVING_POSITION` (dòng 35-42): mô tả vị trí hào 1–6 theo quy ước chung (khởi đầu, phát triển, tất yếu, trung bình, vị trí cao, kết thúc) — hiển thị bên cạnh "Hào động X" trong `hex-caption`. Không bịa nội dung ý nghĩa hào cụ thể của từng quẻ vì `data-hexagrams.js` không có field đó.
+- Xác minh qua CDP Edge headless (url `#kinh-dich`, ngày 29/09/1995, giờ Tý): focus chuyển sang `#cast-result`, live/toast hiển thị đúng, 12 option giờ, không lỗi console, không tràn ngang.
+

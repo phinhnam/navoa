@@ -69,26 +69,26 @@ window.NUM.cycles = {
   },
 
   planes: {
-    intro: 'Bốn bình diện cho biết bạn vận hành mạnh ở đâu: thân (Physical), trí (Mental), cảm xúc (Emotional) và trực giác (Intuitive). Đây là bản đồ cách bạn tiếp nhận và phản hồi thế giới.',
+    intro: 'Bốn bình diện cho thấy bạn vận hành mạnh ở khía cạnh nào: thân thể, trí tuệ, cảm xúc và trực giác. Chúng là bản đồ cách bạn tiếp nhận và phản hồi với thế giới xung quanh.',
     list: [
-      { key: 'physical', name: 'Bình diện Thân', letters: ['E', 'W', 'D', 'M'], text: 'Cách bạn hiện diện trong thế giới vật chất: sức bền, hành động, khả năng biến ý thành việc. Mạnh ở đây nghĩa là bạn làm được, chịu được và thấy kết quả rõ. Yếu ở đây nghĩa là ý tưởng nhiều mà tay chân chậm.' },
-      { key: 'mental', name: 'Bình diện Trí', letters: ['A', 'H', 'J', 'N', 'P', 'G', 'L'], text: 'Cách bạn suy nghĩ, phân tích và tổ chức thông tin. Mạnh ở đây nghĩa là bạn lý luận sắc, học nhanh. Yếu ở đây nghĩa là bạn dễ bị cảm xúc dẫn dắt hoặc khó diễn đạt điều mình biết.' },
-      { key: 'emotional', name: 'Bình diện Cảm xúc', letters: ['I', 'O', 'R', 'Z', 'B', 'S', 'T', 'X'], text: 'Cách bạn cảm, kết nối và phản ứng với con người. Mạnh ở đây nghĩa là bạn thấu cảm và tạo được gắn kết. Yếu ở đây nghĩa là bạn giữ khoảng cách, hoặc khó gọi tên cảm xúc.' },
-      { key: 'intuitive', name: 'Bình diện Trực giác', letters: ['K', 'F', 'Q', 'U', 'Y', 'C', 'V'], text: 'Cách bạn tiếp nhận những gì không nói thành lời: linh cảm, ý nghĩa, tín hiệu. Mạnh ở đây nghĩa là bạn biết trước khi hiểu. Yếu ở đây nghĩa là bạn cần bằng chứng mới tin, và điều đó đôi khi làm bạn chậm.' }
+      { key: 'physical', name: 'Bình diện Thân thể', letters: ['E', 'W', 'D', 'M'], text: 'Cách bạn hiện diện trong thế giới vật chất: sức bền, hành động, khả năng biến ý tưởng thành việc thực. Mạnh ở đây nghĩa là bạn làm được, chịu được và thấy kết quả rõ. Yếu ở đây nghĩa là ý tưởng nhiều nhưng tay chân chậm.' },
+      { key: 'mental', name: 'Bình diện Trí tuệ', letters: ['A', 'H', 'J', 'N', 'P', 'G', 'L'], text: 'Cách bạn suy nghĩ, phân tích và tổ chức thông tin. Mạnh ở đây nghĩa là bạn lý luận sắc sảo, học nhanh. Yếu ở đây nghĩa là bạn dễ bị cảm xúc dẫn dắt hoặc khó diễn đạt điều mình biết.' },
+      { key: 'emotional', name: 'Bình diện Cảm xúc', letters: ['I', 'O', 'R', 'Z', 'B', 'S', 'T', 'X'], text: 'Cách bạn cảm nhận, kết nối và phản ứng với người khác. Mạnh ở đây nghĩa là bạn thấu cảm và tạo được gắn kết. Yếu ở đây nghĩa là bạn giữ khoảng cách, hoặc khó gọi tên cảm xúc của mình.' },
+      { key: 'intuitive', name: 'Bình diện Trực giác', letters: ['K', 'F', 'Q', 'U', 'Y', 'C', 'V'], text: 'Cách bạn tiếp nhận những gì không được nói thành lời: linh cảm, ý nghĩa, tín hiệu tinh tế. Mạnh ở đây nghĩa là bạn biết trước khi hiểu. Yếu ở đây nghĩa là bạn cần bằng chứng mới tin, và điều đó đôi khi làm bạn chậm chạp.' }
     ]
   },
 
   hiddenPassion: {
-    intro: 'Ẩn đam mê là con số xuất hiện nhiều nhất trong họ tên. Nó cho biết bạn bị hút về đâu, và thường là nơi bạn dễ tỏa sáng mà không cần cố.',
-    1: 'Bạn bị hút về việc dẫn đầu, tự quyết và tạo dấu ấn riêng.',
-    2: 'Bạn bị hút về sự gắn kết, chăm sóc và làm mọi thứ hài hòa.',
-    3: 'Bạn bị hút về sáng tạo, biểu đạt và niềm vui.',
-    4: 'Bạn bị hút về trật tự, xây dựng và sự ổn định.',
-    5: 'Bạn bị hút về trải nghiệm, tự do và điều mới lạ.',
-    6: 'Bạn bị hút về gia đình, trách nhiệm và cái đẹp.',
-    7: 'Bạn bị hút về tri thức, chiều sâu và sự thật.',
-    8: 'Bạn bị hút về quyền lực, thành tựu và quản trị nguồn lực.',
-    9: 'Bạn bị hút về sự cho đi, ý nghĩa và điều lớn hơn bản thân.'
+    intro: 'Ẩn đam mê là con số xuất hiện nhiều nhất trong họ tên của bạn. Nó chỉ cho thấy điều bạn bị hút về, và thường là nơi bạn dễ tỏa sáng một cách tự nhiên.',
+    1: 'Bạn có đam mê dẫn dắt, tự quyết và để lại dấu ấn riêng.',
+    2: 'Bạn có đam mê gắn kết, chăm sóc và tạo sự hài hòa.',
+    3: 'Bạn có đam mê sáng tạo, biểu đạt và niềm vui.',
+    4: 'Bạn có đam mê trật tự, xây dựng và sự ổn định.',
+    5: 'Bạn có đam mê trải nghiệm, tự do và điều mới lạ.',
+    6: 'Bạn có đam mê gia đình, trách nhiệm và cái đẹp.',
+    7: 'Bạn có đam mê tri thức, chiều sâu và sự thật.',
+    8: 'Bạn có đam mê quyền lực, thành tựu và quản trị nguồn lực.',
+    9: 'Bạn có đam mê cho đi, ý nghĩa và điều lớn hơn bản thân.'
   },
 
   personalMonth: {

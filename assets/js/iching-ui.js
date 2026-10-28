@@ -20,6 +20,8 @@
   var errorEl = document.getElementById('cast-error');
   var submitBtn = document.getElementById('cast-submit');
   var recent = document.getElementById('cast-recent');
+  var live = document.getElementById('live');
+  var toast = document.getElementById('toast');
 
   var TONES = {
     great: 'Đại cát',
@@ -27,6 +29,15 @@
     mixed: 'Trung hòa',
     caution: 'Cẩn trọng',
     bad: 'Cần giữ mình'
+  };
+
+  var MOVING_POSITION = {
+    1: 'Hào 1 (dưới cùng): khởi đầu, căn bản — bước đầu tiên của vấn đề.',
+    2: 'Hào 2: phát triển, điềm tĩnh — việc đang chín chồi, đừng vội.',
+    3: 'Hào 3: tất yếu, biến động — thời điểm khó, cần kiểm tra kỹ trước khi hành động.',
+    4: 'Hào 4: trung bình, ổn định — giữ vững phần đã có.',
+    5: 'Hào 5: vị trí cao, quyết định — có quyền quy định, hành động có trọng lượng.',
+    6: 'Hào 6 (trên cùng): kết thúc, rút lui — chốt lại, buông bỏ để chuẩn bị chu kỳ mới.'
   };
 
   function pad(n) { return String(n).padStart(2, '0'); }
@@ -110,7 +121,7 @@
           esc('Sáu hào của quẻ ' + no + ', hào động thứ ' + cast.moving + ' tính từ dưới lên') + '">' +
           linesHTML(cast.lines, cast.moving) +
         '</div>' +
-        '<span class="hex-caption">Hào 1 ở dưới · hào động ' + cast.moving + '</span>' +
+        '<span class="hex-caption">Hào 1 ở dưới · hào động ' + cast.moving + ' — ' + MOVING_POSITION[cast.moving] + '</span>' +
       '</div>' +
       '<div class="cast-main tone-' + tone + '">' +
         '<p class="eyebrow"><span class="eyebrow-dot"></span>Quẻ chủ · ' + no + '</p>' +
@@ -164,9 +175,18 @@
 
     root.innerHTML = header + body;
     root.hidden = false;
+    root.setAttribute('tabindex', '-1');
+    root.focus();
     root.classList.remove('is-fresh');
     void root.offsetWidth;
     root.classList.add('is-fresh');
+
+    if (live) live.textContent = 'Đã gieo quẻ ' + cast.primary + ' · ' + (meta.name || '') + ' · hào động ' + cast.moving;
+    if (toast) {
+      toast.textContent = 'Quẻ ' + cast.primary + ' — ' + (meta.name || '');
+      toast.hidden = false;
+      setTimeout(function () { toast.hidden = true; }, 3000);
+    }
   }
 
   function showError(message) {
