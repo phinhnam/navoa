@@ -272,6 +272,9 @@ Kịch bản kiểm chứng tạm (ngoài repo):
       - **Cộng hưởng tam giác vũ trụ:** Đoạn luận giải tổng hợp liên kết trực giác phương Tây với triết lý dịch biến phương Đông.
       - Cập nhật tính năng "Sao chép tóm tắt" để chứa thông tin Tarot Bản Mệnh và Quẻ Dịch Bản Mệnh.
     - Nâng cấp phiên bản Service Worker lên `thienso-v2` để cập nhật tức thì.
+15. **Sửa lỗi hiển thị mục "Ý nghĩa con số - 12 khuôn mặt của năng lượng" (`app.js`, `effects.js`):**
+    - **Nguyên nhân:** Khi tách `effects.js`, hàm `observeReveals()` chạy trước khi `renderGallery()` trong `app.js` tạo ra 12 thẻ số `.gallery-card.reveal`. Vì vậy các thẻ số mang class `.reveal` nhưng không được `IntersectionObserver` quan sát, dẫn đến CSS `.js .reveal { opacity: 0; }` khiến toàn bộ 12 thẻ số bị ẩn.
+    - **Khắc phục:** Gọi `window.THIENSO_FX.observeReveals(gallery)` ngay sau khi tạo các thẻ số trong `renderGallery()`, tại khối `init` của `app.js`, và bổ sung hook `load` trong `effects.js`. 12 thẻ số hiển thị mượt mà với hiệu ứng cuộn mượt trở lại.
 
 ## Việc chưa làm / có thể mở rộng tiếp theo
 
