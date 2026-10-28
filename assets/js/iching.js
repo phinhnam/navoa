@@ -227,6 +227,138 @@
     };
   }
 
+  /* Ngũ hành sinh vượng theo 4 mùa (Âm lịch) */
+  var SEASONS = {
+    1: 'Xuân', 2: 'Xuân', 3: 'Xuân',
+    4: 'Hạ', 5: 'Hạ', 6: 'Hạ',
+    7: 'Thu', 8: 'Thu', 9: 'Thu',
+    10: 'Đông', 11: 'Đông', 12: 'Đông'
+  };
+
+  var ELEMENT_STATE = {
+    'Xuân': { 'Mộc': 'Vượng', 'Hỏa': 'Tướng', 'Thổ': 'Tử', 'Kim': 'Tù', 'Thủy': 'Hưu' },
+    'Hạ':   { 'Hỏa': 'Vượng', 'Thổ': 'Tướng', 'Kim': 'Tử', 'Thủy': 'Tù', 'Mộc': 'Hưu' },
+    'Thu':  { 'Kim': 'Vượng', 'Thủy': 'Tướng', 'Mộc': 'Tử', 'Hỏa': 'Tù', 'Thổ': 'Hưu' },
+    'Đông': { 'Thủy': 'Vượng', 'Mộc': 'Tướng', 'Hỏa': 'Tử', 'Thổ': 'Tù', 'Kim': 'Hưu' }
+  };
+
+  function analyzeSeason(element, lunarMonth) {
+    var season = SEASONS[lunarMonth] || 'Xuân';
+    var state = (ELEMENT_STATE[season] && ELEMENT_STATE[season][element]) || 'Bình hòa';
+    var desc = '';
+    if (state === 'Vượng') desc = 'Đang ở thời kỳ cực thịnh, khí lực dồi dào, thuận lợi nhất.';
+    else if (state === 'Tướng') desc = 'Đang trên đà phát triển, được sinh dưỡng mạnh mẽ.';
+    else if (state === 'Hưu') desc = 'Thời kỳ thoái trào, nên nghỉ ngơi dưỡng sức, không nên quá sức.';
+    else if (state === 'Tù') desc = 'Bị kiềm chế, bế tắc tạm thời, cần nhẫn nại chờ thời.';
+    else if (state === 'Tử') desc = 'Khí suy kiệt, không nên cưỡng cầu, bảo tồn căn bản là thượng sách.';
+    return { season: season, state: state, desc: desc };
+  }
+
+  /* Dự báo Ứng kỳ & Phương vị theo Mai Hoa Dịch Số */
+  function timingForecast(cast, lunarMonth) {
+    var theEl = cast.the.element;
+    var dungEl = cast.dung.element;
+    var theSeason = analyzeSeason(theEl, lunarMonth);
+    var dungSeason = analyzeSeason(dungEl, lunarMonth);
+
+    var sumNum = (cast.the.prior || 1) + (cast.dung.prior || 1);
+    var timeNote = '';
+    var relationCode = cast.relation.code;
+
+    if (relationCode === 'dung-sinh-the') {
+      timeNote = 'Dụng sinh Thể: Việc thành nhanh chóng, thường ứng nghiệm trong khoảng ' + sumNum + ' ngày/giờ hoặc khi hành ' + dungEl + ' hoặc ' + theEl + ' đắc lệnh.';
+    } else if (relationCode === 'the-khac-dung') {
+      timeNote = 'Thể khắc Dụng: Cần tự lực phấn đấu, thành quả đến sau khoảng ' + sumNum + ' ngày hoặc khi bản thân (' + theEl + ') vượng khí.';
+    } else if (relationCode === 'hoa') {
+      timeNote = 'Thể Dụng tương hòa: Sự việc diễn tiến bình ổn, ứng kỳ khoảng ' + sumNum + ' ngày/tuần hoặc vào ngày mang cùng hành ' + theEl + '.';
+    } else if (relationCode === 'the-sinh-dung') {
+      timeNote = 'Thể sinh Dụng: Hao tổn tâm lực, thành quả có thể bị kéo dài (' + (sumNum * 2) + ' ngày/tuần), cần giữ sức bền.';
+    } else {
+      timeNote = 'Dụng khắc Thể: Tình thế gặp cản trở lớn, nên tạm hoãn ít nhất ' + sumNum + ' ngày/tháng để tránh xung đột trực diện.';
+    }
+
+    return {
+      sumNum: sumNum,
+      theSeason: theSeason,
+      dungSeason: dungSeason,
+      timeNote: timeNote,
+      theDirection: cast.the.direction,
+      dungDirection: cast.dung.direction
+    };
+  }
+
+  /**
+   * Lập quẻ theo phương pháp 3 Đồng Xu (Văn Vương Lục Hào)
+   * coinThrows: mảng 6 số (mỗi số là 6, 7, 8 hoặc 9) từ Hào 1 (dưới) lên Hào 6 (trên).
+   */
+  function castCoins(coinThrows) {
+    if (!Array.isArray(coinThrows) || coinThrows.length !== 6) return null;
+
+    var lines = [];
+    var movingLines = [];
+    var changed = [];
+
+    coinThrows.forEach(function (sum, idx) {
+      var lineNo = idx + 1;
+      if (sum === 6) {
+        lines.push(0);
+        changed.push(1);
+        movingLines.push(lineNo);
+      } else if (sum === 7) {
+        lines.push(1);
+        changed.push(1);
+      } else if (sum === 8) {
+        lines.push(0);
+        changed.push(0);
+      } else if (sum === 9) {
+        lines.push(1);
+        changed.push(0);
+        movingLines.push(lineNo);
+      } else {
+        lines.push(1);
+        changed.push(1);
+      }
+    });
+
+    var primaryNo = hexByLines(lines);
+    var mutualNo = hexByLines(mutualLines(lines));
+    var changedNo = movingLines.length > 0 ? hexByLines(changed) : null;
+
+    var loTri = trigramOfLines([lines[0], lines[1], lines[2]]);
+    var upTri = trigramOfLines([lines[3], lines[4], lines[5]]);
+
+    var firstMoving = movingLines[0] || 0;
+    var theTri, dungTri;
+    if (movingLines.length === 1) {
+      theTri = firstMoving <= 3 ? upTri : loTri;
+      dungTri = firstMoving <= 3 ? loTri : upTri;
+    } else {
+      theTri = loTri;
+      dungTri = upTri;
+    }
+
+    var rel = relation(theTri.element, dungTri.element);
+
+    return {
+      upper: upTri,
+      lower: loTri,
+      upperNum: upTri.prior,
+      lowerNum: loTri.prior,
+      moving: firstMoving,
+      movingLines: movingLines,
+      coinThrows: coinThrows,
+      lines: lines,
+      primary: primaryNo,
+      mutual: mutualNo,
+      changed: changedNo,
+      the: theTri,
+      dung: dungTri,
+      movingTrigram: dungTri,
+      relation: rel,
+      isCoinCast: true
+    };
+  }
+
   window.ICHING = Object.assign(window.ICHING || {}, {
     trigrams: TRIGRAMS,
     prior: PRIOR,
@@ -234,6 +366,9 @@
     structure: STRUCT,
     hexStruct: HEX_STRUCT,
     castMaiHoa: castMaiHoa,
+    castCoins: castCoins,
+    analyzeSeason: analyzeSeason,
+    timingForecast: timingForecast,
     hexByLines: hexByLines,
     mutualLines: mutualLines,
     changedLines: changedLines,

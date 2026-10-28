@@ -69,5 +69,33 @@ for (const [d, m, y, hour] of [[28, 10, 2026, 5], [17, 2, 2026, 0], [1, 1, 2000,
   }
 }
 
+console.log('--- 3 Đồng Xu (Coin Toss) sample ---');
+const sampleCoins = [7, 8, 9, 7, 8, 6];
+const coinCast = I.castCoins(sampleCoins);
+check(coinCast.primary >= 1 && coinCast.primary <= 64, 'castCoins primary ngoài 1-64');
+check(coinCast.mutual >= 1 && coinCast.mutual <= 64, 'castCoins mutual ngoài 1-64');
+check(coinCast.changed >= 1 && coinCast.changed <= 64, 'castCoins changed ngoài 1-64');
+check(coinCast.movingLines.length === 2, 'movingLines length should be 2');
+console.log('coin cast primary:', coinCast.primary, 'moving:', coinCast.movingLines);
+
+console.log('--- Ứng kỳ & Mùa sinh vượng ---');
+const forecast = I.timingForecast(coinCast, 9);
+check(!!forecast.theSeason && !!forecast.dungSeason, 'thiếu theSeason hoặc dungSeason');
+check(typeof forecast.timeNote === 'string' && forecast.timeNote.length > 0, 'thiếu timeNote');
+console.log('forecast:', forecast.timeNote);
+
+console.log('--- Kiểm tra chính tả dữ liệu (Không còn chữ Hão) ---');
+let haoTypoCount = 0;
+for (let n = 1; n <= 64; n++) {
+  const meta = I.hexagrams[n];
+  if (meta && meta.lineTexts) {
+    for (const t of meta.lineTexts) {
+      if (t.includes('Hão')) haoTypoCount++;
+    }
+  }
+}
+check(haoTypoCount === 0, `Còn ${haoTypoCount} chữ Hão trong lineTexts`);
+console.log('haoTypoCount:', haoTypoCount);
+
 console.log(fails ? `\n${fails} FAILED` : '\nALL CHECKS PASSED');
 process.exit(fails ? 1 : 0);

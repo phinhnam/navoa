@@ -13,7 +13,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang ở giai đoạn cần chủ động. Đừng chờ hoàn hảo; hãy bắt đầu và chỉnh dần. Thành công đến khi bạn giữ được sự khiêm nhường sau khi đã thắng — vì đó là lúc dễ mất nhất.',
     advice: ['Bắt đầu việc bạn đã trì hoãn, nhưng đặt ra một điểm dừng để kiểm tra.', 'Giữ sức: tốc độ bền quan trọng hơn bùng nổ.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   2: {
@@ -25,7 +25,7 @@ window.ICHING.hexagrams = {
     life: 'Câu trả lời hiện tại không phải là tiến công, mà là chuẩn bị và nuôi dưỡng. Hãy tìm người dẫn đường đáng tin để học, đồng thời giữ vững nhịp của mình. Sự nhẫn nại sẽ thành kết quả.',
     advice: ['Làm tốt việc nền tảng thay vì tìm sự công nhận.', 'Thuận theo không có nghĩa là bỏ mất chính kiến.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   3: {
@@ -37,7 +37,7 @@ window.ICHING.hexagrams = {
     life: 'Dự án của bạn đang ở giai đoạn khó nhất: từ số 0 đến số 1. Đừng mong mọi thứ rõ ràng ngay. Hãy chia nhỏ, tìm người đồng hành và bảo vệ năng lượng của mình khỏi sự vội vàng.',
     advice: ['Không nhận việc mới cho đến khi việc đang làm có nhịp.', 'Nhờ giúp đỡ sớm — đây là lúc cần nhất.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   4: {
@@ -49,7 +49,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang học một điều mới, hoặc đang dạy ai đó. Hãy khiêm nhường và đặt câu hỏi cụ thể. Nếu bạn là người dạy, hãy kiên nhẫn; nếu là người học, hãy chọn một người thầy thay vì nhiều lời khuyên.',
     advice: ['Tìm một người thầy/mentor thay vì thu thập mười ý kiến.', 'Ghi lại điều mình chưa hiểu — đó là bản đồ học tập.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   5: {
@@ -61,7 +61,7 @@ window.ICHING.hexagrams = {
     life: 'Có thể bạn đang sốt ruột vì kết quả chưa tới. Hãy kiểm tra: bạn đang chờ, hay đang trốn việc? Nếu đã chuẩn bị, hãy cho thời gian làm việc của nó. Đừng ký kết hay lao vào khi tín hiệu chưa rõ.',
     advice: ['Đặt mốc kiểm tra thay vì chờ vô định.', 'Dùng thời gian chờ để nuôi sức, không phải để lo.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   6: {
@@ -73,7 +73,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn có thể đang trong một tranh chấp. Hãy hỏi: mục tiêu là thắng, hay là giải quyết? Tìm trung gian, đặt điều kiện rõ ràng, và biết điểm dừng. Đừng dồn đối phương vào đường cùng.',
     advice: ['Viết ra điều bạn thực sự cần, không phải điều bạn muốn chứng minh.', 'Thỏa hiệp sớm thường rẻ hơn thắng muộn.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   7: {
@@ -85,7 +85,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang ở vị trí cần tổ chức: một dự án, một nhóm, một cuộc chiến cá nhân. Hãy đặt luật chơi trước khi bắt đầu, chọn đúng người và giữ công bằng. Nếu bạn là lính, hãy rõ vai trò của mình.',
     advice: ['Viết ra 3 nguyên tắc vận hành trước khi mời người tham gia.', 'Kỷ luật phải áp dụng cho cả người dẫn đầu.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   8: {
@@ -97,7 +97,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang cần đồng minh, hoặc đang củng cố một nhóm. Hãy chủ động kết nối trước khi cần, và chọn người có giá trị tương đồng thay vì người dễ dãi. Đừng chờ đến khi khó mới tìm bạn.',
     advice: ['Liên hệ lại với một người bạn cũ hôm nay.', 'Đặt câu hỏi về giá trị trước khi bàn về lợi ích.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   9: {
@@ -109,7 +109,7 @@ window.ICHING.hexagrams = {
     life: 'Đây là giai đoạn gom. Hãy kiên nhẫn với những việc lặp lại và đừng so sánh với người đã đi trước. Một thay đổi nhỏ duy trì mỗi ngày sẽ tạo ra bước ngoặt mà bạn không ngờ.',
     advice: ['Chọn một thói quen nhỏ và giữ nó 30 ngày.', 'Đừng vay mượn để làm việc vượt sức.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   10: {
@@ -121,7 +121,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy cẩn thận với lời nói và thứ tự ưu tiên. Đừng vượt cấp, đừng coi nhẹ nghi thức. Sự khiêm tốn và chuẩn mực sẽ bảo vệ bạn trong giai đoạn này.',
     advice: ['Kiểm tra lại hợp đồng/cam kết trước khi bước tiếp.', 'Giữ đúng vai trò, đừng vượt mặt người khác.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   11: {
@@ -133,7 +133,7 @@ window.ICHING.hexagrams = {
     life: 'Cửa đang mở. Hãy đẩy mạnh việc quan trọng, gặp người bạn cần gặp, ký kết điều bạn muốn ký. Đồng thời chuẩn bị cho lúc thuận lợi qua đi: đừng tiêu hết vốn, đừng quên người đã giúp.',
     advice: ['Làm việc lớn trong tuần này khi thế đang thuận.', 'Giữ một phần nguồn lực cho giai đoạn sau.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   12: {
@@ -145,7 +145,7 @@ window.ICHING.hexagrams = {
     life: 'Có thể bạn đang gặp bế tắc trong công việc hoặc một mối quan hệ. Đừng cố thuyết phục người không muốn nghe, đừng mở rộng khi nền đang nứt. Thu nhỏ, giữ sức, và chờ chu kỳ đổi.',
     advice: ['Không ra quyết định lớn khi mọi tín hiệu đều nghẽn.', 'Giữ liên lạc với những người thật sự hiểu bạn.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   13: {
@@ -157,7 +157,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy tìm người cùng chí hướng thay vì người cùng tiện lợi. Nói rõ mục tiêu chung, chia việc công bằng, và tránh bè phái. Nếu bạn đang lãnh đạo, sự minh bạch sẽ giữ người ở lại.',
     advice: ['Viết ra mục tiêu chung bằng một câu duy nhất.', 'Loại bỏ thông tin "chỉ trong nhóm này" khỏi cách làm việc.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   14: {
@@ -169,7 +169,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang có nhiều hơn mức cần. Hãy chia sẻ, đầu tư vào người và vào năng lực, đừng chỉ tích trữ. Đây cũng là lúc dễ kiêu — giữ sự biết ơn sẽ giữ được thế.',
     advice: ['Dùng 10% nguồn lực để giúp một người đang cần.', 'Ghi lại 3 điều bạn đang có mà trước đây bạn từng ao ước.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   15: {
@@ -181,7 +181,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy nói ít hơn về thành tích và làm nhiều hơn. Nếu bạn đang ở vị trí cao, hãy hạ mình xuống để nghe. Nếu bạn đang thấp, đừng tự ti — sự khiêm nhường đúng nghĩa là biết mình đang ở đâu và tiếp tục đi.',
     advice: ['Để người khác kể về thành tích của bạn.', 'Học một điều từ người bạn từng coi nhẹ.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   16: {
@@ -193,7 +193,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang có đà và cảm hứng. Hãy dùng nó để bắt đầu dự án hoặc gắn kết nhóm. Đồng thời đặt ra kỷ luật nhỏ để giữ đà khi cảm hứng qua. Đừng hứa quá nhiều trong lúc phấn khích.',
     advice: ['Cam kết bằng lịch, không bằng cảm xúc.', 'Truyền cảm hứng cho người khác bằng việc làm gương.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   17: {
@@ -205,7 +205,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy linh hoạt với cách làm, nhưng giữ nguyên giá trị. Có thể bạn cần học từ một người giỏi hơn, hoặc thay đổi cách tiếp cận. Đừng bám vào hình thức cũ chỉ vì đã quen.',
     advice: ['Chọn người để học, không chọn đám đông để thuộc về.', 'Đổi phương pháp, giữ mục tiêu.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   18: {
@@ -217,7 +217,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang phải xử lý hậu quả của điều bị trì hoãn quá lâu. Hãy dừng lại, tìm gốc rễ và sửa một lần cho xong. Nói ra trách nhiệm của mình — kể cả phần bạn không gây ra — sẽ mở đường.',
     advice: ['Chọn một vấn đề đang nhức nhối và tìm nguyên nhân gốc.', 'Đừng sửa nếu chưa hiểu vì sao nó hỏng.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   19: {
@@ -229,7 +229,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy chủ động tiếp cận: công việc, người bạn quan tâm, cơ hội đang tới. Đừng chờ. Nhưng cũng đừng ỷ vào đà — đặt nền tảng trong lúc mọi thứ dễ dàng.',
     advice: ['Gửi lời mời/đề nghị bạn đã chuẩn bị từ lâu.', 'Lập kế hoạch cho giai đoạn chậm lại.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   20: {
@@ -241,7 +241,7 @@ window.ICHING.hexagrams = {
     life: 'Đây là lúc nhìn lại thay vì hành động. Quan sát phản ứng của bạn, của người khác, của hệ thống. Nếu bạn đang dẫn dắt, hãy nhớ rằng người ta học từ cách bạn sống, không phải điều bạn nói.',
     advice: ['Dành 15 phút mỗi ngày để nhìn lại mà không phán xét.', 'Kiểm tra xem hành vi của bạn có khớp với lời bạn nói.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   21: {
@@ -253,7 +253,7 @@ window.ICHING.hexagrams = {
     life: 'Có một vấn đề cần được nói thẳng và giải quyết. Hãy thu thập sự thật trước, rồi xử lý một lần, không trả đũa. Nếu bạn đang mắc kẹt trong một cuộc đàm phán, hãy đưa ra tiêu chí chung.',
     advice: ['Giải quyết vấn đề nhỏ trước khi nó thành án.', 'Nói rõ hậu quả, nhưng giữ sự công bằng.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   22: {
@@ -265,7 +265,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang cần trình bày tốt hơn: hồ sơ, ngoại hình, không gian, cách nói. Hãy làm đẹp có chủ đích và giữ sự thật phía sau. Nếu bạn đang bị đánh giá qua vẻ ngoài, hãy nhớ hình thức chỉ mở cửa, không giữ người ở lại.',
     advice: ['Chỉnh trang một thứ nhỏ nhưng hằng ngày bạn dùng.', 'Đừng để hình thức đẹp che đi nội dung chưa xong.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   23: {
@@ -277,7 +277,7 @@ window.ICHING.hexagrams = {
     life: 'Có thể bạn đang chứng kiến một điều đổ vỡ: quan hệ, dự án, thói quen. Đừng chống lại sự rơi một cách tuyệt vọng. Hãy xác định điều gì đáng giữ, bảo vệ nó, và để phần còn lại đi.',
     advice: ['Không mở rộng, không đầu tư lớn trong giai đoạn này.', 'Giữ một ít nguồn lực và một ít người thật sự tin cậy.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   24: {
@@ -289,7 +289,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn có thể đang muốn quay lại một điều đã bỏ: một kỹ năng, một mối quan hệ, một thói quen tốt. Hãy bắt đầu nhỏ, đừng phô trương, và kiên nhẫn với nhịp chậm. Đây là khởi đầu thật, không phải sự lặp lại của thất bại cũ.',
     advice: ['Quay lại một thói quen tốt với liều lượng nhỏ hơn lần trước.', 'Đừng công bố sớm — để nó lớn trong im lặng.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   25: {
@@ -301,7 +301,7 @@ window.ICHING.hexagrams = {
     life: 'Đừng tính toán quá nhiều. Làm điều đúng vì nó đúng, không vì phần thưởng. Nếu có chuyện bất ngờ xảy ra, hãy xử lý bình tĩnh thay vì tìm người đổ lỗi.',
     advice: ['Làm việc tốt mà không cần ai biết.', 'Kiểm tra xem bạn đang theo đuổi kết quả hay đang theo đuổi sự thật.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   26: {
@@ -313,7 +313,7 @@ window.ICHING.hexagrams = {
     life: 'Đây là lúc đầu tư vào năng lực thay vì chạy theo cơ hội. Học một kỹ năng sâu, xây vốn, giữ sức. Khi thời đến, bạn sẽ đi nhanh hơn người khác vì đã tích đủ.',
     advice: ['Chọn một kỹ năng và học nó đến mức khó ai thay thế.', 'Giữ một khoản dự phòng cho cơ hội lớn.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   27: {
@@ -325,7 +325,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy kiểm tra nguồn nuôi dưỡng của mình. Bớt tiêu thụ thông tin độc hại, chọn thức ăn và người đồng hành kỹ hơn. Nếu bạn đang chăm sóc ai, hãy nuôi họ bằng sự tôn trọng, không chỉ bằng lo lắng.',
     advice: ['Rà lại 3 nguồn thông tin bạn tiêu thụ mỗi ngày.', 'Nói một lời nuôi dưỡng với người bạn thương.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   28: {
@@ -337,7 +337,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang ôm quá nhiều, hoặc đang ở tình thế cần một quyết định táo bạo. Hãy phân biệt: việc nào thật sự cần bạn, việc nào chỉ cần ai đó. Giảm tải là hành động khôn ngoan, không phải thất bại.',
     advice: ['Bỏ một việc không còn đúng với mục tiêu.', 'Nếu phải làm khác số đông, hãy chuẩn bị lý do rõ ràng.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   29: {
@@ -349,7 +349,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang ở giai đoạn khó, có thể liên tiếp. Đừng cố nhảy qua vực; hãy học cách đi trong đó: giữ nhịp, giữ người tin cậy, giữ kỹ năng. Nước luôn tìm được đường ra — bạn cũng vậy, nếu không đứng yên.',
     advice: ['Chia khó khăn thành từng đoạn ngắn và xử lý từng đoạn.', 'Không ra quyết định lớn khi đang hoảng.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   30: {
@@ -361,7 +361,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang ở thời của sự rõ ràng: học hỏi, trình bày, nhìn thấu. Hãy chọn điều đáng bám vào và nuôi nó bằng kỷ luật. Đừng bám vào người, danh vọng hay cảm xúc nhất thời.',
     advice: ['Đặt câu hỏi: điều này có còn đúng với mình sau 3 năm?', 'Nuôi sự sáng bằng việc học, không bằng việc khoe.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   31: {
@@ -373,7 +373,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang có duyên với ai đó hoặc với một cơ hội. Hãy để sự kết nối diễn ra tự nhiên, nhưng đừng nhầm cảm hứng với cam kết. Nói ra điều mình cảm thấy, và quan sát xem người kia có đáp lại bằng hành động không.',
     advice: ['Bày tỏ một cách đơn giản, không dàn dựng.', 'Đánh giá bằng hành vi lặp lại, không bằng lời hứa.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   32: {
@@ -385,7 +385,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy chọn ít điều và giữ chúng đủ lâu. Cam kết hiện tại của bạn có thể đang lung lay vì thiếu kết quả nhanh; hãy kiểm tra xem bạn đã đủ thời gian chưa. Bền không có nghĩa là cố chấp — là kiên định với điều còn đúng.',
     advice: ['Giữ một thói quen đều 21 ngày trước khi đánh giá.', 'Đừng đổi chiến lược chỉ vì sốt ruột.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   33: {
@@ -397,7 +397,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy xem xét: có nơi nào bạn đang cố ở lại chỉ vì sĩ diện? Có cuộc tranh luận nào không đáng? Rút lui có kế hoạch — giữ quan hệ, giữ bài — sẽ tốt hơn cố thắng trong thế yếu.',
     advice: ['Lùi khỏi một cuộc tranh cãi không mang lại gì.', 'Chuẩn bị đường quay lại trước khi rút.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   34: {
@@ -409,7 +409,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang có đà. Hãy dùng nó cho việc đã định, đừng lan sang việc chỉ để chứng minh. Kiểm tra xem bạn đang tiến vì mục tiêu hay vì không muốn dừng. Sức mạnh cần một cái phanh.',
     advice: ['Đặt giới hạn trước khi bắt đầu dùng sức.', 'Hỏi: việc này có cần thiết, hay chỉ để thắng?'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   35: {
@@ -421,7 +421,7 @@ window.ICHING.hexagrams = {
     life: 'Đây là lúc để tiến: nộp đơn, xin thăng tiến, ra mắt, mở rộng. Hãy để công việc nói thay bạn, và giữ sự tử tế với người đã giúp. Thành công đến nhanh cũng dễ làm người ta đổi tính.',
     advice: ['Nắm cơ hội đang mở trong 2–4 tuần tới.', 'Cảm ơn cụ thể người đã nâng đỡ bạn.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   36: {
@@ -433,7 +433,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn có thể đang ở trong môi trường không nhìn nhận mình, hoặc bị hiểu sai. Đừng cố chứng minh bằng mọi giá. Giữ phẩm giá, ghi chép, tìm đồng minh kín đáo, và chờ thời. Ánh sáng không mất, chỉ đang bị che.',
     advice: ['Không tranh cãi với người không muốn hiểu.', 'Ghi lại sự thật và giữ bằng chứng.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   37: {
@@ -445,7 +445,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy nhìn lại cách bạn vận hành tổ ấm hoặc nhóm của mình: ai làm gì, ai được lắng nghe, luật có rõ không? Sửa những điều nhỏ trong nhà sẽ tạo nền cho việc lớn bên ngoài.',
     advice: ['Nói rõ vai trò và kỳ vọng với người sống/làm cùng.', 'Giữ lời hứa nhỏ trong nhà trước.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   38: {
@@ -457,7 +457,7 @@ window.ICHING.hexagrams = {
     life: 'Có thể bạn đang bất đồng với ai đó quan trọng. Đừng cố chứng minh ai đúng. Hãy tìm một mục tiêu chung nhỏ, làm cùng nhau, rồi mở rộng. Với việc lớn, hãy tạm hoãn nếu chưa đủ đồng thuận.',
     advice: ['Tìm một việc nhỏ cả hai cùng muốn làm.', 'Chấp nhận khác biệt ở những điểm không cốt lõi.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   39: {
@@ -469,7 +469,7 @@ window.ICHING.hexagrams = {
     life: 'Nếu mọi hướng đều bị chặn, hãy dừng tiến. Xem lại kỹ năng, nguồn lực, người đồng hành. Nhờ giúp đỡ không phải là yếu; nó là cách thông minh để vượt vật cản.',
     advice: ['Dừng dự án đang bế tắc và rà lại giả định.', 'Nhờ một người giỏi hơn bạn ở đúng điểm yếu.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   40: {
@@ -481,7 +481,7 @@ window.ICHING.hexagrams = {
     life: 'Một vấn đề đang được tháo gỡ. Hãy hoàn tất phần còn lại nhanh và gọn, rồi nghỉ. Đừng mở thêm mặt trận mới ngay lập tức. Nếu có ai từng làm bạn đau, đây là lúc tha để nhẹ mình.',
     advice: ['Kết thúc dứt điểm việc đang dở.', 'Tha một lỗi cũ — cho mình hoặc cho người khác.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   41: {
@@ -493,7 +493,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy bỏ một thứ đang chiếm chỗ mà không còn giá trị: một cam kết, một món đồ, một mối quan hệ độc hại. Sự nhẹ đi sẽ tạo không gian cho điều mới. Đừng giảm một cách cay đắng; hãy giảm một cách có chủ đích.',
     advice: ['Bỏ một việc mỗi tuần khỏi lịch.', 'Cho đi một thứ bạn đang giữ vì sợ thiếu.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   42: {
@@ -505,7 +505,7 @@ window.ICHING.hexagrams = {
     life: 'Đây là lúc nên mở rộng, đầu tư, hợp tác. Hãy chọn việc tạo giá trị kép: tốt cho bạn và tốt cho người. Nếu bạn đang được giúp, hãy nhận và dùng đúng; nếu đang giúp, hãy giúp có hệ thống.',
     advice: ['Đầu tư vào thứ sinh lợi lâu dài cho cả tập thể.', 'Nhận sự giúp đỡ mà không thấy mắc nợ.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   43: {
@@ -517,7 +517,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang cần một quyết định dứt điểm. Hãy nói thẳng, nói một lần, có bằng chứng và có đường lui cho cả hai phía. Đừng âm thầm loại bỏ ai — điều đó sẽ quay lại.',
     advice: ['Nói rõ điều cần chấm dứt và lý do, không chỉ cảm xúc.', 'Không thêm đòn khi đối phương đã yếu.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   44: {
@@ -529,7 +529,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang gặp một điều hấp dẫn. Hãy tận hưởng nhưng giữ tỉnh táo: đọc kỹ, hỏi kỹ, đừng vội cam kết. Nếu đây là một mối quan hệ, hãy xem hành vi lặp lại chứ không chỉ sức hút ban đầu.',
     advice: ['Chưa ký, chưa cam kết trong lần gặp đầu.', 'Kiểm tra động cơ của người đang rất quyến rũ.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   45: {
@@ -541,7 +541,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang ở thời điểm quy tụ người hoặc nguồn lực. Hãy chuẩn bị chỗ ngồi, luật chơi và mục đích rõ ràng. Một buổi họp tốt có thể tạo ra bước ngoặt; một buổi họp mơ hồ thì chỉ tốn thời gian.',
     advice: ['Chuẩn bị mục đích và agenda trước khi mời người.', 'Đặt ra một nghi thức nhỏ để giữ kết nối.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   46: {
@@ -553,7 +553,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang trên đà đi lên. Hãy tiếp tục từng bước, đừng tìm đường tắt. Nếu bạn muốn một vị trí mới, hãy làm tốt việc hiện tại và học điều cần cho vị trí đó. Sự thăng tiến thật không cần phô trương.',
     advice: ['Mỗi ngày làm một việc nhỏ đúng hướng thăng tiến.', 'Học kỹ năng của cấp trên bạn một bậc.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   47: {
@@ -565,7 +565,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang thiếu một nguồn lực quan trọng. Hãy cắt mọi thứ không cần, giữ tối thiểu, và đừng cố giải thích với người không nghe. Hành động nhỏ, đều, thật sẽ mở đường tốt hơn lời nói đẹp.',
     advice: ['Cắt chi tiêu và cam kết xuống mức tối thiểu.', 'Giữ một việc nhỏ làm đều mỗi ngày để không mất niềm tin.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   48: {
@@ -577,7 +577,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy nhìn lại nguồn lực của mình: điều gì bạn có mà người khác cần? Đừng giữ nó trong im lặng. Chia sẻ có hệ thống sẽ làm nó lớn hơn, không cạn đi. Nếu bạn đang thiếu, hãy tìm đúng giếng thay vì đào nhiều hố.',
     advice: ['Đóng gói một kỹ năng của bạn thành thứ người khác dùng được.', 'Sửa "giếng" cũ thay vì mở cái mới.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   49: {
@@ -589,7 +589,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang đứng trước một thay đổi lớn. Hãy kiểm tra: bạn đổi vì điều cũ đã hết đúng, hay vì bạn sốt ruột? Nếu đúng thời, hãy làm dứt khoát và giải thích rõ. Nếu chưa, hãy chuẩn bị thêm.',
     advice: ['Viết ra 3 lý do thay đổi và 3 rủi ro.', 'Thay đổi một lần, không nửa vời.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   50: {
@@ -601,7 +601,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang ở vị trí có thể nâng đỡ người khác hoặc chuyển hóa một điều thô thành giá trị. Hãy đầu tư vào con người, vào chất lượng, vào cái nền. Đừng vội hưởng thành quả khi nồi chưa chín.',
     advice: ['Chọn một người để đầu tư phát triển nghiêm túc.', 'Nâng chất lượng một sản phẩm thay vì làm thêm cái mới.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   51: {
@@ -613,7 +613,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn có thể vừa trải qua hoặc sắp gặp một biến cố. Hãy hít thở, xử lý việc trước mắt, đừng ra quyết định lớn trong lúc hoảng. Sau cơn chấn động, hãy ghi lại bài học — đó là món quà thật.',
     advice: ['Không quyết định gì lớn trong 24 giờ đầu.', 'Viết ra điều cú sốc này đang dạy bạn.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   52: {
@@ -625,7 +625,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang cần dừng một việc: tranh luận, dự án, suy nghĩ vòng lặp. Hãy đặt một giới hạn rõ ràng và tôn trọng nó. Sự tĩnh lặng sẽ cho bạn thấy điều mà chuyển động che mất.',
     advice: ['Chọn một việc để dừng hẳn trong tuần này.', 'Dành 20 phút không làm gì, không màn hình.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   53: {
@@ -637,7 +637,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy từ bỏ ý nghĩ cần kết quả ngay. Chọn một hướng, đi mỗi ngày một ít, và tin vào tích lũy. Trong tình cảm, đừng ép tốc độ; trong công việc, đừng nhảy bước.',
     advice: ['Chia mục tiêu năm thành 12 bước tháng.', 'Đánh giá tiến bộ theo quý, không theo ngày.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   54: {
@@ -649,7 +649,7 @@ window.ICHING.hexagrams = {
     life: 'Có thể bạn đang bị cuốn vào một mối quan hệ hoặc cơ hội chưa đúng vị trí. Hãy hỏi: mình đang ở vai gì, người kia ở vai gì, và điều gì sẽ xảy ra sau 6 tháng? Đừng đánh đổi phẩm giá để được thuộc về.',
     advice: ['Làm rõ vai trò trước khi cam kết.', 'Không vội ký kết khi còn điểm mơ hồ.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   55: {
@@ -661,7 +661,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang ở thời điểm sung mãn. Hãy dồn lực cho việc quan trọng nhất, ghi lại thành quả, và chuẩn bị cho giai đoạn chậm hơn. Đừng mở quá nhiều mặt trận chỉ vì đang có đà.',
     advice: ['Chọn một mục tiêu lớn và dồn 80% lực vào đó.', 'Lưu lại bằng chứng thành quả để dùng về sau.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   56: {
@@ -673,7 +673,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang ở giai đoạn chuyển tiếp. Hãy quan sát luật chơi trước khi lên tiếng, giữ mối quan hệ tốt, và đừng đặt cược dài hạn khi chưa hiểu vùng đất. Đây là lúc học, không phải lúc chiếm.',
     advice: ['Học luật của môi trường mới trước khi thay đổi nó.', 'Giữ hành lý nhẹ: cam kết vừa phải trong 3 tháng tới.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   57: {
@@ -685,7 +685,7 @@ window.ICHING.hexagrams = {
     life: 'Đừng dùng lực, hãy dùng sự kiên trì. Nếu bạn muốn thay đổi một người hoặc một hệ thống, hãy tác động từng chút, lặp lại, và giữ thông điệp nhất quán. Mềm không phải yếu; mềm là cách đi xa.',
     advice: ['Chọn một thông điệp và lặp lại nó đều đặn.', 'Thay đổi bằng ví dụ nhỏ, không bằng áp lực lớn.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   58: {
@@ -697,7 +697,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy tận dụng thời gian này để kết nối, học cùng người khác, nói ra điều tích cực. Nhưng đừng hứa những gì bạn không muốn làm chỉ để giữ không khí vui. Niềm vui bền cần sự thật.',
     advice: ['Nói một lời chân thành với người bạn trân trọng.', 'Không đồng ý chỉ để giữ hòa khí.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   59: {
@@ -709,7 +709,7 @@ window.ICHING.hexagrams = {
     life: 'Có thể một mối quan hệ hoặc một tập thể đang lỏng ra. Hãy xác định điều cốt lõi cần giữ và tạo một nghi thức, một mục tiêu chung để kết nối lại. Nếu là cảm xúc tiêu cực, hãy để nó tan thay vì giữ.',
     advice: ['Củng cố một giá trị chung bằng hành động cụ thể.', 'Buông một oán giận đã giữ quá lâu.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   60: {
@@ -721,7 +721,7 @@ window.ICHING.hexagrams = {
     life: 'Hãy đặt ra giới hạn rõ ràng cho một lĩnh vực đang mất kiểm soát: chi tiêu, mạng xã hội, công việc. Chọn mức bạn có thể giữ lâu dài, không phải mức lý tưởng. Kỷ luật nhẹ mà bền tốt hơn khắc nghiệt mà gãy.',
     advice: ['Đặt một giới hạn bạn chắc chắn giữ được trong 30 ngày.', 'Rà lại xem giới hạn nào đang quá chặt.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   61: {
@@ -733,7 +733,7 @@ window.ICHING.hexagrams = {
     life: 'Đây là lúc nói thật và giữ lời. Nếu bạn cần thuyết phục ai, hãy bắt đầu bằng việc làm đúng điều nhỏ nhất bạn đã hứa. Sự chân thành của bạn có thể cảm hóa được người khó tính nhất.',
     advice: ['Giữ một lời hứa nhỏ bạn đã quên.', 'Nói điều bạn thật sự nghĩ, một cách tử tế.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   62: {
@@ -745,7 +745,7 @@ window.ICHING.hexagrams = {
     life: 'Đừng cố làm điều vĩ đại ngay. Hãy làm tốt những việc nhỏ hơn mức bình thường: kiểm tra lại, xin lỗi sớm, viết rõ hơn. Trong giai đoạn này, sự tỉ mỉ tạo ra khác biệt lớn hơn tham vọng.',
     advice: ['Kiểm tra lại một việc bạn định gửi đi.', 'Làm một việc nhỏ tốt hơn mức cần thiết.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   63: {
@@ -757,7 +757,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đã đạt được điều gì đó. Hãy dành thời gian củng cố thay vì lập tức lao sang việc mới. Kiểm tra các điểm dễ vỡ, ghi lại quy trình, và nghỉ ngơi. Đừng để sự chủ quan làm hỏng điều vừa xây.',
     advice: ['Dành một buổi để rà soát điều vừa hoàn thành.', 'Đặt lịch bảo trì cho thành quả của bạn.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   },
   64: {
@@ -769,7 +769,7 @@ window.ICHING.hexagrams = {
     life: 'Bạn đang gần đích. Hãy chậm lại ở khúc cuối: kiểm tra kỹ, giữ lời, đừng đổi hướng. Thành công đang ở rất gần, và chính sự sốt ruột có thể làm nó vuột mất.',
     advice: ['Rà lại bước cuối cùng chậm hơn bình thường.', 'Không thay đổi kế hoạch khi chỉ còn một đoạn.'],
 
-    lineTexts: ["Hão 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hão 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hão 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hão 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hão 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hão 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
+    lineTexts: ["Hào 1: Bước đầu, cơ bản, chưa rõ định hướng — quan sát trước khi hành động.","Hào 2: Hỗ trợ, ổn định, đi theo đám đông đúng lúc — giữ vững vị trí của mình.","Hào 3: Gặp khó khăn, biến động, cần thận trọng — đây là dòng nóng, dễ mắc kẹt.","Hào 4: Vị trí trung gian, kết nối, kiểm tra kỹ trước khi hành động.","Hào 5: Vị trí lãnh đạo, quyết định có trách nhiệm, trọng lượng lớn.","Hào 6: Kết thúc chu kỳ, rút lui, bảo toàn thành quả — đừng tham lam quá giới hạn."],
     source: 'kdl'
   }
 };

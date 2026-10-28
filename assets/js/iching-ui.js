@@ -67,18 +67,23 @@
   function copyCast(cast, info, question) {
     var meta = H[cast.primary] || {};
     var changedMeta = cast.changed ? (H[cast.changed] || {}) : null;
+    var timing = I.timingForecast ? I.timingForecast(cast, info.lunar.month) : null;
+    var movingList = cast.isCoinCast ? (cast.movingLines || []) : (cast.moving ? [cast.moving] : []);
+    var movingStr = movingList.length ? 'Hào ' + movingList.join(', ') : 'Quẻ tĩnh (không hào động)';
+
     var lines = [
-      '✦ THIÊN SỐ — MAI HOA DỊCH SỐ ✦',
+      '✦ THIÊN SỐ — ' + (cast.isCoinCast ? 'CHU DỊCH LỤC HÀO' : 'MAI HOA DỊCH SỐ') + ' ✦',
       (question ? 'Hỏi việc: ' + question : 'Xem thời vận'),
       'Thời điểm: ' + info.solarText + ' · Âm lịch: ' + info.lunarText,
       'Can Chi: Năm ' + info.yearCanChi + ' · Ngày ' + info.dayCanChi + ' · Giờ ' + info.hourCanChi,
       '--------------------------------',
       '• Quẻ Chủ: Quẻ ' + cast.primary + ' — ' + (meta.name || '') + ' (' + (TONES[meta.tone] || '') + ')',
-      '• Hào động: Hào ' + cast.moving + ' (' + (MOVING_POSITION[cast.moving] || '') + ')',
+      '• Hào động: ' + movingStr,
       '• Tương quan: ' + cast.relation.label + ' (Thể ' + cast.the.name + ' - Dụng ' + cast.dung.name + ')',
       '• Lời thoán: ' + (meta.judgement || ''),
       (cast.mutual ? '• Quẻ Hỗ: Quẻ ' + cast.mutual + ' — ' + ((H[cast.mutual] || {}).name || '') : ''),
       (cast.changed && changedMeta ? '• Quẻ Biến: Quẻ ' + cast.changed + ' — ' + (changedMeta.name || '') + ' (' + (TONES[changedMeta.tone] || '') + ')' : ''),
+      (timing ? '• Ứng kỳ: ' + timing.timeNote : ''),
       '--------------------------------',
       'Gieo tại Thiên Số: ' + location.href.split('?')[0].split('#')[0] + '#kinh-dich'
     ].filter(Boolean).join('\n');
@@ -130,10 +135,11 @@
   }
 
   function linesHTML(lines, moving, size) {
+    var movingList = Array.isArray(moving) ? moving : (moving ? [moving] : []);
     var out = '';
     for (var i = lines.length - 1; i >= 0; i--) {
       var yang = lines[i] === 1;
-      var isMoving = moving === i + 1;
+      var isMoving = movingList.indexOf(i + 1) !== -1;
       out += '<span class="hex-line ' + (yang ? 'is-yang' : 'is-yin') +
         (isMoving ? ' is-moving' : '') + (size === 'sm' ? ' is-sm' : '') + '">' +
         (yang ? '<i></i>' : '<i></i><i></i>') +
@@ -166,6 +172,17 @@
     var meta = H[no] || {};
     var tone = meta.tone || 'mixed';
     var changedMeta = cast.changed ? (H[cast.changed] || {}) : null;
+    var timing = I.timingForecast ? I.timingForecast(cast, info.lunar.month) : null;
+    var movingList = cast.isCoinCast ? (cast.movingLines || []) : (cast.moving ? [cast.moving] : []);
+
+    var movingCaption = '';
+    if (!movingList.length) {
+      movingCaption = 'Hào 1 ở dưới · Quẻ tĩnh (không có hào động)';
+    } else if (movingList.length === 1) {
+      movingCaption = 'Hào 1 ở dưới · hào động ' + movingList[0] + ' — ' + (MOVING_POSITION[movingList[0]] || '');
+    } else {
+      movingCaption = 'Hào 1 ở dưới · các hào động: ' + movingList.join(', ');
+    }
 
     var advice = (meta.advice || []).map(function (line) {
       return '<li>' + line + '</li>';
@@ -174,10 +191,10 @@
     var header = '<div class="cast-top">' +
       '<div class="cast-hex">' +
         '<div class="hex-lines is-main" role="img" aria-label="' +
-          esc('Sáu hào của quẻ ' + no + ', hào động thứ ' + cast.moving + ' tính từ dưới lên') + '">' +
-          linesHTML(cast.lines, cast.moving) +
+          esc('Sáu hào của quẻ ' + no + ', ' + movingCaption) + '">' +
+          linesHTML(cast.lines, movingList) +
         '</div>' +
-        '<span class="hex-caption">Hào 1 ở dưới · hào động ' + cast.moving + ' — ' + MOVING_POSITION[cast.moving] + '</span>' +
+        '<span class="hex-caption">' + movingCaption + '</span>' +
       '</div>' +
       '<div class="cast-main tone-' + tone + '">' +
         '<p class="eyebrow"><span class="eyebrow-dot"></span>Quẻ chủ · ' + no + '</p>' +
@@ -191,11 +208,66 @@
       '</div>' +
     '</div>';
 
+    var lineMeaningHTML = '';
+    if (meta.lineTexts && movingList.length > 0) {
+      var lineMeaningTexts = movingList.map(function (m) {
+        return '<p><b>Hào ' + m + ':</b> ' + esc(meta.lineTexts[m - 1] || '') + '</p>';
+      }).join('');
+      lineMeaningHTML = '<div class="line-meaning"><h4>Ý nghĩa hào động</h4>' + lineMeaningTexts + '</div>';
+    }
+
+    var forecastHTML = timing ? (
+      '<div class="cast-forecast">' +
+        '<div class="cast-forecast-head">' +
+          '<span class="cast-side-label">Ứng kỳ & Phương vị</span>' +
+          '<span class="forecast-badge">' + esc(timing.theSeason.season) + ' (Khí ' + esc(timing.theSeason.state) + ')</span>' +
+        '</div>' +
+        '<p class="forecast-note"><b>Dự báo thời điểm:</b> ' + esc(timing.timeNote) + '</p>' +
+        '<div class="forecast-cols">' +
+          '<div class="forecast-col">' +
+            '<b>Bản thân (Thể - ' + esc(cast.the.name) + ' / ' + esc(cast.the.element) + '):</b> Đang ở mùa ' + esc(timing.theSeason.season) + ' (' + esc(timing.theSeason.desc) + ') · Phương vị: <em>' + esc(timing.theDirection) + '</em>' +
+          '</div>' +
+          '<div class="forecast-col">' +
+            '<b>Sự việc (Dụng - ' + esc(cast.dung.name) + ' / ' + esc(cast.dung.element) + '):</b> Đang ở mùa ' + esc(timing.dungSeason.season) + ' (' + esc(timing.dungSeason.desc) + ') · Phương vị: <em>' + esc(timing.dungDirection) + '</em>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    ) : '';
+
+    var methodHTML = '';
+    if (cast.isCoinCast) {
+      methodHTML = '<details class="acc cast-method">' +
+        '<summary><span class="acc-title">Cách lập quẻ</span>' +
+          '<span class="acc-tag">3 Đồng xu cổ (Lục Hào)</span></summary>' +
+        '<div class="cast-method-body">' +
+          '<p>Thời điểm: ' + info.solarText + ' · Âm lịch: ' + info.lunarText + '</p>' +
+          '<p>Điểm 6 lần gieo (Hào 1 ➔ 6): ' + cast.coinThrows.join(' · ') + '</p>' +
+          '<p>Hào động: ' + (cast.movingLines && cast.movingLines.length ? cast.movingLines.join(', ') : 'Quẻ tĩnh (không có hào động)') + '</p>' +
+          '<p class="panel-sub">Quy ước Chu Dịch: 3 Sấp (6: Lão Âm ➔ Dương), 2 Sấp 1 Ngửa (7: Thiếu Dương), 1 Sấp 2 Ngửa (8: Thiếu Âm), 3 Ngửa (9: Lão Dương ➔ Âm).</p>' +
+        '</div>' +
+      '</details>';
+    } else {
+      methodHTML = '<details class="acc cast-method">' +
+        '<summary><span class="acc-title">Cách lập quẻ</span>' +
+          '<span class="acc-tag">Mai Hoa dịch số</span></summary>' +
+        '<div class="cast-method-body">' +
+          '<p>Dương lịch: ' + info.solarText + ' · Âm lịch: ' + info.lunarText + '</p>' +
+          '<p>Năm ' + info.yearCanChi + ' · Ngày ' + info.dayCanChi + ' · Giờ ' + info.hourCanChi + '</p>' +
+          '<p>Thượng quái: (' + cast.method.chiYear + ' + ' + cast.method.lunarMonth + ' + ' +
+            cast.method.lunarDay + ') mod 8 = ' + cast.upperNum + ' · ' + cast.upper.name + '</p>' +
+          '<p>Hạ quái: (' + cast.method.upperSum + ' + ' + cast.method.chiHour + ') mod 8 = ' +
+            cast.lowerNum + ' · ' + cast.lower.name + '</p>' +
+          '<p>Hào động: (' + cast.method.lowerSum + ') mod 6 = ' + cast.moving + '</p>' +
+          '<p class="panel-sub">Quy ước Tiên thiên: Càn 1, Đoài 2, Ly 3, Chấn 4, Tốn 5, Khảm 6, Cấn 7, Khôn 8. Mai Hoa dùng thời điểm làm tín hiệu, không phải lời phán tuyệt đối.</p>' +
+        '</div>' +
+      '</details>';
+    }
+
     var body = '<div class="cast-note">' +
       '<h4>Đại tượng</h4><p>' + esc(meta.image || '') + '</p>' +
       '</div>' +
-      '      <p class="cast-essence">' + esc(meta.essence || '') + '</p>' +
-      (meta.lineTexts && cast.moving ? '<div class="line-meaning"><h4>Ý nghĩa hào ' + cast.moving + '</h4><p>' + esc(meta.lineTexts[cast.moving - 1]) + '</p></div>' : '') +
+      '<p class="cast-essence">' + esc(meta.essence || '') + '</p>' +
+      lineMeaningHTML +
       (question ? '<p class="cast-question">Điều đang hỏi: <em>' + esc(question) + '</em></p>' : '') +
       (advice ? '<div class="cast-advice"><h4>Nên làm</h4><ul>' + advice + '</ul></div>' : '') +
       advanceHTML(cast) +
@@ -212,23 +284,11 @@
           (changedMeta && changedMeta.name
             ? '<p><b>' + esc(changedMeta.name) + '</b> · ' + TONES[changedMeta.tone] + '</p>' +
               '<p>' + esc(changedMeta.judgement || '') + '</p>'
-            : '<p>Không đổi quẻ.</p>') +
+            : '<p>Không đổi quẻ (quẻ tĩnh).</p>') +
         '</div>' +
       '</div>' +
-      '<details class="acc cast-method">' +
-        '<summary><span class="acc-title">Cách lập quẻ</span>' +
-          '<span class="acc-tag">Mai Hoa dịch số</span></summary>' +
-        '<div class="cast-method-body">' +
-          '<p>Dương lịch: ' + info.solarText + ' · Âm lịch: ' + info.lunarText + '</p>' +
-          '<p>Năm ' + info.yearCanChi + ' · Ngày ' + info.dayCanChi + ' · Giờ ' + info.hourCanChi + '</p>' +
-          '<p>Thượng quái: (' + cast.method.chiYear + ' + ' + cast.method.lunarMonth + ' + ' +
-            cast.method.lunarDay + ') mod 8 = ' + cast.upperNum + ' · ' + cast.upper.name + '</p>' +
-          '<p>Hạ quái: (' + cast.method.upperSum + ' + ' + cast.method.chiHour + ') mod 8 = ' +
-            cast.lowerNum + ' · ' + cast.lower.name + '</p>' +
-          '<p>Hào động: (' + cast.method.lowerSum + ') mod 6 = ' + cast.moving + '</p>' +
-          '<p class="panel-sub">Quy ước Tiên thiên: Càn 1, Đoài 2, Ly 3, Chấn 4, Tốn 5, Khảm 6, Cấn 7, Khôn 8. Mai Hoa dùng thời điểm làm tín hiệu, không phải lời phán tuyệt đối.</p>' +
-        '</div>' +
-      '</details>' +
+      forecastHTML +
+      methodHTML +
       '<div class="result-actions" style="margin-top: 1.1rem;">' +
         '<button class="btn btn-line btn-sm" type="button" id="cast-copy-btn">' +
           '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>' +
@@ -250,7 +310,8 @@
       });
     }
 
-    if (live) live.textContent = 'Đã gieo quẻ ' + cast.primary + ' · ' + (meta.name || '') + ' · hào động ' + cast.moving;
+    var movingSummary = movingList.length ? 'hào động ' + movingList.join(',') : 'quẻ tĩnh';
+    if (live) live.textContent = 'Đã gieo quẻ ' + cast.primary + ' · ' + (meta.name || '') + ' · ' + movingSummary;
     if (toast) {
       toast.textContent = 'Quẻ ' + cast.primary + ' — ' + (meta.name || '');
       toast.hidden = false;
@@ -355,6 +416,182 @@
       castNow(true);
     });
   }
+
+  /* ---------- 3 Coins Toss Interaction ---------- */
+  var tabTime = document.getElementById('tab-time');
+  var tabCoin = document.getElementById('tab-coin');
+  var coinPanel = document.getElementById('coin-panel');
+  var coinTossBtn = document.getElementById('coin-toss-btn');
+  var coinResetBtn = document.getElementById('coin-reset-btn');
+  var coinStepInfo = document.getElementById('coin-step-info');
+  var coinPreview = document.getElementById('coin-lines-preview');
+  var coinQuestion = document.getElementById('coin-question');
+  var coinEls = [
+    document.getElementById('coin-0'),
+    document.getElementById('coin-1'),
+    document.getElementById('coin-2')
+  ];
+
+  var coinThrows = [];
+  var COIN_META = {
+    6: { name: 'Lão Âm', label: 'Lão Âm (6)', yang: false, moving: true, sym: '⚏' },
+    7: { name: 'Thiếu Dương', label: 'Thiếu Dương (7)', yang: true, moving: false, sym: '⚊' },
+    8: { name: 'Thiếu Âm', label: 'Thiếu Âm (8)', yang: false, moving: false, sym: '⚋' },
+    9: { name: 'Lão Dương', label: 'Lão Dương (9)', yang: true, moving: true, sym: '⚌' }
+  };
+
+  function updateCoinPreview() {
+    if (!coinPreview) return;
+    var html = '';
+    for (var i = 5; i >= 0; i--) {
+      var val = coinThrows[i];
+      var lineNo = i + 1;
+      if (val !== undefined) {
+        var m = COIN_META[val];
+        var lineVis = m.yang
+          ? '<span class="hex-line is-yang' + (m.moving ? ' is-moving' : '') + '"><i></i></span>'
+          : '<span class="hex-line is-yin' + (m.moving ? ' is-moving' : '') + '"><i></i><i></i></span>';
+        html += '<div class="coin-line-row is-done' + (m.moving ? ' is-moving' : '') + '">' +
+          '<span class="coin-line-label">Hào ' + lineNo + '</span>' +
+          '<div class="coin-line-vis">' + lineVis + '</div>' +
+          '<span class="coin-line-desc">' + m.label + (m.moving ? ' <em>[Động]</em>' : '') + '</span>' +
+          '</div>';
+      } else {
+        html += '<div class="coin-line-row">' +
+          '<span class="coin-line-label">Hào ' + lineNo + '</span>' +
+          '<span class="coin-line-desc" style="opacity:0.4;">Chưa gieo</span>' +
+          '</div>';
+      }
+    }
+    coinPreview.innerHTML = html;
+  }
+
+  function resetCoins() {
+    coinThrows = [];
+    updateCoinPreview();
+    if (coinTossBtn) {
+      coinTossBtn.innerHTML = '<span>Tung đồng xu (Lần 1/6)</span>' +
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      coinTossBtn.disabled = false;
+    }
+    if (coinStepInfo) {
+      coinStepInfo.textContent = 'Nhấn "Tung đồng xu" để gieo Hào 1 (dưới cùng)';
+    }
+    coinEls.forEach(function (el) {
+      if (!el) return;
+      el.className = 'ancient-coin is-yang';
+      var ch = el.querySelector('.coin-char');
+      if (ch) ch.textContent = '陽';
+    });
+  }
+
+  function tossOnce() {
+    if (coinThrows.length >= 6) {
+      resetCoins();
+      return;
+    }
+
+    if (coinTossBtn) coinTossBtn.disabled = true;
+
+    coinEls.forEach(function (el) {
+      if (el) el.classList.add('is-tossing');
+    });
+
+    setTimeout(function () {
+      coinEls.forEach(function (el) {
+        if (el) el.classList.remove('is-tossing');
+      });
+
+      var c1 = Math.random() < 0.5 ? 2 : 3;
+      var c2 = Math.random() < 0.5 ? 2 : 3;
+      var c3 = Math.random() < 0.5 ? 2 : 3;
+      var sum = c1 + c2 + c3;
+      var vals = [c1, c2, c3];
+
+      vals.forEach(function (v, idx) {
+        var el = coinEls[idx];
+        if (!el) return;
+        var isY = v === 3;
+        el.className = 'ancient-coin ' + (isY ? 'is-yang' : 'is-yin');
+        var ch = el.querySelector('.coin-char');
+        if (ch) ch.textContent = isY ? '陽' : '陰';
+      });
+
+      coinThrows.push(sum);
+      updateCoinPreview();
+
+      var currentLine = coinThrows.length;
+      var meta = COIN_META[sum];
+
+      if (currentLine < 6) {
+        if (coinStepInfo) {
+          coinStepInfo.textContent = 'Đã gieo Hào ' + currentLine + ': ' + meta.label + '. Tiếp tục Hào ' + (currentLine + 1) + '...';
+        }
+        if (coinTossBtn) {
+          coinTossBtn.innerHTML = '<span>Tung đồng xu (Lần ' + (currentLine + 1) + '/6)</span>' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+          coinTossBtn.disabled = false;
+        }
+      } else {
+        if (coinStepInfo) {
+          coinStepInfo.textContent = 'Đã hoàn tất 6 hào! Quẻ đang được giải nghĩa bên cạnh.';
+        }
+        if (coinTossBtn) {
+          coinTossBtn.innerHTML = '<span>Gieo lại lượt mới</span>' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0113.7-5.7L20 8M20 4v4h-4M20 12a8 8 0 01-13.7 5.7L4 16M4 20v-4h4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+          coinTossBtn.disabled = false;
+        }
+
+        var now = new Date();
+        var info = L.birthInfo(now.getDate(), now.getMonth() + 1, now.getFullYear(), L.hourChiFromHour(now.getHours()));
+        var cast = I.castCoins(coinThrows);
+        var q = coinQuestion ? coinQuestion.value.trim() : '';
+
+        clearError();
+        render(cast, info, q);
+
+        if (recent) {
+          recent.textContent = '3 Đồng xu: Quẻ ' + cast.primary + ' · ' + (H[cast.primary] || {}).name +
+            ' · ' + (cast.movingLines.length ? 'hào động ' + cast.movingLines.join(',') : 'quẻ tĩnh');
+        }
+
+        root.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+          block: 'start'
+        });
+      }
+    }, 350);
+  }
+
+  if (tabTime && tabCoin && form && coinPanel) {
+    tabTime.addEventListener('click', function () {
+      tabTime.classList.add('is-active');
+      tabTime.setAttribute('aria-selected', 'true');
+      tabCoin.classList.remove('is-active');
+      tabCoin.setAttribute('aria-selected', 'false');
+      form.hidden = false;
+      coinPanel.hidden = true;
+    });
+
+    tabCoin.addEventListener('click', function () {
+      tabCoin.classList.add('is-active');
+      tabCoin.setAttribute('aria-selected', 'true');
+      tabTime.classList.remove('is-active');
+      tabTime.setAttribute('aria-selected', 'false');
+      form.hidden = true;
+      coinPanel.hidden = false;
+      updateCoinPreview();
+    });
+  }
+
+  if (coinTossBtn) {
+    coinTossBtn.addEventListener('click', tossOnce);
+  }
+  if (coinResetBtn) {
+    coinResetBtn.addEventListener('click', resetCoins);
+  }
+
+  updateCoinPreview();
 
   var savedIching = loadLastIching();
   if (savedIching) {

@@ -244,6 +244,21 @@ Kịch bản kiểm chứng tạm (ngoài repo):
     - Kinh Dịch (`iching-ui.js`): Thêm nút "Sao chép quẻ" (định dạng tóm tắt: Quẻ chủ, hào động, Thể/Dụng, quẻ hỗ, quẻ biến, thoán từ và lời khuyên).
     - Bài Tarot (`tarot-ui.js`): Thêm nút "Sao chép trải bài" (định dạng tóm tắt: danh sách lá kèm chiều Dương/Âm, luận giải vị trí và lời khuyên then chốt).
     - Người dùng có thể dễ dàng chia sẻ cả 3 phương pháp luận giải qua Zalo/Messenger chỉ với 1 click.
+11. **Sửa lỗi chính tả toàn bộ dữ liệu 64 Quẻ (`data-hexagrams.js`):**
+    - Sửa triệt để 384 lỗi typo chữ `"Hão "` thành `"Hào "` trong trường `lineTexts` của toàn bộ 64 quẻ.
+12. **Nâng cấp toàn diện mảng Kinh Dịch (`iching.js`, `iching-ui.js`, `styles.css`):**
+    - Thêm phương pháp **Gieo 3 Đồng Xu cổ truyền (Chu Dịch Lục Hào)**:
+      - Tab chuyển đổi giữa *Mai Hoa theo giờ* và *Gieo 3 đồng xu*.
+      - Hiệu ứng lật 3 đồng xu cổ (Sấp = Âm = 2, Ngửa = Dương = 3), gieo tuần tự 6 lần từ Hào 1 lên Hào 6.
+      - Hỗ trợ quẻ tĩnh (0 hào động), quẻ 1 hào động hoặc nhiều hào động (Lão Âm 6, Lão Dương 9).
+    - Thêm khối **Ứng kỳ & Phương vị (`cast-forecast`)**:
+      - Phân tích Ngũ hành theo 4 mùa âm lịch (Vượng, Tướng, Hưu, Tù, Tử).
+      - Dự báo thời điểm việc thành / ứng nghiệm và phương vị cát lợi cho cả quẻ Thể và quẻ Dụng.
+    - Bộ test tự động: Bổ sung kiểm thử `castCoins`, `timingForecast` và kiểm tra 0 lỗi typo vào `tests/lunarcheck.js`.
+
+## Việc chưa làm / có thể mở rộng tiếp theo
+
+- Bổ sung tùy chọn xuất lá số dạng ảnh (Canvas/HTML-to-Image) nếu người dùng có nhu cầu lưu file ảnh trực tiếp.
 
 ## Việc chưa làm / có thể mở rộng tiếp theo
 
