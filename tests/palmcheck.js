@@ -56,6 +56,20 @@ for (const sk of Object.keys(P.specialSigns)) {
 
 check(!!P.philosophy && typeof P.philosophy.quote === 'string', 'thiếu philosophy');
 
-console.log('Palmistry verified: 4 hand types, 5 major lines, 4 special signs, philosophy included');
+// Kiểm tra quy tắc phân loại giải phẫu 4 nhóm nguyên tố
+const classifyHand = (palmRatio, fingerRatio) => {
+  if (palmRatio <= 1.14) {
+    return (fingerRatio >= 0.75) ? 'air' : 'earth';
+  } else {
+    return (fingerRatio >= 0.75) ? 'water' : 'fire';
+  }
+};
+
+check(classifyHand(1.0, 0.85) === 'air', 'Bàn tay vuông ngón dài phải là Air');
+check(classifyHand(0.95, 0.65) === 'earth', 'Bàn tay vuông ngón ngắn phải là Earth');
+check(classifyHand(1.25, 0.85) === 'water', 'Bàn tay dài ngón dài phải là Water');
+check(classifyHand(1.30, 0.60) === 'fire', 'Bàn tay dài ngón ngắn phải là Fire');
+
+console.log('Palmistry verified: 4 hand types, 5 major lines, 4 special signs, philosophy & CV rules included');
 console.log(fails ? `\n${fails} FAILED` : 'ALL CHECKS PASSED');
 process.exit(fails ? 1 : 0);
