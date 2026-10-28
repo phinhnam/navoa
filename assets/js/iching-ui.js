@@ -40,6 +40,62 @@
     6: 'Hào 6 (trên cùng): kết thúc, rút lui — chốt lại, buông bỏ để chuẩn bị chu kỳ mới.'
   };
 
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (err) {}
+    document.body.removeChild(ta);
+  }
+
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.hidden = false;
+    toast.classList.add('is-on');
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(function () {
+      toast.hidden = true;
+      toast.classList.remove('is-on');
+    }, 2800);
+  }
+
+  function copyCast(cast, info, question) {
+    var meta = H[cast.primary] || {};
+    var changedMeta = cast.changed ? (H[cast.changed] || {}) : null;
+    var lines = [
+      '✦ THIÊN SỐ — MAI HOA DỊCH SỐ ✦',
+      (question ? 'Hỏi việc: ' + question : 'Xem thời vận'),
+      'Thời điểm: ' + info.solarText + ' · Âm lịch: ' + info.lunarText,
+      'Can Chi: Năm ' + info.yearCanChi + ' · Ngày ' + info.dayCanChi + ' · Giờ ' + info.hourCanChi,
+      '--------------------------------',
+      '• Quẻ Chủ: Quẻ ' + cast.primary + ' — ' + (meta.name || '') + ' (' + (TONES[meta.tone] || '') + ')',
+      '• Hào động: Hào ' + cast.moving + ' (' + (MOVING_POSITION[cast.moving] || '') + ')',
+      '• Tương quan: ' + cast.relation.label + ' (Thể ' + cast.the.name + ' - Dụng ' + cast.dung.name + ')',
+      '• Lời thoán: ' + (meta.judgement || ''),
+      (cast.mutual ? '• Quẻ Hỗ: Quẻ ' + cast.mutual + ' — ' + ((H[cast.mutual] || {}).name || '') : ''),
+      (cast.changed && changedMeta ? '• Quẻ Biến: Quẻ ' + cast.changed + ' — ' + (changedMeta.name || '') + ' (' + (TONES[changedMeta.tone] || '') + ')' : ''),
+      '--------------------------------',
+      'Gieo tại Thiên Số: ' + location.href.split('?')[0].split('#')[0] + '#kinh-dich'
+    ].filter(Boolean).join('\n');
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(lines).then(function () {
+        showToast('Đã sao chép kết quả quẻ.');
+      }).catch(function () {
+        fallbackCopy(lines);
+        showToast('Đã sao chép kết quả quẻ.');
+      });
+    } else {
+      fallbackCopy(lines);
+      showToast('Đã sao chép kết quả quẻ.');
+    }
+  }
+
   function pad(n) { return String(n).padStart(2, '0'); }
 
   function esc(str) {
@@ -172,7 +228,12 @@
           '<p>Hào động: (' + cast.method.lowerSum + ') mod 6 = ' + cast.moving + '</p>' +
           '<p class="panel-sub">Quy ước Tiên thiên: Càn 1, Đoài 2, Ly 3, Chấn 4, Tốn 5, Khảm 6, Cấn 7, Khôn 8. Mai Hoa dùng thời điểm làm tín hiệu, không phải lời phán tuyệt đối.</p>' +
         '</div>' +
-      '</details>';
+      '</details>' +
+      '<div class="result-actions" style="margin-top: 1.1rem;">' +
+        '<button class="btn btn-line btn-sm" type="button" id="cast-copy-btn">' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>' +
+          'Sao chép quẻ</button>' +
+      '</div>';
 
     root.innerHTML = header + body;
     root.hidden = false;
@@ -181,6 +242,13 @@
     root.classList.remove('is-fresh');
     void root.offsetWidth;
     root.classList.add('is-fresh');
+
+    var copyBtn = document.getElementById('cast-copy-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        copyCast(cast, info, question);
+      });
+    }
 
     if (live) live.textContent = 'Đã gieo quẻ ' + cast.primary + ' · ' + (meta.name || '') + ' · hào động ' + cast.moving;
     if (toast) {

@@ -26,6 +26,60 @@
     });
   }
 
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (err) {}
+    document.body.removeChild(ta);
+  }
+
+  function copyTarot(cards, question) {
+    var stats = analyzeReading(cards);
+    var advice = generateAdvice(cards, stats);
+    var cardLines = cards.map(function (c, idx) {
+      var pos = cards.length === 3 ? (THREE_CARD_POSITIONS[idx] ? THREE_CARD_POSITIONS[idx].title + ': ' : '') : '';
+      return '• ' + pos + c.vn + ' (' + (c.reversed ? 'Âm/Ngược' : 'Dương/Xuôi') + '): ' + (c.reversed ? c.rev : c.meaning);
+    });
+
+    var lines = [
+      '✦ THIÊN SỐ — TRẢI BÀI TAROT ✦',
+      (question ? 'Câu hỏi: ' + question : 'Thông điệp thời điểm'),
+      'Số lá: ' + cards.length + ' (' + stats.upright + ' Dương · ' + stats.rev + ' Âm)',
+      '--------------------------------'
+    ].concat(cardLines).concat([
+      '--------------------------------',
+      '• Lời khuyên then chốt:',
+      advice.map(function (a) { return '  - ' + a; }).join('\n'),
+      '--------------------------------',
+      'Trải bài tại Thiên Số: ' + location.href.split('?')[0].split('#')[0] + '#tarot'
+    ]);
+
+    var text = lines.join('\n');
+    function onCopied() {
+      if (toast) {
+        toast.textContent = 'Đã sao chép kết quả trải bài.';
+        toast.hidden = false;
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(function () { toast.hidden = true; }, 3000);
+      }
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onCopied).catch(function () {
+        fallbackCopy(text);
+        onCopied();
+      });
+    } else {
+      fallbackCopy(text);
+      onCopied();
+    }
+  }
+
   function pick(count) {
     var pool = CARDS.slice();
     var out = [];
@@ -237,7 +291,12 @@
           '<svg class="tarot-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>' +
           'Giải thích bài Tarot' +
         '</h3>' +
-        '<div class="chips">' + energyChips.join('') + '</div>' +
+        '<div class="tarot-head-actions">' +
+          '<div class="chips">' + energyChips.join('') + '</div>' +
+          '<button class="btn btn-line btn-sm" type="button" id="tarot-copy-btn">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>' +
+            'Sao chép trải bài</button>' +
+        '</div>' +
       '</div>' +
       detailsHTML +
       '<div class="cast-advice tarot-advice">' +
@@ -263,6 +322,13 @@
     root.classList.remove('is-fresh');
     void root.offsetWidth;
     root.classList.add('is-fresh');
+
+    var copyBtn = document.getElementById('tarot-copy-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        copyTarot(cards, question);
+      });
+    }
 
     var names = cards.map(function (c) { return c.vn + (c.reversed ? ' (Âm)' : ''); }).join(', · ');
     if (notify) {

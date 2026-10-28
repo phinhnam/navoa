@@ -234,7 +234,17 @@ Kịch bản kiểm chứng tạm (ngoài repo):
    - Khối "Lời khuyên then chốt": Danh sách 2–3 lời khuyên hành động thiết thực dựa trên cấu trúc năng lượng trải bài.
    - Khối "Cẩm nang & Quy ước Tarot" (dạng collapsible `<details class="acc">` tương tự Mai Hoa Dịch Số) giúp người dùng nắm bắt quy ước 78 lá bài và tiếp cận Tarot khoa học, tỉnh thức.
 
+8. **Hỗ trợ PWA & Chạy Offline toàn diện (`manifest.webmanifest` + `sw.js`):**
+   - Tạo file Web App Manifest chuẩn: Cho phép cài đặt ứng dụng vào màn hình chính (Add to Home Screen) trên thiết bị di động (iOS/Android) và máy tính (Windows/macOS).
+   - Tích hợp Service Worker (`sw.js`) với cơ chế Cache-First cho toàn bộ tài nguyên tĩnh (HTML, CSS, JS, SVG). Ứng dụng hoạt động 100% không cần kết nối mạng.
+9. **Tách module đồ họa & tương tác (`assets/js/effects.js`):**
+   - Tách toàn bộ hiệu ứng nền (Canvas Starfield `#stars`, quả cầu Orb Parallax, Custom Cursor Glow, Card 3D Tilt, IntersectionObserver Reveal) từ `app.js` sang `effects.js`.
+   - Giúp `app.js` giảm gần 300 dòng mã nguồn, tập trung hoàn toàn vào Engine thần số học và Controller lá số.
+10. **Đồng bộ tính năng "Sao chép nhanh" cho Kinh Dịch & Tarot:**
+    - Kinh Dịch (`iching-ui.js`): Thêm nút "Sao chép quẻ" (định dạng tóm tắt: Quẻ chủ, hào động, Thể/Dụng, quẻ hỗ, quẻ biến, thoán từ và lời khuyên).
+    - Bài Tarot (`tarot-ui.js`): Thêm nút "Sao chép trải bài" (định dạng tóm tắt: danh sách lá kèm chiều Dương/Âm, luận giải vị trí và lời khuyên then chốt).
+    - Người dùng có thể dễ dàng chia sẻ cả 3 phương pháp luận giải qua Zalo/Messenger chỉ với 1 click.
+
 ## Việc chưa làm / có thể mở rộng tiếp theo
 
-- Tách module đồ họa `app.js` (Canvas stars, cursor glow, tilt) thành `effects.js` độc lập.
-- Thiết lập Service Worker & Web App Manifest để chạy offline hoàn toàn (PWA).
+- Bổ sung tùy chọn xuất lá số dạng ảnh (Canvas/HTML-to-Image) nếu người dùng có nhu cầu lưu file ảnh trực tiếp.

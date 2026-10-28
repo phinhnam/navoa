@@ -1,0 +1,18 @@
+{
+  "name": "Thiên Số — Thần số học & Kinh Dịch",
+  "short_name": "Thiên Số",
+  "description": "Thần số học Pythagore, Kinh Dịch Mai Hoa và Bài Tarot. Chạy 100% trên thiết bị của bạn.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07050D",
+  "theme_color": "#07050D",
+  "icons": [
+    {
+      "src": "assets/images/og-image.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
