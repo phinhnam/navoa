@@ -305,6 +305,10 @@
   initTilt();
   observeReveals();
 
+  window.addEventListener('load', function () {
+    observeReveals();
+  });
+
   window.THIENSO_FX = {
     observeReveals: observeReveals,
     buildOrb: buildOrb

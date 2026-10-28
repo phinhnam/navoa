@@ -987,6 +987,9 @@
         '<span class="gallery-desc">' + meta.essence + '</span>' +
         '</button>';
     }).join('');
+    if (window.THIENSO_FX && window.THIENSO_FX.observeReveals) {
+      window.THIENSO_FX.observeReveals(gallery);
+    }
   }
 
   /* ---------- Form ---------- */
@@ -1339,6 +1342,9 @@
   /* ---------- Init ---------- */
   initDialog();
   renderGallery();
+  if (window.THIENSO_FX && window.THIENSO_FX.observeReveals) {
+    window.THIENSO_FX.observeReveals();
+  }
 
   var yearEl = $('#year');
   if (yearEl) yearEl.textContent = String(currentYear);
