@@ -24,7 +24,7 @@ let fails = 0;
 const check = (cond, msg) => { if (!cond) { fails++; console.log('FAIL:', msg); } };
 
 const cases = [
-  ['Nguyễn Thu Hà', { d: 29, m: 9, y: 1995 }],
+  ['Phan Thị Thúy Kiều', { d: 2, m: 4, y: 1995 }],
   ['Đặng Thị Ánh Tuyết', { d: 29, m: 11, y: 2009 }],
   ['Lê Văn A', { d: 22, m: 11, y: 1991 }],
   ['Trần Thị Bích Ngọc', { d: 1, m: 1, y: 2000 }],
