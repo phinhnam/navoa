@@ -271,6 +271,94 @@
       }
     },
 
+    // Hệ thống 7 Gò Bàn Tay (The 7 Planetary Mounts)
+    mounts: {
+      jupiter: {
+        id: 'jupiter',
+        name: 'Gò Mộc Tinh (Jupiter)',
+        han: '木星丘',
+        symbol: '♃',
+        location: 'Dưới gốc ngón tay trỏ',
+        domain: 'Quyền uy, lãnh đạo & hoài bão',
+        color: '#E7C98A',
+        prominent: 'Đầy đặn, hồng hào biểu hiện năng lực lãnh đạo bẩm sinh, ý chí tiến thủ mạnh mẽ, có lòng tự trọng và được tập thể tín nhiệm.',
+        flat: 'Bằng phẳng thể hiện tính cách khiêm nhường, không màng tranh đoạt quyền vị, yêu thích sự tự do và bình yên.',
+        advice: 'Hãy đặt mục tiêu rõ ràng và dùng uy tín chân thành để truyền cảm hứng cho người xung quanh.'
+      },
+      saturn: {
+        id: 'saturn',
+        name: 'Gò Thổ Tinh (Saturn)',
+        han: '土星丘',
+        symbol: '♄',
+        location: 'Dưới gốc ngón tay giữa',
+        domain: 'Kỷ luật, trách nhiệm & triết lý sống',
+        color: '#B7A7FF',
+        prominent: 'Nhô cao vừa phải phản ánh tư duy thâm trầm, cẩn trọng, kiên nhẫn vượt khó và có năng khiếu đào sâu vào chuyên môn phức tạp.',
+        flat: 'Hơi trũng cho thấy tâm hồn cởi mở, không thích các quy tắc rập khuôn, linh hoạt đón nhận cái mới.',
+        advice: 'Kiên trì chính là chìa khóa mở mọi cánh cửa. Hãy giữ tâm tĩnh lặng trước mọi thăng trầm.'
+      },
+      sun: {
+        id: 'sun',
+        name: 'Gò Thái Dương (Apollo)',
+        han: '太陽丘',
+        symbol: '☉',
+        location: 'Dưới gốc ngón tay áp út (ngón nhẫn)',
+        domain: 'Hào quang, nghệ thuật & tài lộc',
+        color: '#F6E8C6',
+        prominent: 'Đầy đặn, sáng rõ là nét tướng của người có khiếu thẩm mỹ, sự duyên dáng, dễ gặt hái thành công và có vận may tài lộc lớn.',
+        flat: 'Bình thường thể hiện lối sống giản dị, chú trọng giá trị thực chất bên trong hơn sự tán dương bề ngoài.',
+        advice: 'Tự tin chia sẻ các ý tưởng sáng tạo của bản thân, hào quang danh vọng sẽ tự khắc lan tỏa.'
+      },
+      mercury: {
+        id: 'mercury',
+        name: 'Gò Thủy Tinh (Mercury)',
+        han: '水星丘',
+        symbol: '☿',
+        location: 'Dưới gốc ngón tay út',
+        domain: 'Giao tiếp, tài thương mại & ứng biến',
+        color: '#9FD8B4',
+        prominent: 'Nở nang, thanh tú là biểu trưng của đầu óc kinh doanh nhạy bén, tài ăn nói hoạt bát, quan hệ ngoại giao rộng mở và thích ứng nhanh.',
+        flat: 'Phẳng cho thấy tính cách bộc trực, chân thành, không khéo léo trong tính toán được mất.',
+        advice: 'Phát huy thế mạnh kết nối nhân tâm và tư duy chiến lược trong thương trường hoặc nghiên cứu.'
+      },
+      venus: {
+        id: 'venus',
+        name: 'Gò Kim Tinh (Venus)',
+        han: '金星丘',
+        symbol: '♀',
+        location: 'Vùng thịt gốc ngón tay cái',
+        domain: 'Sinh lực thể chất, tình cảm & lòng từ ái',
+        color: '#F5C4D8',
+        prominent: 'Căng tròn, hồng hào thể hiện thể lực dồi dào, khả năng phục hồi tốt, sống nhiệt thành, giàu tình cảm và rất yêu cái đẹp.',
+        flat: 'Mỏng nhẹ cho thấy năng lượng cơ thể thanh mảnh, tính cách điềm đạm, thích sự tĩnh lặng và kiểm soát cảm xúc tốt.',
+        advice: 'Nuôi dưỡng lối sống lành mạnh; tình yêu thương ấm áp chính là nguồn năng lượng chữa lành mạnh mẽ nhất.'
+      },
+      moon: {
+        id: 'moon',
+        name: 'Gò Thái Âm (Luna)',
+        han: '太陰丘',
+        symbol: '☽',
+        location: 'Cạnh ngoài đối diện gò Kim Tinh',
+        domain: 'Trực giác tâm linh, trí tưởng tượng & tiềm thức',
+        color: '#C4B5FD',
+        prominent: 'Rộng rãi, đầy đặn báo hiệu trực giác tâm linh siêu nhạy, óc tưởng tượng phong phú, có duyên với nghệ thuật hoặc du hành xa.',
+        flat: 'Bằng phẳng thể hiện tư duy cực kỳ thực tế, chỉ tin vào những gì đã được chứng thực bằng số liệu và logic.',
+        advice: 'Hãy trân trọng và lắng nghe tiếng nói trực giác nội tâm, nó sẽ mách bảo những khúc quanh định mệnh.'
+      },
+      mars: {
+        id: 'mars',
+        name: 'Gò Hỏa Tinh & Bình Nguyên (Mars)',
+        han: '火星丘',
+        symbol: '♂',
+        location: 'Trung tâm lòng bàn tay & hai bên sườn',
+        domain: 'Dũng khí, ý chí kiên định & kiểm soát cảm xúc',
+        color: '#F87171',
+        prominent: 'Săn chắc, ấm áp biểu thị tinh thần quả cảm, kiên cường không lùi bước trước thử thách, giữ được bình tĩnh trong nghịch cảnh.',
+        flat: 'Hơi trũng là người ôn hòa, yêu chuộng hòa khí, tránh va chạm và giàu lòng nhẫn nại.',
+        advice: 'Biết cương nhu đúng lúc, biến lòng dũng cảm thành hành động có chiến lược.'
+      }
+    },
+
     // Triết lý cốt lõi
     philosophy: {
       title: 'Tướng Tùy Tâm Sinh · Tướng Tùy Tâm Diệt',

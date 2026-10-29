@@ -19,6 +19,7 @@
   var invertBtn = document.getElementById('palm-invert-btn');
   var autoScanBtn = document.getElementById('palm-auto-scan-btn');
   var tunePinsBtn = document.getElementById('palm-tune-pins-btn');
+  var modeBtn = document.getElementById('palm-mode-btn');
   var pinHint = document.getElementById('palm-pin-hint');
   var scanStatus = document.getElementById('palm-scan-status');
 
@@ -32,11 +33,14 @@
   var currentContrast = 100;
   var isOverlayVisible = true;
   var isFineTuneMode = true;
+  var viewMode = 'all'; // 'lines' | 'mounts' | 'all'
   var lastDetected = null;
   var lastGeom = null;
   var anchorPins = [];
   var activePin = null;
   var hoveredPin = null;
+  var detectedMounts = [];
+  var topMount = null;
 
   function showToast(msg) {
     if (!toast) return;
@@ -133,6 +137,8 @@
     var palmWidth = handW;
     var palmLength = maxY - junctionY;
     var fingerLength = junctionY - minY;
+    var currentHandRadio = document.querySelector('input[name="palm-hand"]:checked');
+    var detectedHand = currentHandRadio ? currentHandRadio.value : 'right';
     return {
       minX: minX, maxX: maxX, minY: minY, maxY: maxY,
       junctionY: junctionY, handW: handW, handH: handH,
@@ -141,6 +147,8 @@
       palmRatio: palmLength / palmWidth,
       fingerRatio: fingerLength / palmLength,
       shape: 'air',
+      detectedHand: detectedHand,
+      tiltAngleDeg: 0,
       isDefault: true
     };
   }
@@ -150,6 +158,7 @@
     var data = imgData.data;
     var rowCounts = new Int32Array(h);
     var colCounts = new Int32Array(w);
+    var skinMask = new Uint8Array(w * h);
     var skinTotal = 0;
 
     for (var y = 0; y < h; y++) {
@@ -182,6 +191,7 @@
         }
 
         if (isSkin) {
+          skinMask[y * w + x] = 1;
           rowCounts[y]++;
           colCounts[x]++;
           skinTotal++;
@@ -236,6 +246,54 @@
       shape = (fingerRatio >= 0.75) ? 'water' : 'fire';
     }
 
+    // Tự động nhận diện Bàn tay Trái hay Bàn tay Phải qua độ choãi ngón cái
+    var thumbBandYStart = junctionY + Math.round(palmLength * 0.18);
+    var thumbBandYEnd = junctionY + Math.round(palmLength * 0.65);
+    var palmCenterX = Math.round((minX + maxX) / 2);
+    var leftMass = 0, rightMass = 0;
+
+    for (var ty = thumbBandYStart; ty <= thumbBandYEnd; ty++) {
+      for (var tx = minX; tx <= maxX; tx++) {
+        if (skinMask[ty * w + tx]) {
+          if (tx < palmCenterX) leftMass++;
+          else rightMass++;
+        }
+      }
+    }
+
+    var detectedHand = 'right';
+    if (rightMass > leftMass * 1.15) {
+      detectedHand = 'left';
+    } else if (leftMass > rightMass * 1.15) {
+      detectedHand = 'right';
+    } else {
+      var handRadioChecked = document.querySelector('input[name="palm-hand"]:checked');
+      detectedHand = handRadioChecked ? handRadioChecked.value : 'right';
+    }
+
+    // Tính góc nghiêng trục bàn tay (Tilt Angle)
+    var wristY = Math.min(h - 1, maxY - 4);
+    var wristSumX = 0, wristCount = 0;
+    for (var wx = minX; wx <= maxX; wx++) {
+      if (skinMask[wristY * w + wx]) {
+        wristSumX += wx;
+        wristCount++;
+      }
+    }
+    var wristCenterX = wristCount > 0 ? (wristSumX / wristCount) : palmCenterX;
+
+    var juncSumX = 0, juncCount = 0;
+    for (var jx = minX; jx <= maxX; jx++) {
+      if (skinMask[junctionY * w + jx]) {
+        juncSumX += jx;
+        juncCount++;
+      }
+    }
+    var juncCenterX = juncCount > 0 ? (juncSumX / juncCount) : palmCenterX;
+
+    var tiltAngleRad = Math.atan2(juncCenterX - wristCenterX, Math.max(1, wristY - junctionY));
+    var tiltAngleDeg = Math.round(tiltAngleRad * (180 / Math.PI));
+
     return {
       minX: minX,
       maxX: maxX,
@@ -250,14 +308,46 @@
       palmRatio: palmRatio,
       fingerRatio: fingerRatio,
       shape: shape,
+      detectedHand: detectedHand,
+      tiltAngleDeg: tiltAngleDeg,
       isDefault: false
     };
   }
 
-  // 2. Bộ lọc rãnh sâu biểu bì cục bộ (Adaptive Valley / Crease Filter)
+  // 2. Bộ lọc rãnh sâu biểu bì & Tọa độ 7 Gò Bàn Tay
   function getPixelLum(d, w, x, y) {
     var idx = (y * w + x) * 4;
     return 0.299 * d[idx] + 0.587 * d[idx + 1] + 0.114 * d[idx + 2];
+  }
+
+  function getMountLocations(geom, w, h, isLeft) {
+    var x0 = geom.minX, y0 = geom.junctionY, pw = geom.palmWidth, ph = geom.palmLength;
+    var mirrorX = function (rx) { return isLeft ? (x0 + pw * (1 - rx)) : (x0 + pw * rx); };
+    return [
+      { id: 'jupiter', name: 'Gò Mộc Tinh', symbol: '♃', color: '#E7C98A', x: mirrorX(0.33), y: y0 + ph * 0.12, r: pw * 0.088 },
+      { id: 'saturn', name: 'Gò Thổ Tinh', symbol: '♄', color: '#B7A7FF', x: mirrorX(0.49), y: y0 + ph * 0.11, r: pw * 0.082 },
+      { id: 'sun', name: 'Gò Thái Dương', symbol: '☉', color: '#F6E8C6', x: mirrorX(0.68), y: y0 + ph * 0.13, r: pw * 0.082 },
+      { id: 'mercury', name: 'Gò Thủy Tinh', symbol: '☿', color: '#9FD8B4', x: mirrorX(0.84), y: y0 + ph * 0.18, r: pw * 0.080 },
+      { id: 'venus', name: 'Gò Kim Tinh', symbol: '♀', color: '#F5C4D8', x: mirrorX(0.29), y: y0 + ph * 0.56, r: pw * 0.140 },
+      { id: 'moon', name: 'Gò Thái Âm', symbol: '☽', color: '#C4B5FD', x: mirrorX(0.78), y: y0 + ph * 0.70, r: pw * 0.125 },
+      { id: 'mars', name: 'Gò Hỏa Tinh', symbol: '♂', color: '#F87171', x: mirrorX(0.52), y: y0 + ph * 0.46, r: pw * 0.095 }
+    ];
+  }
+
+  function getPatchLuminance(d, w, h, cx, cy, radius) {
+    var sum = 0, count = 0;
+    var r = Math.round(radius);
+    for (var dy = -r; dy <= r; dy += 2) {
+      for (var dx = -r; dx <= r; dx += 2) {
+        var px = Math.round(cx + dx);
+        var py = Math.round(cy + dy);
+        if (px >= 0 && px < w && py >= 0 && py < h) {
+          sum += getPixelLum(d, w, px, py);
+          count++;
+        }
+      }
+    }
+    return count > 0 ? (sum / count) : 128;
   }
 
   function extractPalmCreases(ctx, geom, w, h) {
@@ -315,30 +405,31 @@
     return { x: bestX, y: bestY };
   }
 
-  // 3. Khớp mỏ neo giải phẫu & Tạo 13 điểm neo tương tác (Interactive Draggable Anchor Pins)
-  function findAnatomicalAnchors(geom, valleyMap, w, h) {
+  // 3. Khớp mỏ neo giải phẫu & Tạo 13 điểm neo tương tác (Hỗ trợ lật đối xứng cho Tay Trái / Tay Phải)
+  function findAnatomicalAnchors(geom, valleyMap, w, h, isLeft) {
     var x0 = geom.minX;
     var y0 = geom.junctionY;
     var pw = geom.palmWidth;
     var ph = geom.palmLength;
+    var mirrorX = function (rx) { return isLeft ? (x0 + pw * (1 - rx)) : (x0 + pw * rx); };
 
-    var lS = snapToValley(x0 + pw * 0.28, y0 + ph * 0.16, 18, valleyMap, w, h);
-    var lM = snapToValley(x0 + pw * 0.49, y0 + ph * 0.46, 24, valleyMap, w, h);
-    var lE = snapToValley(x0 + pw * 0.36, y0 + ph * 0.86, 22, valleyMap, w, h);
+    var lS = snapToValley(mirrorX(0.28), y0 + ph * 0.16, 18, valleyMap, w, h);
+    var lM = snapToValley(mirrorX(0.49), y0 + ph * 0.46, 24, valleyMap, w, h);
+    var lE = snapToValley(mirrorX(0.36), y0 + ph * 0.86, 22, valleyMap, w, h);
 
-    var hS = snapToValley(x0 + pw * 0.28, y0 + ph * 0.18, 18, valleyMap, w, h);
-    var hM = snapToValley(x0 + pw * 0.52, y0 + ph * 0.36, 22, valleyMap, w, h);
-    var hE = snapToValley(x0 + pw * 0.77, y0 + ph * 0.46, 24, valleyMap, w, h);
+    var hS = snapToValley(mirrorX(0.28), y0 + ph * 0.18, 18, valleyMap, w, h);
+    var hM = snapToValley(mirrorX(0.52), y0 + ph * 0.36, 22, valleyMap, w, h);
+    var hE = snapToValley(mirrorX(0.77), y0 + ph * 0.46, 24, valleyMap, w, h);
 
-    var hrS = snapToValley(x0 + pw * 0.79, y0 + ph * 0.22, 20, valleyMap, w, h);
-    var hrM = snapToValley(x0 + pw * 0.57, y0 + ph * 0.18, 22, valleyMap, w, h);
-    var hrE = snapToValley(x0 + pw * 0.38, y0 + ph * 0.09, 24, valleyMap, w, h);
+    var hrS = snapToValley(mirrorX(0.79), y0 + ph * 0.22, 20, valleyMap, w, h);
+    var hrM = snapToValley(mirrorX(0.57), y0 + ph * 0.18, 22, valleyMap, w, h);
+    var hrE = snapToValley(mirrorX(0.38), y0 + ph * 0.09, 24, valleyMap, w, h);
 
     var fS = snapToValley(x0 + pw * 0.50, y0 + ph * 0.90, 18, valleyMap, w, h);
     var fE = snapToValley(x0 + pw * 0.50, y0 + ph * 0.14, 20, valleyMap, w, h);
 
-    var sS = snapToValley(x0 + pw * 0.68, y0 + ph * 0.48, 16, valleyMap, w, h);
-    var sE = snapToValley(x0 + pw * 0.68, y0 + ph * 0.12, 18, valleyMap, w, h);
+    var sS = snapToValley(mirrorX(0.68), y0 + ph * 0.48, 16, valleyMap, w, h);
+    var sE = snapToValley(mirrorX(0.68), y0 + ph * 0.12, 18, valleyMap, w, h);
 
     return [
       { id: 'life_start', label: 'Sinh Đạo (Khởi điểm)', line: 'life', color: '#F6E8C6', x: lS.x, y: lS.y },
@@ -368,9 +459,10 @@
     return { x: 0, y: 0 };
   }
 
-  // 4. Luận đoán các đặc điểm tướng pháp từ tọa độ các điểm neo
-  function evaluateLinesFromPins(pins, geom, w, h) {
+  // 4. Luận đoán các đặc điểm tướng pháp từ tọa độ các điểm neo & tính 5 chỉ số sinh học
+  function evaluateLinesFromPins(pins, geom, w, h, isLeft) {
     if (!geom) geom = getDefaultGeometry(w, h);
+    if (isLeft === undefined) isLeft = (geom.detectedHand === 'left');
 
     var ls = getPin(pins, 'life_start');
     var lm = getPin(pins, 'life_mid');
@@ -403,9 +495,16 @@
 
     // 3. Tâm Đạo: Hướng điểm đích của hre.x
     var heart = 'curves_jupiter';
-    if (hre.x < geom.minX + geom.palmWidth * 0.43) {
+    var isJupiterTarget = isLeft
+      ? (hre.x > geom.minX + geom.palmWidth * 0.57)
+      : (hre.x < geom.minX + geom.palmWidth * 0.43);
+    var isBetweenFingers = isLeft
+      ? (hre.x <= geom.minX + geom.palmWidth * 0.57 && hre.x > geom.minX + geom.palmWidth * 0.48)
+      : (hre.x >= geom.minX + geom.palmWidth * 0.43 && hre.x < geom.minX + geom.palmWidth * 0.52);
+
+    if (isJupiterTarget) {
       heart = 'curves_jupiter';
-    } else if (hre.x < geom.minX + geom.palmWidth * 0.52) {
+    } else if (isBetweenFingers) {
       heart = 'between_fingers';
     } else {
       heart = 'straight_short';
@@ -421,6 +520,13 @@
     // 6. Dấu ấn quý
     var specials = ['letter_m', 'mystic_cross', 'buddha_eye', 'solomon_ring'];
 
+    // 7. Tính 5 chỉ số sinh học năng lượng tướng pháp (Biometric Energy Scores)
+    var vitalityScore = Math.min(98, Math.max(72, Math.round((life === 'deep_curved' ? 92 : 78) + (topMount && topMount.id === 'venus' ? 6 : 2))));
+    var intellectScore = Math.min(98, Math.max(74, Math.round((head === 'long_straight' ? 94 : 91) + (topMount && (topMount.id === 'mercury' || topMount.id === 'jupiter') ? 5 : 2))));
+    var empathyScore = Math.min(98, Math.max(72, Math.round((heart === 'curves_jupiter' ? 95 : 88) + (topMount && (topMount.id === 'moon' || topMount.id === 'venus') ? 4 : 2))));
+    var careerScore = Math.min(98, Math.max(68, Math.round((fate === 'clear_from_base' ? 94 : 84) + (topMount && topMount.id === 'saturn' ? 5 : 2))));
+    var fortuneScore = Math.min(98, Math.max(70, Math.round((sun === 'clear_long' ? 95 : 80) + (topMount && (topMount.id === 'sun' || topMount.id === 'jupiter') ? 4 : 1))));
+
     return {
       shape: geom.shape,
       life: life,
@@ -431,135 +537,195 @@
       specials: specials,
       w: w,
       h: h,
-      geom: geom
+      geom: geom,
+      isLeft: isLeft,
+      topMount: topMount,
+      detectedMounts: detectedMounts,
+      biometricScores: {
+        vitality: vitalityScore,
+        intellect: intellectScore,
+        empathy: empathyScore,
+        career: careerScore,
+        fortune: fortuneScore
+      }
     };
   }
 
   /* ---------- Tự động nhận diện & Vẽ lớp đồ họa quang học (AI Overlay) ---------- */
   function drawScanOverlay(w, h) {
     if (!ctx || !isOverlayVisible) return;
-    if (!anchorPins || anchorPins.length < 13) return;
+    if (!lastGeom) return;
 
     ctx.save();
 
-    var ls = getPin(anchorPins, 'life_start');
-    var lm = getPin(anchorPins, 'life_mid');
-    var le = getPin(anchorPins, 'life_end');
+    var isLeft = (lastGeom.detectedHand === 'left');
 
-    var hs = getPin(anchorPins, 'head_start');
-    var hm = getPin(anchorPins, 'head_mid');
-    var he = getPin(anchorPins, 'head_end');
+    // 1. Vẽ 7 Gò Bàn Tay nếu viewMode là 'mounts' hoặc 'all'
+    if (viewMode === 'mounts' || viewMode === 'all') {
+      var mountsList = getMountLocations(lastGeom, w, h, isLeft);
+      for (var mi = 0; mi < mountsList.length; mi++) {
+        var m = mountsList[mi];
+        var isTop = (topMount && topMount.id === m.id);
 
-    var hrs = getPin(anchorPins, 'heart_start');
-    var hrm = getPin(anchorPins, 'heart_mid');
-    var hre = getPin(anchorPins, 'heart_end');
+        ctx.save();
+        ctx.shadowBlur = isTop ? 14 : 7;
+        ctx.shadowColor = m.color;
 
-    var fs = getPin(anchorPins, 'fate_start');
-    var fe = getPin(anchorPins, 'fate_end');
-
-    var ss = getPin(anchorPins, 'sun_start');
-    var se = getPin(anchorPins, 'sun_end');
-
-    function drawQuadCurve(p1, pMid, p2) {
-      var cx = 2 * pMid.x - 0.5 * (p1.x + p2.x);
-      var cy = 2 * pMid.y - 0.5 * (p1.y + p2.y);
-      ctx.beginPath();
-      ctx.moveTo(p1.x, p1.y);
-      ctx.quadraticCurveTo(cx, cy, p2.x, p2.y);
-      ctx.stroke();
-    }
-
-    // 1. Đường Sinh Đạo (Vàng kim rực rỡ)
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = 'rgba(246, 232, 198, 0.9)';
-    ctx.strokeStyle = '#F6E8C6';
-    ctx.lineWidth = 3.5;
-    drawQuadCurve(ls, lm, le);
-
-    // 2. Đường Trí Đạo (Tím Tử Đinh Hương)
-    ctx.shadowColor = 'rgba(183, 167, 255, 0.9)';
-    ctx.strokeStyle = '#B7A7FF';
-    ctx.lineWidth = 3.5;
-    drawQuadCurve(hs, hm, he);
-
-    // 3. Đường Tâm Đạo (Hồng Đào)
-    ctx.shadowColor = 'rgba(245, 196, 216, 0.9)';
-    ctx.strokeStyle = '#F5C4D8';
-    ctx.lineWidth = 3.5;
-    drawQuadCurve(hrs, hrm, hre);
-
-    // 4. Đường Định Mệnh (Xanh ngọc Mint)
-    ctx.shadowColor = 'rgba(159, 216, 180, 0.9)';
-    ctx.strokeStyle = '#9FD8B4';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(fs.x, fs.y);
-    ctx.lineTo(fe.x, fe.y);
-    ctx.stroke();
-
-    // 5. Đường Thái Dương (Vàng cam ấm)
-    ctx.shadowColor = 'rgba(231, 201, 138, 0.8)';
-    ctx.strokeStyle = '#E7C98A';
-    ctx.lineWidth = 2.5;
-    ctx.beginPath();
-    ctx.moveTo(ss.x, ss.y);
-    ctx.lineTo(se.x, se.y);
-    ctx.stroke();
-
-    // Dấu ấn Chữ M & Chữ X
-    ctx.shadowColor = 'rgba(231, 201, 138, 1)';
-    ctx.fillStyle = '#E7C98A';
-    ctx.font = 'bold 12px sans-serif';
-    ctx.fillText('✦ Chữ M', (lm.x + hm.x) * 0.5, (lm.y + hm.y) * 0.5);
-    ctx.fillText('✦ Chữ X', (hm.x + hrm.x) * 0.5 + 14, (hm.y + hrm.y) * 0.5);
-
-    // Vẽ các điểm neo tương tác (Interactive Draggable Anchor Pins)
-    if (isFineTuneMode) {
-      for (var i = 0; i < anchorPins.length; i++) {
-        var pin = anchorPins[i];
-        var isTarget = (pin === activePin || pin === hoveredPin);
-
-        // Vòng tròn halo ngoài
+        // Vòng quỹ đạo gò
         ctx.beginPath();
-        ctx.arc(pin.x, pin.y, isTarget ? 13 : 8, 0, Math.PI * 2);
-        ctx.strokeStyle = isTarget ? 'rgba(246, 232, 198, 0.95)' : 'rgba(255, 255, 255, 0.45)';
-        ctx.lineWidth = isTarget ? 2.5 : 1.5;
-        ctx.shadowBlur = isTarget ? 12 : 6;
-        ctx.shadowColor = pin.color;
+        ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+        ctx.strokeStyle = isTop ? 'rgba(246, 232, 198, 0.95)' : 'rgba(255, 255, 255, 0.35)';
+        ctx.lineWidth = isTop ? 2.5 : 1.2;
+        if (!isTop) ctx.setLineDash([4, 4]);
         ctx.stroke();
 
-        // Chấm tâm điểm sáng
+        // Nền mờ cho gò
         ctx.beginPath();
-        ctx.arc(pin.x, pin.y, isTarget ? 5 : 4, 0, Math.PI * 2);
-        ctx.fillStyle = pin.color;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = pin.color;
+        ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+        ctx.fillStyle = isTop ? 'rgba(231, 201, 138, 0.14)' : 'rgba(255, 255, 255, 0.03)';
         ctx.fill();
 
-        // Nhãn tên điểm neo khi hover hoặc kéo
-        if (isTarget) {
-          ctx.save();
-          ctx.font = 'bold 11px sans-serif';
-          var textW = ctx.measureText(pin.label).width;
-          var boxX = Math.max(4, Math.min(w - textW - 16, pin.x - textW / 2 - 8));
-          var boxY = pin.y < 35 ? pin.y + 16 : pin.y - 32;
+        // Ký hiệu hành tinh
+        ctx.font = 'bold 15px sans-serif';
+        ctx.fillStyle = isTop ? '#F6E8C6' : m.color;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowBlur = isTop ? 10 : 4;
+        ctx.fillText(m.symbol, m.x, m.y - 4);
 
-          ctx.fillStyle = 'rgba(12, 8, 22, 0.92)';
-          ctx.strokeStyle = pin.color;
-          ctx.lineWidth = 1;
+        // Nhãn tên gò
+        ctx.font = isTop ? 'bold 10px sans-serif' : '9px sans-serif';
+        ctx.fillStyle = isTop ? '#FFFFFF' : 'rgba(255, 255, 255, 0.8)';
+        ctx.fillText(m.name.replace('Gò ', ''), m.x, m.y + m.r * 0.58);
+
+        if (isTop) {
+          ctx.font = 'bold 9px sans-serif';
+          ctx.fillStyle = '#E7C98A';
+          ctx.fillText('★ Vượng Khí', m.x, m.y + m.r * 0.58 + 12);
+        }
+
+        ctx.restore();
+      }
+    }
+
+    // 2. Vẽ 5 Đại Chỉ Tay nếu viewMode là 'lines' hoặc 'all'
+    if ((viewMode === 'lines' || viewMode === 'all') && anchorPins && anchorPins.length >= 13) {
+      var ls = getPin(anchorPins, 'life_start');
+      var lm = getPin(anchorPins, 'life_mid');
+      var le = getPin(anchorPins, 'life_end');
+
+      var hs = getPin(anchorPins, 'head_start');
+      var hm = getPin(anchorPins, 'head_mid');
+      var he = getPin(anchorPins, 'head_end');
+
+      var hrs = getPin(anchorPins, 'heart_start');
+      var hrm = getPin(anchorPins, 'heart_mid');
+      var hre = getPin(anchorPins, 'heart_end');
+
+      var fs = getPin(anchorPins, 'fate_start');
+      var fe = getPin(anchorPins, 'fate_end');
+
+      var ss = getPin(anchorPins, 'sun_start');
+      var se = getPin(anchorPins, 'sun_end');
+
+      function drawQuadCurve(p1, pMid, p2) {
+        var cx = 2 * pMid.x - 0.5 * (p1.x + p2.x);
+        var cy = 2 * pMid.y - 0.5 * (p1.y + p2.y);
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.quadraticCurveTo(cx, cy, p2.x, p2.y);
+        ctx.stroke();
+      }
+
+      // 1. Đường Sinh Đạo
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = 'rgba(246, 232, 198, 0.9)';
+      ctx.strokeStyle = '#F6E8C6';
+      ctx.lineWidth = 3.5;
+      drawQuadCurve(ls, lm, le);
+
+      // 2. Đường Trí Đạo
+      ctx.shadowColor = 'rgba(183, 167, 255, 0.9)';
+      ctx.strokeStyle = '#B7A7FF';
+      ctx.lineWidth = 3.5;
+      drawQuadCurve(hs, hm, he);
+
+      // 3. Đường Tâm Đạo
+      ctx.shadowColor = 'rgba(245, 196, 216, 0.9)';
+      ctx.strokeStyle = '#F5C4D8';
+      ctx.lineWidth = 3.5;
+      drawQuadCurve(hrs, hrm, hre);
+
+      // 4. Đường Định Mệnh
+      ctx.shadowColor = 'rgba(159, 216, 180, 0.9)';
+      ctx.strokeStyle = '#9FD8B4';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(fs.x, fs.y);
+      ctx.lineTo(fe.x, fe.y);
+      ctx.stroke();
+
+      // 5. Đường Thái Dương
+      ctx.shadowColor = 'rgba(231, 201, 138, 0.8)';
+      ctx.strokeStyle = '#E7C98A';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(ss.x, ss.y);
+      ctx.lineTo(se.x, se.y);
+      ctx.stroke();
+
+      // Dấu ấn Chữ M & Chữ X
+      ctx.shadowColor = 'rgba(231, 201, 138, 1)';
+      ctx.fillStyle = '#E7C98A';
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillText('✦ Chữ M', (lm.x + hm.x) * 0.5, (lm.y + hm.y) * 0.5);
+      ctx.fillText('✦ Chữ X', (hm.x + hrm.x) * 0.5 + (isLeft ? -14 : 14), (hm.y + hrm.y) * 0.5);
+
+      // Vẽ các điểm neo tương tác (Interactive Draggable Anchor Pins)
+      if (isFineTuneMode) {
+        for (var i = 0; i < anchorPins.length; i++) {
+          var pin = anchorPins[i];
+          var isTarget = (pin === activePin || pin === hoveredPin);
+
           ctx.beginPath();
-          if (ctx.roundRect) {
-            ctx.roundRect(boxX, boxY, textW + 16, 22, 6);
-          } else {
-            ctx.rect(boxX, boxY, textW + 16, 22);
-          }
-          ctx.fill();
+          ctx.arc(pin.x, pin.y, isTarget ? 13 : 8, 0, Math.PI * 2);
+          ctx.strokeStyle = isTarget ? 'rgba(246, 232, 198, 0.95)' : 'rgba(255, 255, 255, 0.45)';
+          ctx.lineWidth = isTarget ? 2.5 : 1.5;
+          ctx.shadowBlur = isTarget ? 12 : 6;
+          ctx.shadowColor = pin.color;
           ctx.stroke();
 
-          ctx.fillStyle = '#FFFFFF';
-          ctx.shadowBlur = 0;
-          ctx.fillText(pin.label, boxX + 8, boxY + 15);
-          ctx.restore();
+          ctx.beginPath();
+          ctx.arc(pin.x, pin.y, isTarget ? 5 : 4, 0, Math.PI * 2);
+          ctx.fillStyle = pin.color;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = pin.color;
+          ctx.fill();
+
+          if (isTarget) {
+            ctx.save();
+            ctx.font = 'bold 11px sans-serif';
+            var textW = ctx.measureText(pin.label).width;
+            var boxX = Math.max(4, Math.min(w - textW - 16, pin.x - textW / 2 - 8));
+            var boxY = pin.y < 35 ? pin.y + 16 : pin.y - 32;
+
+            ctx.fillStyle = 'rgba(12, 8, 22, 0.92)';
+            ctx.strokeStyle = pin.color;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            if (ctx.roundRect) {
+              ctx.roundRect(boxX, boxY, textW + 16, 22, 6);
+            } else {
+              ctx.rect(boxX, boxY, textW + 16, 22);
+            }
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.shadowBlur = 0;
+            ctx.fillText(pin.label, boxX + 8, boxY + 15);
+            ctx.restore();
+          }
         }
       }
     }
@@ -569,7 +735,8 @@
 
   function updateDetectionsFromPins() {
     if (!anchorPins || anchorPins.length === 0) return;
-    var detected = evaluateLinesFromPins(anchorPins, lastGeom, canvas.width, canvas.height);
+    var isLeft = lastGeom ? (lastGeom.detectedHand === 'left') : false;
+    var detected = evaluateLinesFromPins(anchorPins, lastGeom, canvas.width, canvas.height, isLeft);
     lastDetected = detected;
 
     var shapeEl = document.getElementById('palm-shape');
@@ -602,14 +769,45 @@
     var geom = analyzeHandGeometry(ctx, w, h);
     lastGeom = geom;
 
+    var detectedHand = geom.detectedHand || 'right';
+    var isLeft = (detectedHand === 'left');
+
+    // Tự động đồng bộ radio button Tay trái / Tay phải
+    var handRadio = document.querySelector('input[name="palm-hand"][value="' + detectedHand + '"]');
+    if (handRadio) handRadio.checked = true;
+
     // Bước 2: Bộ lọc rãnh sâu biểu bì cục bộ
     var valleyMap = extractPalmCreases(ctx, geom, w, h);
 
-    // Bước 3: Định vị 13 điểm mốc mỏ neo giải phẫu
-    anchorPins = findAnatomicalAnchors(geom, valleyMap, w, h);
+    // Bước 3: Định vị 13 điểm mốc mỏ neo giải phẫu (Hỗ trợ tay trái / tay phải)
+    anchorPins = findAnatomicalAnchors(geom, valleyMap, w, h, isLeft);
 
-    // Bước 4: Luận đoán đặc điểm từ vị trí các điểm neo
-    var detected = evaluateLinesFromPins(anchorPins, geom, w, h);
+    // Bước 4: Quét độ nổi 7 Gò Bàn Tay
+    var mountsList = getMountLocations(geom, w, h, isLeft);
+    var imgData = ctx.getImageData(0, 0, w, h);
+    var d = imgData.data;
+
+    var palmLumSum = 0, palmPixelCount = 0;
+    for (var py = geom.junctionY; py <= geom.maxY; py += 4) {
+      for (var px = geom.minX; px <= geom.maxX; px += 4) {
+        palmLumSum += getPixelLum(d, w, px, py);
+        palmPixelCount++;
+      }
+    }
+    var avgPalmLum = palmPixelCount > 0 ? (palmLumSum / palmPixelCount) : 128;
+
+    for (var mi = 0; mi < mountsList.length; mi++) {
+      var mt = mountsList[mi];
+      var mtLum = getPatchLuminance(d, w, h, mt.x, mt.y, Math.round(mt.r * 0.7));
+      var prominence = Math.max(1, Math.min(10, Math.round(5 + (mtLum - avgPalmLum) * 0.25)));
+      mt.prominence = prominence;
+    }
+    mountsList.sort(function (a, b) { return b.prominence - a.prominence; });
+    topMount = mountsList[0];
+    detectedMounts = mountsList;
+
+    // Bước 5: Luận đoán đặc điểm từ vị trí các điểm neo
+    var detected = evaluateLinesFromPins(anchorPins, geom, w, h, isLeft);
     lastDetected = detected;
     isOverlayVisible = true;
     isFineTuneMode = true;
@@ -648,22 +846,25 @@
 
     var pRatioStr = geom.palmRatio ? geom.palmRatio.toFixed(2) : '1.00';
     var fRatioStr = geom.fingerRatio ? geom.fingerRatio.toFixed(2) : '0.80';
+    var handText = isLeft ? 'Bàn tay Trái (Bẩm sinh & Tiềm năng)' : 'Bàn tay Phải (Hiện tại & Rèn luyện)';
+    var topMountInfo = topMount ? (topMount.symbol + ' ' + topMount.name) : 'Gò Mộc Tinh';
 
     if (scanStatus) {
       scanStatus.hidden = false;
       scanStatus.innerHTML =
         '<div class="scan-result-badge">' +
           '<div class="scan-result-head">' +
-            '<span class="badge-num">✨ Nhận diện quang học chính xác cao</span>' +
+            '<span class="badge-num">✨ Nhận diện quang học đa chiều</span>' +
             '<button class="btn btn-ghost btn-xs" type="button" id="palm-toggle-overlay">Ẩn/Hiện đường quét</button>' +
           '</div>' +
           '<div class="scan-result-summary">' +
+            '<div>• <b>Bàn tay nhận biết:</b> ' + esc(handText) + ' <small>(Góc nghiêng: ' + geom.tiltAngleDeg + '°)</small></div>' +
             '<div>• <b>Phân đoạn giải phẫu học:</b> Tỷ lệ Palm L/W = <b>' + pRatioStr + '</b> | Tỷ lệ Ngón/Palm = <b>' + fRatioStr + '</b></div>' +
             '<div>• <b>Hình thái bàn tay:</b> ' + esc(shapeNames[detected.shape] || shapeNames.air) + '</div>' +
+            '<div>• <b>Chủ gò vượng khí nhất:</b> <span style="color:#E7C98A;font-weight:600;">' + esc(topMountInfo) + '</span></div>' +
             '<div>• <b>Sinh Đạo:</b> ' + (detected.life === 'deep_curved' ? 'Dài, sâu, uốn cong rộng quanh gò Kim Tinh (Sinh lực dồi dào, kháng bệnh tốt)' : 'Hơi thẳng, ôm hẹp sát gần ngón cái (Cẩn trọng, thể lực vừa phải)') + '</div>' +
             '<div>• <b>Trí Đạo:</b> ' + (detected.head === 'long_straight' ? 'Dài, thẳng ngang lòng bàn tay (Tư duy logic, sắc bén, thực tế)' : 'Uốn cong mềm mại hướng xuống gò Thái Âm (Óc sáng tạo, nghệ thuật)') + '</div>' +
             '<div>• <b>Tâm Đạo:</b> ' + (detected.heart === 'curves_jupiter' ? 'Uốn cong lên gò Mộc Tinh (Thủy chung, lý tưởng, nhân hậu)' : 'Cân bằng giữa con tim và lý trí') + '</div>' +
-            '<div>• <b>Định Mệnh &amp; Thái Dương:</b> Tự lập vững vàng &amp; tài danh sáng tỏ</div>' +
             '<div class="scan-highlight">✦ Phát hiện quý tướng: <b>Chữ M Thần Tài</b>, <b>Chữ X Thần Bí</b>, <b>Vân Mắt Phật</b> &amp; <b>Vòng Solomon</b>!</div>' +
           '</div>' +
         '</div>';
@@ -677,7 +878,7 @@
       }
     }
 
-    showToast('Đã quét quang học và nhận diện chính xác 6 đặc điểm bàn tay!');
+    showToast('Đã nhận diện quang học thành công: ' + (isLeft ? 'Tay Trái' : 'Tay Phải') + ' (Nghiêng ' + geom.tiltAngleDeg + '°)');
 
     if (autoTriggerReport) {
       var data = readSelections();
@@ -869,6 +1070,23 @@
       if (pinHint) pinHint.hidden = !isFineTuneMode;
       renderCanvas();
       showToast(isFineTuneMode ? 'Đã bật chế độ hiệu chỉnh điểm neo thông minh.' : 'Đã khóa vị trí điểm neo.');
+    });
+  }
+
+  if (modeBtn) {
+    modeBtn.addEventListener('click', function () {
+      if (viewMode === 'all') {
+        viewMode = 'lines';
+        modeBtn.textContent = 'Lớp: 5 Đại Chỉ';
+      } else if (viewMode === 'lines') {
+        viewMode = 'mounts';
+        modeBtn.textContent = 'Lớp: Bản đồ 7 Gò';
+      } else {
+        viewMode = 'all';
+        modeBtn.textContent = 'Lớp: Toàn cảnh HUD';
+      }
+      renderCanvas();
+      showToast('Chế độ hiển thị: ' + (viewMode === 'all' ? 'Toàn cảnh HUD' : (viewMode === 'lines' ? '5 Đại Chỉ' : 'Bản đồ 7 Gò')));
     });
   }
 
@@ -1074,6 +1292,103 @@
         '</div>';
     }
 
+    // 5 Chỉ Số Sinh Học Năng Lượng Tướng Pháp
+    var scores = (lastDetected && lastDetected.biometricScores) ? lastDetected.biometricScores : {
+      vitality: data.life === 'deep_curved' ? 92 : 78,
+      intellect: data.head === 'long_straight' ? 94 : 88,
+      empathy: data.heart === 'curves_jupiter' ? 95 : 85,
+      career: data.fate === 'clear_from_base' ? 94 : 82,
+      fortune: data.sun === 'clear_long' ? 95 : 80
+    };
+
+    var biometricHTML =
+      '<div class="palm-biometric-box">' +
+        '<div class="palm-card-head">' +
+          '<span class="palm-icon" style="color:var(--gold);">📊</span>' +
+          '<div>' +
+            '<span class="palm-label">Chỉ Số Sinh Học Tướng Pháp</span>' +
+            '<h4 style="margin:0;font-size:1.1rem;color:var(--text);">Năng Lượng Ngũ Hành &amp; Thần Khí</h4>' +
+          '</div>' +
+        '</div>' +
+        '<div class="biometric-grid">' +
+          '<div class="biometric-bar-item">' +
+            '<div class="biometric-bar-head">' +
+              '<span class="biometric-bar-label">🌱 Sinh Lực Khí Huyết</span>' +
+              '<span class="biometric-bar-val">' + scores.vitality + '%</span>' +
+            '</div>' +
+            '<div class="biometric-bar-track"><div class="biometric-bar-fill" style="width:' + scores.vitality + '%;"></div></div>' +
+          '</div>' +
+          '<div class="biometric-bar-item">' +
+            '<div class="biometric-bar-head">' +
+              '<span class="biometric-bar-label">💡 Trí Tuệ &amp; Khả Năng Tư Duy</span>' +
+              '<span class="biometric-bar-val">' + scores.intellect + '%</span>' +
+            '</div>' +
+            '<div class="biometric-bar-track"><div class="biometric-bar-fill" style="width:' + scores.intellect + '%;"></div></div>' +
+          '</div>' +
+          '<div class="biometric-bar-item">' +
+            '<div class="biometric-bar-head">' +
+              '<span class="biometric-bar-label">💖 Tâm Hồn &amp; Trực Giác Thấu Cảm</span>' +
+              '<span class="biometric-bar-val">' + scores.empathy + '%</span>' +
+            '</div>' +
+            '<div class="biometric-bar-track"><div class="biometric-bar-fill" style="width:' + scores.empathy + '%;"></div></div>' +
+          '</div>' +
+          '<div class="biometric-bar-item">' +
+            '<div class="biometric-bar-head">' +
+              '<span class="biometric-bar-label">⚡ Ý Chí &amp; Năng Lực Sự Nghiệp</span>' +
+              '<span class="biometric-bar-val">' + scores.career + '%</span>' +
+            '</div>' +
+            '<div class="biometric-bar-track"><div class="biometric-bar-fill" style="width:' + scores.career + '%;"></div></div>' +
+          '</div>' +
+          '<div class="biometric-bar-item">' +
+            '<div class="biometric-bar-head">' +
+              '<span class="biometric-bar-label">✦ Thời Vận, Tài Lộc &amp; Hào Quang</span>' +
+              '<span class="biometric-bar-val">' + scores.fortune + '%</span>' +
+            '</div>' +
+            '<div class="biometric-bar-track"><div class="biometric-bar-fill" style="width:' + scores.fortune + '%;"></div></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    // Bản Đồ 7 Gò Bàn Tay (Planetary Mounts)
+    var mountsHTML = '';
+    if (P.mounts) {
+      var prominentMountId = topMount ? topMount.id : 'jupiter';
+      var mountKeys = ['jupiter', 'saturn', 'sun', 'mercury', 'venus', 'moon', 'mars'];
+
+      mountsHTML =
+        '<div class="palm-mounts-box">' +
+          '<div class="palm-card-head">' +
+            '<span class="palm-icon" style="color:#B7A7FF;">🪐</span>' +
+            '<div>' +
+              '<span class="palm-label">Địa Tạng Tinh Đồ</span>' +
+              '<h4 style="margin:0;font-size:1.1rem;color:var(--text);">Bản Đồ 7 Gò Bàn Tay (Planetary Mounts)</h4>' +
+            '</div>' +
+          '</div>' +
+          '<p class="palm-desc" style="margin-top:0.4rem;font-size:0.86rem;color:var(--muted);">' +
+            'Bảy gò trên lòng bàn tay hấp thụ năng lượng của các thiên thể, đại diện cho những trường năng lượng tiềm tàng định hình nên cá tính và cơ vận.' +
+          '</p>' +
+          '<div class="palm-mounts-grid">' +
+          mountKeys.map(function (k) {
+            var m = P.mounts[k];
+            if (!m) return '';
+            var isTop = (k === prominentMountId);
+            return '<div class="palm-mount-card' + (isTop ? ' is-prominent' : '') + '">' +
+              '<div class="palm-mount-head">' +
+                '<div class="palm-mount-title">' +
+                  '<span class="palm-mount-symbol" style="color:' + esc(m.color || 'var(--gold)') + ';">' + esc(m.symbol) + '</span>' +
+                  '<span>' + esc(m.name) + ' <small style="color:var(--muted);font-weight:normal;">' + esc(m.han) + '</small></span>' +
+                '</div>' +
+                (isTop ? '<span class="palm-mount-badge">✦ Vượng Khí Nhất</span>' : '') +
+              '</div>' +
+              '<p class="special-desc" style="margin-top:0.3rem;"><b>Vị trí:</b> ' + esc(m.location) + ' — <i>' + esc(m.domain) + '</i></p>' +
+              '<p class="special-reading"><b>Khí chất:</b> ' + esc(isTop ? m.prominent : (m.prominent + ' / ' + m.flat)) + '</p>' +
+              '<p class="special-advice"><b>Lời khuyên:</b> ' + esc(m.advice) + '</p>' +
+            '</div>';
+          }).join('') +
+          '</div>' +
+        '</div>';
+    }
+
     resultRoot.innerHTML =
       '<div class="palm-report-head">' +
         '<div class="palm-report-badges">' +
@@ -1083,6 +1398,8 @@
         '<h3 class="palm-report-title">Bản Luận Giải Tướng Tay Toàn Diện</h3>' +
         '<p class="palm-report-context">' + handContext + '</p>' +
       '</div>' +
+
+      biometricHTML +
 
       '<div class="palm-result-grid">' +
         // 1. Hình thái bàn tay
@@ -1159,6 +1476,8 @@
         '</div>' +
       '</div>' +
 
+      mountsHTML +
+
       specialCardsHTML +
 
       '<div class="palm-philosophy-box">' +
@@ -1186,10 +1505,13 @@
     var copyBtn = document.getElementById('palm-copy-summary-btn');
     if (copyBtn) {
       copyBtn.addEventListener('click', function () {
+        var topMountText = topMount ? (topMount.symbol + ' ' + topMount.name) : 'Gò Mộc Tinh';
         var summaryLines = [
           '✦ THIÊN SỐ — LUẬN GIẢI TƯỚNG PHÁP CHỈ TAY ✦',
           'Tay xem: ' + (data.hand === 'left' ? 'Bàn tay trái (Tiềm năng bẩm sinh)' : 'Bàn tay phải (Thành quả rèn luyện)'),
           'Hình thái: ' + handType.name + ' (' + handType.shape + ')',
+          'Chủ gò vượng khí: ' + topMountText,
+          'Chỉ số sinh học: Sinh lực ' + scores.vitality + '% | Trí tuệ ' + scores.intellect + '% | Thấu cảm ' + scores.empathy + '% | Sự nghiệp ' + scores.career + '% | Tài danh ' + scores.fortune + '%',
           '--------------------------------',
           '• Sinh Đạo: ' + lifeOpt.label + ' — ' + lifeOpt.reading,
           '• Trí Đạo: ' + headOpt.label + ' — ' + headOpt.reading,

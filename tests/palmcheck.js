@@ -54,6 +54,16 @@ for (const sk of Object.keys(P.specialSigns)) {
   check(typeof sign.advice === 'string' && sign.advice.length > 0, `${sk} thiếu advice`);
 }
 
+check(!!P.mounts, 'thiếu mounts');
+check(Object.keys(P.mounts).length >= 7, 'mounts không đủ 7 gò');
+for (const mk of Object.keys(P.mounts)) {
+  const mount = P.mounts[mk];
+  check(typeof mount.name === 'string' && mount.name.length > 0, `${mk} thiếu name`);
+  check(typeof mount.location === 'string' && mount.location.length > 0, `${mk} thiếu location`);
+  check(typeof mount.prominent === 'string' && mount.prominent.length > 0, `${mk} thiếu prominent`);
+  check(typeof mount.advice === 'string' && mount.advice.length > 0, `${mk} thiếu advice`);
+}
+
 check(!!P.philosophy && typeof P.philosophy.quote === 'string', 'thiếu philosophy');
 
 // Kiểm tra quy tắc phân loại giải phẫu 4 nhóm nguyên tố
